@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0f5c4d">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>ميقات الخطيب – خطبتك في وقتها</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Readex+Pro:wght@400;600&display=swap">
+<style>
+:root{--bg:#f3efe6;--panel:#fffdf8;--ink:#1d2b2a;--mute:#6b7773;--accent:#0f5c4d;--accent-ink:#fff;--warn:#b3361f;--line:#d9d2c1;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1716;--panel:#152220;--ink:#efe8d6;--mute:#93a29d;--accent:#e2b44d;--accent-ink:#1a1403;--warn:#ff8a70;--line:#27403c}}
+:root[data-theme="dark"]{--bg:#0e1716;--panel:#152220;--ink:#efe8d6;--mute:#93a29d;--accent:#e2b44d;--accent-ink:#1a1403;--warn:#ff8a70;--line:#27403c}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:var(--bg);color:var(--ink);font-family:"Readex Pro",system-ui,sans-serif;line-height:1.6}
+button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer;border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:.55rem .9rem;min-height:44px}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+button.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:600}
+#editor{max-width:720px;margin:0 auto;padding:1.25rem 1rem 2rem;display:flex;flex-direction:column;gap:1rem;min-height:100%}
+h1{font-family:Amiri,serif;font-size:2rem;margin:.25rem 0 0}
+.sub{color:var(--mute);margin:0}
+textarea{width:100%;flex:1;min-height:42vh;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:1rem;font-family:Amiri,serif;font-size:1.3rem;line-height:1.9;resize:vertical}
+.row{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap}
+.row label{display:flex;align-items:center;gap:.5rem;color:var(--mute)}
+input[type=number]{width:5rem;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:.5rem;text-align:center;min-height:44px}
+#stage{display:none;position:fixed;inset:0;background:var(--bg);flex-direction:column;padding-top:env(safe-area-inset-top,0px)}
+#stage.on{display:flex}
+#bar{display:flex;align-items:center;gap:.6rem;padding:.6rem .8rem;border-bottom:1px solid var(--line);background:var(--panel)}
+#clock{font-variant-numeric:tabular-nums;font-weight:600;font-size:1.5rem;margin-inline-start:auto}
+#clock.low{color:var(--warn)}
+#scroller{flex:1;overflow-y:auto;padding:2rem 1.25rem 60vh;scroll-behavior:auto}
+#text{max-width:760px;margin:0 auto;font-family:Amiri,serif;line-height:2.1;white-space:pre-wrap;font-size:40px}
+#ctl{display:flex;gap:1rem;align-items:center;flex-wrap:wrap;padding:.7rem .9rem calc(.7rem + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);background:var(--panel)}
+#ctl label{display:flex;align-items:center;gap:.5rem;color:var(--mute);flex:1;min-width:140px}
+#ctl input[type=range]{flex:1;accent-color:var(--accent)}
+.mk{display:inline-block;padding:0 .7em;border-radius:8px;font-family:"Readex Pro",sans-serif;font-size:.45em;line-height:1.9;font-weight:600;vertical-align:middle;margin:0 .3em;color:#fff}
+.mk.p{background:#b3361f}.mk.d{background:#2f7d6b}.mk.a{background:#6b4fa8}
+#pace{font-size:1rem;color:var(--mute)}#pace.ahead{color:var(--accent)}#pace.behind{color:var(--warn)}
+#stats{color:var(--mute);font-size:.95rem;margin:0}
+#stats.over{color:var(--warn);font-weight:600}
+#topic{flex:1;min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:.5rem .7rem;min-height:44px}
+#pts{flex:none;min-height:5rem;font-family:inherit;font-size:1rem;line-height:1.6}
+#chk label{display:flex;gap:.6rem;align-items:center;padding:.3rem 0}
+#chk input{width:1.2rem;height:1.2rem;accent-color:var(--accent)}
+.tp{font-weight:700;font-size:.8em;color:var(--accent);margin-bottom:1em}
+@media (prefers-reduced-motion:reduce){#scroller{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<main id="editor">
+  <h1>ميقات الخطيب</h1>
+  <p class="sub">خطبتك في وقتها</p>
+  <p class="sub">الصق الخطبة هنا، ثم ابدأ الإلقاء بنص كبير وتمرير تلقائي.</p>
+  <div class="row"><span class="sub">أدرج علامة في موضع المؤشر:</span><button type="button" data-mk="[وقفة]">وقفة</button><button type="button" data-mk="[دعاء]">دعاء</button><button type="button" data-mk="[آية]">آية</button></div>
+  <textarea id="src" placeholder="اكتب الخطبة أو الصقها هنا…" aria-label="نص الخطبة"></textarea>
+  <p id="stats"></p>
+  <div class="row"><label style="flex:1">موضوع الجمعة <input id="topic" type="text"></label></div>
+  <textarea id="pts" placeholder="نقاط الوزارة المطلوبة، كل نقطة في سطر" aria-label="نقاط الوزارة"></textarea>
+  <div id="chk"></div>
+  <div class="row">
+    <label>مدة الخطبة بالدقائق <input id="mins" type="number" min="1" max="90" value="15"></label>
+    <button id="theme" type="button">تبديل الوضع</button>
+    <button id="go" class="primary" type="button" style="margin-inline-start:auto">ابدأ الإلقاء</button>
+  </div>
+</main>
+
+<section id="stage" aria-label="وضع الإلقاء">
+  <div id="bar">
+    <button id="back" type="button">رجوع</button>
+    <button id="play" class="primary" type="button">ابدأ</button>
+    <span id="pace"></span><span id="clock" role="timer" aria-live="off">15:00</span>
+  </div>
+  <div id="scroller"><div id="text"></div></div>
+  <div id="ctl">
+    <label>السرعة <input id="speed" type="range" min="5" max="120" value="35"></label>
+    <label>حجم الخط <input id="size" type="range" min="24" max="80" value="40"></label>
+    <button id="fit" type="button">اضبط السرعة على وقت الخطبة</button>
+  </div>
+</section>
+
+<script>
+(function(){
+  var $=function(i){return document.getElementById(i)};
+  var src=$('src'),mins=$('mins'),stage=$('stage'),sc=$('scroller'),txt=$('text'),clock=$('clock'),play=$('play');
+  var running=false,raf=0,last=0,pos=0,remain=0,timerEnd=0,total=900;
+
+  try{var d=localStorage.getItem('khutba-draft');if(d)src.value=d;var m=localStorage.getItem('khutba-mins');if(m)mins.value=m}catch(e){}
+  src.addEventListener('input',function(){try{localStorage.setItem('khutba-draft',src.value)}catch(e){}});
+  mins.addEventListener('change',function(){try{localStorage.setItem('khutba-mins',mins.value)}catch(e){}});
+
+  function stats(){
+    var t=src.value.replace(/\[(?:وقفة|دعاء|آية)\]/g,' ').trim();
+    var w=t?t.split(/\s+/).length:0,m=Math.round(w/130*10)/10;
+    var lim=parseInt(mins.value,10)||15,over=w-lim*130,st=$('stats');
+    st.textContent=w?(w+' كلمة، والمدة التقريبية للإلقاء نحو '+m+' دقيقة'+(over>0?'. الوقت المسموح '+lim+' دقيقة، فاختصر نحو '+over+' كلمة':'')):'';
+    st.className=over>0?'over':'';
+  }
+  src.addEventListener('input',stats);mins.addEventListener('input',stats);stats();
+  document.querySelectorAll('[data-mk]').forEach(function(b){
+    b.onclick=function(){
+      var s=src.selectionStart,e=src.selectionEnd,m=' '+b.getAttribute('data-mk')+' ';
+      src.value=src.value.slice(0,s)+m+src.value.slice(e);
+      src.selectionStart=src.selectionEnd=s+m.length;src.focus();
+      src.dispatchEvent(new Event('input'));
+    };
+  });
+  var topic=$('topic'),pts=$('pts'),chk=$('chk'),done={};
+  try{topic.value=localStorage.getItem('khutba-topic')||'';pts.value=localStorage.getItem('khutba-pts')||'';done=JSON.parse(localStorage.getItem('khutba-done')||'{}')}catch(e){}
+  function save(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function renderChk(){
+    chk.textContent='';
+    pts.value.split('\n').map(function(s){return s.trim()}).filter(Boolean).forEach(function(p){
+      var l=document.createElement('label'),c=document.createElement('input');
+      c.type='checkbox';c.checked=!!done[p];
+      c.onchange=function(){done[p]=c.checked;save('khutba-done',JSON.stringify(done))};
+      l.appendChild(c);l.appendChild(document.createTextNode(p));chk.appendChild(l);
+    });
+  }
+  topic.addEventListener('input',function(){save('khutba-topic',topic.value)});
+  pts.addEventListener('input',function(){save('khutba-pts',pts.value);renderChk()});
+  renderChk();
+
+  function fitSpeed(){
+    var sp=$('speed'),left=txt.offsetHeight-sc.scrollTop,s=left/Math.max(remain,1);
+    sp.min=1;sp.max=Math.max(120,Math.ceil(s*2));
+    sp.value=Math.max(1,Math.round(s));
+  }
+  function paceUpdate(){
+    var h=txt.offsetHeight;if(h<=0)return;
+    var el=total-remain,diff=(Math.min(1,sc.scrollTop/h)-el/total)*total,p=$('pace');
+    if(Math.abs(diff)<15){p.textContent='على الخطة';p.className=''}
+    else if(diff>0){p.textContent='متقدم '+fmt(diff);p.className='ahead'}
+    else{p.textContent='متأخر '+fmt(-diff);p.className='behind'}
+  }
+
+  $('theme').onclick=function(){
+    var r=document.documentElement,dark=getComputedStyle(r).getPropertyValue('--bg').trim()==='#0e1716';
+    r.setAttribute('data-theme',dark?'light':'dark');
+  };
+
+  function fmt(s){s=Math.max(0,Math.round(s));var a=Math.floor(s/60),b=s%60;return (a<10?'0':'')+a+':'+(b<10?'0':'')+b}
+  function showClock(){clock.textContent=remain<=0?'انتهى الوقت':fmt(remain);clock.classList.toggle('low',remain<=120)}
+
+  function loop(t){
+    if(!running)return;
+    var dt=(t-last)/1000;last=t;
+    pos+=parseFloat($('speed').value)*dt;
+    sc.scrollTop=pos;
+    remain=(timerEnd-Date.now())/1000;
+    showClock();paceUpdate();
+    if(pos>sc.scrollHeight-sc.clientHeight+5){stop();return}
+    raf=requestAnimationFrame(loop);
+  }
+  function start(){
+    running=true;play.textContent='إيقاف مؤقت';
+    pos=sc.scrollTop;last=performance.now();
+    timerEnd=Date.now()+remain*1000;
+    raf=requestAnimationFrame(loop);
+  }
+  function stop(){running=false;cancelAnimationFrame(raf);play.textContent='متابعة'}
+
+  play.onclick=function(){running?stop():start()};
+  $('go').onclick=function(){
+    if(!src.value.trim()){src.focus();return}
+    txt.textContent='';
+    if(topic.value.trim()){var h=document.createElement('div');h.className='tp';h.textContent=topic.value.trim();txt.appendChild(h)}
+    src.value.split(/(\[(?:وقفة|دعاء|آية)\])/).forEach(function(part){
+      var c=part==='[وقفة]'?'p':part==='[دعاء]'?'d':part==='[آية]'?'a':'';
+      if(c){var s=document.createElement('span');s.className='mk '+c;s.textContent=part.slice(1,-1);txt.appendChild(s)}
+      else txt.appendChild(document.createTextNode(part));
+    });
+    total=remain=(parseInt(mins.value,10)||15)*60;showClock();$('pace').textContent='';
+    sc.scrollTop=0;pos=0;play.textContent='ابدأ';
+    stage.classList.add('on');fitSpeed();
+  };
+  $('back').onclick=function(){stop();stage.classList.remove('on')};
+  $('size').oninput=function(){txt.style.fontSize=this.value+'px';if(!running)fitSpeed()};
+  $('fit').onclick=fitSpeed;
+  sc.addEventListener('touchstart',function(){if(running)stop()},{passive:true});
+  sc.addEventListener('wheel',function(){pos=sc.scrollTop},{passive:true});
+  sc.addEventListener('scroll',function(){if(!running)pos=sc.scrollTop});
+})();
+</script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){})})}</script>
+</body>
+</html>
