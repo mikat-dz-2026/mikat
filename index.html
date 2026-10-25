@@ -39,6 +39,7 @@ input[type=date]{width:100%;border:1px solid var(--line);border-radius:12px;padd
     <button class="service" data-open="prayer"><span class="ico">🕌</span><strong>مواقيت الصلاة</strong><span>مكان مخصص للخدمة؛ يحتاج تحديد المدينة ومصدر توقيت موثوق.</span></button>
     <button class="service" data-open="checklist"><span class="ico">📋</span><strong>نقاط المديرية</strong><span>قائمة متابعة قبل الخطبة.</span></button>
     <button class="service" data-open="notes"><span class="ico">🗓️</span><strong>ملاحظات الخطيب</strong><span>أفكار وموضوعات مستقبلية تحفظ محليًا.</span></button>
+    <button class="service" data-open="guide"><span class="ico">❓</span><strong>كيف أستعمل التطبيق؟</strong><span>ست خطوات سريعة من الكتابة إلى المنبر.</span></button>
     <button class="service" data-open="directives"><span class="ico">📜</span><strong>تعليمات المديرية</strong><span>القرارات والتعليمات الرسمية المتعلقة بالخطب.</span></button>
     <button class="service" data-open="pro"><span class="ico">⭐</span><strong>النسخة الكاملة</strong><span>حفظ عدد غير محدود من الخطب بكود تفعيل.</span></button>
   </section>
@@ -97,6 +98,18 @@ input[type=date]{width:100%;border:1px solid var(--line);border-radius:12px;padd
     <label for="notesInput">أفكار وموضوعات قادمة</label><textarea id="notesInput" placeholder="اكتب أفكارك هنا…"></textarea>
     <p class="small" id="notesSaved">تحفظ تلقائيًا على هذا الجهاز.</p>
   </section>
+  <section class="panel hidden" id="guide">
+    <div class="section-title"><h2>❓ كيف أستعمل التطبيق؟</h2><p>من الكتابة إلى المنبر في ست خطوات</p></div>
+    <ol class="small">
+      <li>من «إعداد الخطبة» اكتب خطبتك أو الصقها، أو اختر نموذجًا من «مكتبة الخطب»، وحدّد المدة بالدقائق.</li>
+      <li>أضف بأزرار «وقفة» و«دعاء» و«آية» علامات في مواضعها من النص.</li>
+      <li>في «نقاط المديرية» اكتب النقاط المطلوبة، وضع علامة عند كل نقطة غطيتها.</li>
+      <li>اضغط «ابدأ وضع الإلقاء»، ثم «اضبط السرعة على وقت الخطبة»، ثم «ابدأ».</li>
+      <li>راقب كلمة «متقدم» أو «متأخر» في الأعلى. ويحمرّ المؤقت في آخر دقيقتين. ولمس النص يوقف التمرير، وتبقى الشاشة مضاءة أثناء الإلقاء.</li>
+      <li>اضغط «حفظ الخطبة في المكتبة» لتبقى في «ميقاتي» بعنوانها، وخذ نسخة احتياطية من حين لآخر.</li>
+    </ol>
+    <p class="notice">بياناتك في جهازك فقط. وبعد أول فتح يعمل التطبيق دون إنترنت. لتثبيته على الشاشة الرئيسية: قائمة المتصفح ثم «تثبيت التطبيق».</p>
+  </section>
   <section class="panel hidden" id="directives">
     <div class="section-title"><h2>📜 تعليمات المديرية</h2><p>تُنقل من مصدرها الرسمي مع رابطها، وتصل الجميع مع تحديث التطبيق</p></div>
     <p class="notice">تحقّق من أي تعليمة من الموقع الرسمي للوزارة قبل اعتمادها، ولا تعتمد على ما يصلك في الرسائل أو صفحات التواصل غير الموثقة. ما يُعرض هنا منقول من المصادر الرسمية مع رابطه، والتطبيق مستقل وغير تابع للوزارة ما لم يُعلَن خلاف ذلك.</p>
@@ -127,7 +140,7 @@ const $=id=>document.getElementById(id), store={
 };
 try{[['topic','khutba-topic',0],['draft','khutba-draft',0],['minutes','khutba-mins',1],['points','khutba-pts',0]].forEach(function(m){var o=localStorage.getItem(m[1]);if(localStorage.getItem('mikat-'+m[0])===null&&o!==null)localStorage.setItem('mikat-'+m[0],JSON.stringify(m[2]?(Number(o)||15):o))})}catch(e){}
 function toast(msg){$('toast').textContent=msg;$('toast').classList.remove('hidden');setTimeout(()=>$('toast').classList.add('hidden'),2400)}
-function showPanel(id){document.querySelectorAll('main, .panel[id]').forEach(el=>{});['sermon','library','adhkar','prayer','checklist','notes','pro','directives'].forEach(k=>$(k).classList.toggle('hidden',k!==id));$(id).scrollIntoView({behavior:'smooth',block:'start'})}
+function showPanel(id){document.querySelectorAll('main, .panel[id]').forEach(el=>{});['sermon','library','adhkar','prayer','checklist','notes','pro','directives','guide'].forEach(k=>$(k).classList.toggle('hidden',k!==id));$(id).scrollIntoView({behavior:'smooth',block:'start'})}
 document.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>showPanel(b.dataset.open)));
 $('themeBtn').onclick=()=>{let dark=document.documentElement.dataset.theme!=='dark';document.documentElement.dataset.theme=dark?'dark':'light';store.set('theme',dark?'dark':'light');$('themeBtn').textContent=dark?'☀':'☾'};
 document.documentElement.dataset.theme=store.get('theme','light');$('themeBtn').textContent=document.documentElement.dataset.theme==='dark'?'☀':'☾';
@@ -154,13 +167,16 @@ let sermons=store.get('sermons',[]);function renderSermons(){let q=$('searchSerm
 $('saveSermon').onclick=()=>{let text=$('draft').value.trim();if(!text){toast('اكتب نص الخطبة أولًا');return}if(!pro&&sermons.length>=FREE_LIMIT){toast('وصلت إلى حد النسخة المجانية ('+FREE_LIMIT+' خطب). فعّل النسخة الكاملة للمتابعة.');showPanel('pro');return}let topic=$('topic').value.trim()||'خطبة بلا عنوان',item={id:Date.now(),topic,text,minutes:Number($('minutes').value)||15,updated:new Date().toISOString()};sermons.unshift(item);store.set('sermons',sermons);renderSermons();toast('حُفظت الخطبة في المكتبة')};$('searchSermons').oninput=()=>{renderStarters();renderSermons()};$('sermonCategory').onchange=renderStarters;renderStarters();renderSermons();
 $('exportSermons').onclick=()=>{let blob=new Blob([JSON.stringify(sermons,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='mikat-khutab-backup.json';a.click();URL.revokeObjectURL(url)};
 let duas=store.get('duas',[]);function renderDuas(){let root=$('duaList');root.textContent='';if(!duas.length){root.innerHTML='<p class="small">لم تضف أدعية بعد.</p>';return}duas.forEach((x,i)=>{let d=document.createElement('div');d.className='listitem';let p=document.createElement('p');p.textContent=x;let b=document.createElement('button');b.textContent='حذف';b.onclick=()=>{duas.splice(i,1);store.set('duas',duas);renderDuas()};d.append(p,b);root.append(d)})}$('addDua').onclick=()=>{let v=$('duaInput').value.trim();if(!v)return;duas.unshift(v);store.set('duas',duas);$('duaInput').value='';renderDuas();toast('أُضيف إلى قائمتك')};renderDuas();
-$('present').onclick=()=>{let raw=$('draft').value.trim();if(!raw){toast('اكتب نص الخطبة أولًا');return}let out=$('stageText');out.textContent='';raw.split(/(\[(?:وقفة|دعاء|آية)\])/).forEach(part=>{let cls=part==='[وقفة]'?'':part==='[دعاء]'?' dua':part==='[آية]'?' aya':null;if(cls!==null){let s=document.createElement('span');s.className='marker'+cls;s.textContent=part.slice(1,-1);out.append(s)}else out.append(document.createTextNode(part))});if($('topic').value.trim()){let h=document.createElement('div');h.style.cssText='font:700 .55em system-ui;color:var(--accent);margin-bottom:1em';h.textContent=$('topic').value.trim();out.prepend(h)}$('stage').classList.remove('hidden');remain=(Number($('minutes').value)||15)*60;clockUpdate();paused=true;last=0;$('pauseStage').textContent='ابدأ';$('stageText').scrollTop=0;total=remain;fitSpeed();$('pace').textContent='';};
+$('present').onclick=()=>{let raw=$('draft').value.trim();if(!raw){toast('اكتب نص الخطبة أولًا');return}let out=$('stageText');out.textContent='';raw.split(/(\[(?:وقفة|دعاء|آية)\])/).forEach(part=>{let cls=part==='[وقفة]'?'':part==='[دعاء]'?' dua':part==='[آية]'?' aya':null;if(cls!==null){let s=document.createElement('span');s.className='marker'+cls;s.textContent=part.slice(1,-1);out.append(s)}else out.append(document.createTextNode(part))});if($('topic').value.trim()){let h=document.createElement('div');h.style.cssText='font:700 .55em system-ui;color:var(--accent);margin-bottom:1em';h.textContent=$('topic').value.trim();out.prepend(h)}$('stage').classList.remove('hidden');awake(true);remain=(Number($('minutes').value)||15)*60;clockUpdate();paused=true;last=0;$('pauseStage').textContent='ابدأ';$('stageText').scrollTop=0;total=remain;fitSpeed();$('pace').textContent='';};
 let remain=900,paused=false,last=0,raf=0;function clockUpdate(){$('clock').classList.toggle('low',remain<=120);$('clock').textContent=remain<=0?'انتهى الوقت':String(Math.floor(remain/60)).padStart(2,'0')+':'+String(Math.floor(remain%60)).padStart(2,'0')}function tick(t){if($('stage').classList.contains('hidden')||paused){last=0;return}if(!last)last=t;let dt=Math.min((t-last)/1000,.2);last=t;let el=$('stageText');el.scrollTop+=Number($('scrollSpeed').value)*dt;remain=Math.max(0,remain-dt);clockUpdate();paceUpdate();if(remain>0&&el.scrollTop+el.clientHeight<el.scrollHeight)raf=requestAnimationFrame(tick);else{paused=true;$('pauseStage').textContent='متابعة';last=0}}let total=900;
 function textH(){let el=$('stageText');return Math.max(1,el.scrollHeight-innerHeight*0.5-28)}
 function fitSpeed(){let el=$('stageText'),sp=$('scrollSpeed'),v=Math.max(0,textH()-el.scrollTop)/Math.max(remain,1);sp.min=1;sp.max=Math.max(100,Math.ceil(v*2));sp.value=Math.max(1,Math.round(v))}
 function paceUpdate(){let el=$('stageText'),p=$('pace'),diff=(Math.min(1,el.scrollTop/textH())-(total-remain)/total)*total,m=Math.floor(Math.abs(diff)/60),sec=Math.round(Math.abs(diff)%60),t=(m?m+' د ':'')+sec+' ث';if(Math.abs(diff)<15){p.textContent='على الخطة';p.className=''}else if(diff>0){p.textContent='متقدم '+t;p.className='ahead'}else{p.textContent='متأخر '+t;p.className='behind'}}
+let wl=null;
+async function awake(on){try{if(on){if('wakeLock' in navigator&&!wl){wl=await navigator.wakeLock.request('screen');wl.addEventListener('release',()=>{wl=null})}}else if(wl){await wl.release();wl=null}}catch(e){wl=null}}
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&!$('stage').classList.contains('hidden'))awake(true)});
 $('fitBtn').onclick=fitSpeed;
-$('pauseStage').onclick=()=>{paused=!paused;$('pauseStage').textContent=paused?'متابعة':'إيقاف مؤقت';last=0;if(!paused)raf=requestAnimationFrame(tick)};$('stageText').addEventListener('touchstart',()=>{if(!paused){paused=true;$('pauseStage').textContent='متابعة';last=0}},{passive:true});$('fontSize').oninput=()=>{$('stageText').style.fontSize=$('fontSize').value+'px';if(paused)fitSpeed()};$('exitStage').onclick=()=>{cancelAnimationFrame(raf);$('stage').classList.add('hidden');paused=true};$('stage').addEventListener('transitionend',()=>{}); 
+$('pauseStage').onclick=()=>{paused=!paused;$('pauseStage').textContent=paused?'متابعة':'إيقاف مؤقت';last=0;if(!paused)raf=requestAnimationFrame(tick)};$('stageText').addEventListener('touchstart',()=>{if(!paused){paused=true;$('pauseStage').textContent='متابعة';last=0}},{passive:true});$('fontSize').oninput=()=>{$('stageText').style.fontSize=$('fontSize').value+'px';if(paused)fitSpeed()};$('exitStage').onclick=()=>{cancelAnimationFrame(raf);$('stage').classList.add('hidden');paused=true;awake(false)};$('stage').addEventListener('transitionend',()=>{}); 
 const D2R=Math.PI/180;
 const dsin=d=>Math.sin(d*D2R),dcos=d=>Math.cos(d*D2R),dtan=d=>Math.tan(d*D2R);
 const dasin=x=>Math.asin(x)/D2R,dacos=x=>Math.acos(x)/D2R,datan2=(y,x)=>Math.atan2(y,x)/D2R,dacot=x=>Math.atan(1/x)/D2R;
