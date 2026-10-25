@@ -16,6 +16,7 @@ button,input,textarea,select{font:inherit}button{border:1px solid var(--line);ba
 .primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:700}.muted{color:var(--mute)}.wrap{max-width:980px;margin:auto;padding:16px 15px 40px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{display:flex;align-items:center;gap:11px}.logo{display:grid;place-items:center;width:48px;height:48px;border-radius:16px;background:var(--accent);color:var(--accent-ink);font-size:25px}.brand h1{font-size:1.35rem;margin:0}.brand p{margin:0;color:var(--mute);font-size:.86rem}.hero{margin:20px 0 16px;padding:22px;border-radius:24px;background:linear-gradient(135deg,var(--soft),var(--panel));border:1px solid var(--line)}.hero .eyebrow{font-size:.83rem;color:var(--accent);font-weight:700}.hero h2{font-size:1.55rem;line-height:1.45;margin:.3rem 0}.hero p{margin:.3rem 0 1rem;color:var(--mute)}.section-title{display:flex;align-items:end;justify-content:space-between;gap:10px;margin:24px 0 12px}.section-title h2{font-size:1.1rem;margin:0}.section-title p{font-size:.82rem;color:var(--mute);margin:0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.service{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:16px;text-align:right;box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:flex-start;gap:7px;min-height:145px}.service .ico{font-size:1.65rem}.service strong{font-size:1rem}.service span:last-child{font-size:.84rem;color:var(--mute)}.panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:16px;margin-top:12px}.hidden{display:none!important}label{display:block;font-weight:600;font-size:.9rem;margin:.7rem 0 .35rem}input[type=text],input[type=number],textarea,select{width:100%;border:1px solid var(--line);border-radius:12px;padding:11px;background:var(--bg);color:var(--ink)}textarea{min-height:190px;resize:vertical;line-height:1.9;font-family:Georgia,"Times New Roman",serif;font-size:1.15rem}.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.row>*{flex:1}.chips{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}.chips button{min-height:38px;padding:.4rem .7rem}.small{font-size:.85rem;color:var(--mute)}.listitem{padding:12px 0;border-bottom:1px solid var(--line)}.listitem:last-child{border-bottom:0}.checklist label{display:flex;gap:9px;align-items:center;font-weight:400}.checklist input{width:19px;height:19px;accent-color:var(--accent)}.footer{text-align:center;color:var(--mute);font-size:.8rem;padding:26px 8px 0}.toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;max-width:90%;z-index:10}.stage{position:fixed;inset:0;background:var(--bg);z-index:5;display:flex;flex-direction:column;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}.stagebar,.stagecontrols{display:flex;align-items:center;gap:8px;padding:10px;background:var(--panel);border-bottom:1px solid var(--line);flex-wrap:wrap}.stagebar #clock{font-size:1.25rem;font-weight:800;margin-inline-start:auto}.stagebody{overflow:auto;flex:1;padding:28px 20px 50vh;white-space:pre-wrap;font-family:Georgia,"Times New Roman",serif;font-size:38px;line-height:2;max-width:850px;width:100%;margin:auto}.stagecontrols{border-top:1px solid var(--line);border-bottom:0}.stagecontrols label{margin:0;display:flex;align-items:center;gap:7px;flex:1;min-width:140px}.stagecontrols input{width:100%}.marker{font-family:system-ui,sans-serif;font-size:.48em;border-radius:7px;padding:0 .5em;color:white;background:#ad442c}.marker.dua{background:#277c68}.marker.aya{background:#7055a6}.notice{background:var(--soft);padding:11px;border-radius:12px;font-size:.87rem;color:var(--mute)}@media(min-width:700px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.hero{padding:30px}.hero h2{font-size:1.9rem}}@media(max-width:380px){.brand h1{font-size:1.1rem}.hero{padding:17px}.grid{gap:8px}.service{padding:12px;min-height:135px}}
 #pace{font-size:.95rem;color:var(--mute)}#pace.ahead{color:var(--accent)}#pace.behind,#clock.low{color:var(--warn)}.stats-over{color:var(--warn);font-weight:700}
 input[type=date]{width:100%;border:1px solid var(--line);border-radius:12px;padding:11px;background:var(--bg);color:var(--ink);font:inherit}
+.listitem a{color:var(--accent);font-weight:600}
 </style>
 </head>
 <body>
@@ -38,6 +39,7 @@ input[type=date]{width:100%;border:1px solid var(--line);border-radius:12px;padd
     <button class="service" data-open="prayer"><span class="ico">🕌</span><strong>مواقيت الصلاة</strong><span>مكان مخصص للخدمة؛ يحتاج تحديد المدينة ومصدر توقيت موثوق.</span></button>
     <button class="service" data-open="checklist"><span class="ico">📋</span><strong>نقاط الوزارة</strong><span>قائمة متابعة قبل الخطبة.</span></button>
     <button class="service" data-open="notes"><span class="ico">🗓️</span><strong>ملاحظات الخطيب</strong><span>أفكار وموضوعات مستقبلية تحفظ محليًا.</span></button>
+    <button class="service" data-open="directives"><span class="ico">📜</span><strong>تعليمات الوزارة</strong><span>القرارات والتعليمات الرسمية المتعلقة بالخطب.</span></button>
     <button class="service" data-open="pro"><span class="ico">⭐</span><strong>النسخة الكاملة</strong><span>حفظ عدد غير محدود من الخطب بكود تفعيل.</span></button>
   </section>
   <section class="panel" id="sermon">
@@ -68,7 +70,7 @@ input[type=date]{width:100%;border:1px solid var(--line);border-radius:12px;padd
       <article class="listitem"><strong>صلة الرحم</strong><p>محاور: صور الصلة العملية، وإصلاح القطيعة بحكمة.</p></article>
       <article class="listitem"><strong>الاستعداد لرمضان</strong><p>محاور: التوبة، تنظيم الوقت، والتهيؤ للعبادة.</p></article>
     </div>
-    <h3>خطبك المحفوظة على هذا الجهاز</h3>
+    <h3>ميقاتي: خطبك المحفوظة بعناوينها على هذا الجهاز</h3>
     <div id="sermonList"></div>
     <button id="exportSermons">تصدير نسخة احتياطية (JSON)</button>
   </section>
@@ -95,6 +97,12 @@ input[type=date]{width:100%;border:1px solid var(--line);border-radius:12px;padd
     <label for="notesInput">أفكار وموضوعات قادمة</label><textarea id="notesInput" placeholder="اكتب أفكارك هنا…"></textarea>
     <p class="small" id="notesSaved">تحفظ تلقائيًا على هذا الجهاز.</p>
   </section>
+  <section class="panel hidden" id="directives">
+    <div class="section-title"><h2>📜 تعليمات الوزارة</h2><p>تُنقل من مصدرها الرسمي مع رابطها، وتصل الجميع مع تحديث التطبيق</p></div>
+    <p class="notice">تحقّق من أي تعليمة من الموقع الرسمي للوزارة قبل اعتمادها، ولا تعتمد على ما يصلك في الرسائل أو صفحات التواصل غير الموثقة.</p>
+    <div id="directiveList"></div>
+    <p class="small" id="directiveEmpty">ستُضاف هنا قرارات الوزارة وتعليماتها الخاصة بالخطب حال التحقق منها من مصدرها الرسمي.</p>
+  </section>
   <section class="panel hidden" id="pro">
     <div class="section-title"><h2>⭐ النسخة الكاملة</h2></div>
     <p id="proState"></p>
@@ -119,7 +127,7 @@ const $=id=>document.getElementById(id), store={
 };
 try{[['topic','khutba-topic',0],['draft','khutba-draft',0],['minutes','khutba-mins',1],['points','khutba-pts',0]].forEach(function(m){var o=localStorage.getItem(m[1]);if(localStorage.getItem('mikat-'+m[0])===null&&o!==null)localStorage.setItem('mikat-'+m[0],JSON.stringify(m[2]?(Number(o)||15):o))})}catch(e){}
 function toast(msg){$('toast').textContent=msg;$('toast').classList.remove('hidden');setTimeout(()=>$('toast').classList.add('hidden'),2400)}
-function showPanel(id){document.querySelectorAll('main, .panel[id]').forEach(el=>{});['sermon','library','adhkar','prayer','checklist','notes','pro'].forEach(k=>$(k).classList.toggle('hidden',k!==id));$(id).scrollIntoView({behavior:'smooth',block:'start'})}
+function showPanel(id){document.querySelectorAll('main, .panel[id]').forEach(el=>{});['sermon','library','adhkar','prayer','checklist','notes','pro','directives'].forEach(k=>$(k).classList.toggle('hidden',k!==id));$(id).scrollIntoView({behavior:'smooth',block:'start'})}
 document.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>showPanel(b.dataset.open)));
 $('themeBtn').onclick=()=>{let dark=document.documentElement.dataset.theme!=='dark';document.documentElement.dataset.theme=dark?'dark':'light';store.set('theme',dark?'dark':'light');$('themeBtn').textContent=dark?'☀':'☾'};
 document.documentElement.dataset.theme=store.get('theme','light');$('themeBtn').textContent=document.documentElement.dataset.theme==='dark'?'☀':'☾';
@@ -183,6 +191,12 @@ async function sha(t){const b=await crypto.subtle.digest('SHA-256',new TextEncod
 function renderPro(){$('proState').textContent=pro?'✅ النسخة الكاملة مفعّلة على هذا الجهاز.':'النسخة المجانية: حتى '+FREE_LIMIT+' خطب محفوظة في المكتبة.';$('proForm').classList.toggle('hidden',pro);const c=$('proContact');if(CONTACT&&!pro){c.textContent='للحصول على كود التفعيل: '+CONTACT;c.classList.remove('hidden')}else c.classList.add('hidden')}
 $('activate').onclick=async()=>{const raw=$('proCode').value.toUpperCase().replace(/[^A-Z0-9]/g,'');if(!raw){toast('اكتب الكود أولًا');return}try{const h=await sha('mikat-v1|'+raw);if(PRO_HASHES.includes(h)){pro=true;store.set('pro',true);renderPro();toast('فُعّلت النسخة الكاملة');$('proCode').value=''}else toast('الكود غير صحيح، تأكد من كتابته')}catch(e){toast('تعذّر التحقق في هذا المتصفح')}};
 renderPro();
+const DIRECTIVES=[
+ {title:'المصدر الرسمي لتعليمات الوزارة',body:'تؤكد الوزارة أن تصريحات الوزير وأخبارها وبياناتها تؤخذ حصرًا من موقعها الرسمي الإلكتروني وصفحاتها الموثقة ووسائل الإعلام الوطنية المعتمدة، فتحقّق من أي تعليمة من هناك.',link:'https://marw.gov.dz',linkText:'الموقع الرسمي للوزارة'},
+ {title:'النشرة الرسمية للوزارة',body:'تُنشر النصوص التنظيمية والقرارات في النشرة الرسمية للوزارة، وهي ملفات PDF على موقعها. هذا مثال على شكلها.',link:'https://marw.gov.dz/sites/default/files/publications/nachra_rasmia42_semestre2_2021.pdf',linkText:'النشرة الرسمية رقم 42 (السداسي الثاني 2021)'}
+];
+function renderDirectives(){const root=$('directiveList');root.textContent='';DIRECTIVES.forEach(d=>{const a=document.createElement('article');a.className='listitem';const t=document.createElement('strong');t.textContent=d.title;a.append(t);if(d.date){const m=document.createElement('p');m.className='small';m.textContent=d.date;a.append(m)}const b=document.createElement('p');b.textContent=d.body;a.append(b);if(d.link){const l=document.createElement('a');l.href=d.link;l.target='_blank';l.rel='noopener noreferrer';l.textContent=d.linkText||'المصدر';a.append(l)}root.append(a)});$('directiveEmpty').classList.toggle('hidden',DIRECTIVES.length>2)}
+renderDirectives();
 $('newSermon').onclick=()=>{if(($('draft').value.trim()||$('topic').value.trim())&&!confirm('سيُفرَّغ المحرر لتبدأ خطبة جديدة. إن لم تحفظ الخطبة الحالية في المكتبة فستضيع. هل تريد المتابعة؟'))return;['topic','draft'].forEach(id=>{$(id).value='';$(id).dispatchEvent(new Event('input'))});$('draft').focus();toast('المحرر فارغ، ابدأ خطبتك الجديدة')};
 updateStats();
 })();
