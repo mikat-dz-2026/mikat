@@ -37,9 +37,9 @@ input[type=date]{width:100%;border:1px solid var(--line);border-radius:12px;padd
     <button class="service" data-open="library"><span class="ico">📚</span><strong>مكتبة الخطب</strong><span>حفظ مسوداتك على هذا الجهاز والبحث فيها.</span></button>
     <button class="service" data-open="adhkar"><span class="ico">🤲</span><strong>الأذكار والأدعية</strong><span>مساحة أولية لتنظيم الأدعية التي تضيفها.</span></button>
     <button class="service" data-open="prayer"><span class="ico">🕌</span><strong>مواقيت الصلاة</strong><span>مكان مخصص للخدمة؛ يحتاج تحديد المدينة ومصدر توقيت موثوق.</span></button>
-    <button class="service" data-open="checklist"><span class="ico">📋</span><strong>نقاط الوزارة</strong><span>قائمة متابعة قبل الخطبة.</span></button>
+    <button class="service" data-open="checklist"><span class="ico">📋</span><strong>نقاط المديرية</strong><span>قائمة متابعة قبل الخطبة.</span></button>
     <button class="service" data-open="notes"><span class="ico">🗓️</span><strong>ملاحظات الخطيب</strong><span>أفكار وموضوعات مستقبلية تحفظ محليًا.</span></button>
-    <button class="service" data-open="directives"><span class="ico">📜</span><strong>تعليمات الوزارة</strong><span>القرارات والتعليمات الرسمية المتعلقة بالخطب.</span></button>
+    <button class="service" data-open="directives"><span class="ico">📜</span><strong>تعليمات المديرية</strong><span>القرارات والتعليمات الرسمية المتعلقة بالخطب.</span></button>
     <button class="service" data-open="pro"><span class="ico">⭐</span><strong>النسخة الكاملة</strong><span>حفظ عدد غير محدود من الخطب بكود تفعيل.</span></button>
   </section>
   <section class="panel" id="sermon">
@@ -88,7 +88,7 @@ input[type=date]{width:100%;border:1px solid var(--line);border-radius:12px;padd
     <p class="notice">حساب فلكي بزاويتي وزارة الشؤون الدينية الجزائرية (الفجر 18° والعشاء 17°) والعصر بالظل المثل، بتوقيت الجزائر. قد يختلف عن تقويم مسجدك بدقيقة أو دقيقتين، فاعتمد تقويم الوزارة أو مسجدك في الصلاة، وإن لم تجد مدينتك فاختر أقرب مدينة إليك.</p>
   </section>
   <section class="panel hidden" id="checklist">
-    <div class="section-title"><h2>📋 نقاط الوزارة</h2></div>
+    <div class="section-title"><h2>📋 نقاط المديرية</h2></div>
     <label for="points">اكتب كل نقطة في سطر</label><textarea id="points" style="min-height:130px" placeholder="النقطة الأولى&#10;النقطة الثانية"></textarea>
     <div id="pointChecks" class="checklist"></div>
   </section>
@@ -98,10 +98,10 @@ input[type=date]{width:100%;border:1px solid var(--line);border-radius:12px;padd
     <p class="small" id="notesSaved">تحفظ تلقائيًا على هذا الجهاز.</p>
   </section>
   <section class="panel hidden" id="directives">
-    <div class="section-title"><h2>📜 تعليمات الوزارة</h2><p>تُنقل من مصدرها الرسمي مع رابطها، وتصل الجميع مع تحديث التطبيق</p></div>
+    <div class="section-title"><h2>📜 تعليمات المديرية</h2><p>تُنقل من مصدرها الرسمي مع رابطها، وتصل الجميع مع تحديث التطبيق</p></div>
     <p class="notice">تحقّق من أي تعليمة من الموقع الرسمي للوزارة قبل اعتمادها، ولا تعتمد على ما يصلك في الرسائل أو صفحات التواصل غير الموثقة. ما يُعرض هنا منقول من المصادر الرسمية مع رابطه، والتطبيق مستقل وغير تابع للوزارة ما لم يُعلَن خلاف ذلك.</p>
     <div id="directiveList"></div>
-    <p class="small" id="directiveEmpty">ستُضاف هنا قرارات الوزارة وتعليماتها الخاصة بالخطب حال التحقق منها من مصدرها الرسمي.</p>
+    <p class="small" id="directiveEmpty">ستُضاف هنا قرارات المديرية والوزارة وتعليماتهما الخاصة بالخطب حال التحقق منها من مصدرها الرسمي.</p>
   </section>
   <section class="panel hidden" id="pro">
     <div class="section-title"><h2>⭐ النسخة الكاملة</h2></div>
