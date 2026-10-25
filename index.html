@@ -75,6 +75,8 @@ input[type=date]{width:100%;border:1px solid var(--line);border-radius:12px;padd
     <h3>ميقاتي: خطبك المحفوظة بعناوينها على هذا الجهاز</h3>
     <div id="sermonList"></div>
     <button id="exportSermons">تصدير نسخة احتياطية (JSON)</button>
+    <div class="row" style="margin-top:10px"><button id="backupAll" type="button">💾 نسخة احتياطية شاملة</button><button id="restoreAll" type="button">♻️ استرجاع نسخة</button><input id="restoreFile" type="file" accept="application/json,.json" class="hidden"></div>
+    <p class="small">النسخة الشاملة تحفظ خطبك وملاحظاتك وأدعيتك ونقاطك وإعداداتك، ولا تشمل كود التفعيل ولا موقعك. احتفظ بها في مكان آمن، ولا ترسلها لأحد.</p>
   </section>
   <section class="panel hidden" id="adhkar">
     <div class="section-title"><h2>🤲 الأذكار والأدعية</h2></div>
@@ -234,6 +236,11 @@ fetch('directives.json',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject
 $('shareApp').onclick=async()=>{const url=location.href.split('#')[0].split('?')[0],text='ميقات الخطيب: تطبيق مجاني يساعد الإمام على المنبر: تمرير تلقائي ومؤقت ذكي ومواقيت الصلاة.';
  try{if(navigator.share){await navigator.share({title:'ميقات الخطيب',text,url});return}}catch(e){if(e&&e.name==='AbortError')return}
  try{await navigator.clipboard.writeText(text+'\n'+url);toast('نُسخ الرابط، الصقه في أي محادثة')}catch(e){prompt('انسخ الرابط:',url)}};
+const BK_EXCLUDE=['pro','loc'];
+$('backupAll').onclick=()=>{const data={};try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.startsWith('mikat-')&&!BK_EXCLUDE.includes(k.slice(6)))data[k]=localStorage.getItem(k)}}catch(e){toast('تعذّر قراءة البيانات');return}
+ const out={app:'mikat',version:1,date:new Date().toISOString(),data},blob=new Blob([JSON.stringify(out,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='mikat-backup-'+new Date().toISOString().slice(0,10)+'.json';a.click();URL.revokeObjectURL(url);toast('تم تجهيز النسخة الاحتياطية')};
+$('restoreAll').onclick=()=>$('restoreFile').click();
+$('restoreFile').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const o=JSON.parse(r.result);if(!o||o.app!=='mikat'||!o.data||typeof o.data!=='object')throw 0;const keys=Object.keys(o.data).filter(k=>k.startsWith('mikat-')&&!BK_EXCLUDE.includes(k.slice(6))&&typeof o.data[k]==='string');if(!keys.length)throw 0;if(!confirm('سيحل محتوى هذه النسخة ('+keys.length+' عنصرًا) محل بياناتك الحالية. هل تريد المتابعة؟'))return;keys.forEach(k=>localStorage.setItem(k,o.data[k]));toast('تم الاسترجاع، سيُعاد تحميل التطبيق');setTimeout(()=>location.reload(),900)}catch(err){toast('الملف غير صالح لنسخة ميقات')}};r.readAsText(f);e.target.value=''};
 $('newSermon').onclick=()=>{if(($('draft').value.trim()||$('topic').value.trim())&&!confirm('سيُفرَّغ المحرر لتبدأ خطبة جديدة. إن لم تحفظ الخطبة الحالية في المكتبة فستضيع. هل تريد المتابعة؟'))return;['topic','draft'].forEach(id=>{$(id).value='';$(id).dispatchEvent(new Event('input'))});$('draft').focus();toast('المحرر فارغ، ابدأ خطبتك الجديدة')};
 updateStats();
 })();
