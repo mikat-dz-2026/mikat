@@ -92,7 +92,7 @@ input[type=date]{width:100%;border:1px solid var(--line);border-radius:12px;padd
     <p class="small" id="locStatus"></p>
     <p class="notice hidden" id="nextPrayer"></p>
     <div id="prayerTimes" style="margin-top:10px"></div>
-    <p class="notice">حساب فلكي بزاويتي وزارة الشؤون الدينية الجزائرية (الفجر 18° والعشاء 17°) والعصر بالظل المثل، بتوقيت الجزائر. قد يختلف عن تقويم مسجدك بدقيقة أو دقيقتين، فاعتمد تقويم الوزارة أو مسجدك في الصلاة، وإن لم تجد مدينتك فاختر أقرب مدينة إليك.</p>
+    <p class="notice">حساب فلكي بالزاويتين المعتمدتين في الجزائر (الفجر 18° والعشاء 17°) والعصر بالظل المثل، بتوقيت الجزائر. قد يختلف عن تقويم مسجدك بدقيقة أو دقيقتين، فاعتمد تقويم مسجدك أو مديريتك في الصلاة، وإن لم تجد مدينتك فاختر أقرب مدينة إليك.</p>
   </section>
   <section class="panel hidden" id="checklist">
     <div class="section-title"><h2>📋 نقاط المديرية</h2></div>
@@ -118,9 +118,9 @@ input[type=date]{width:100%;border:1px solid var(--line);border-radius:12px;padd
   </section>
   <section class="panel hidden" id="directives">
     <div class="section-title"><h2>📜 تعليمات المديرية</h2><p>تُنقل من مصدرها الرسمي مع رابطها، وتصل الجميع مع تحديث التطبيق</p></div>
-    <p class="notice">تحقّق من أي تعليمة من الموقع الرسمي للوزارة قبل اعتمادها، ولا تعتمد على ما يصلك في الرسائل أو صفحات التواصل غير الموثقة. ما يُعرض هنا منقول من المصادر الرسمية مع رابطه، والتطبيق مستقل وغير تابع للوزارة ما لم يُعلَن خلاف ذلك.</p>
+    <p class="notice">تحقّق من أي تعليمة من الموقع الرسمي قبل اعتمادها، ولا تعتمد على ما يصلك في الرسائل أو صفحات التواصل غير الموثقة. ما يُعرض هنا منقول من المصادر الرسمية مع رابطه، والتطبيق مستقل وغير تابع لأي جهة رسمية ما لم يُعلَن خلاف ذلك.</p>
     <div id="directiveList"></div>
-    <p class="small" id="directiveEmpty">ستُضاف هنا قرارات المديرية والوزارة وتعليماتهما الخاصة بالخطب حال التحقق منها من مصدرها الرسمي.</p>
+    <p class="small" id="directiveEmpty">ستُضاف هنا قرارات المديرية وتعليماتها الخاصة بالخطب حال التحقق منها من مصدرها الرسمي.</p>
   </section>
   <section class="panel hidden" id="pro">
     <div class="section-title"><h2>⭐ النسخة الكاملة</h2></div>
@@ -227,8 +227,8 @@ function renderPro(){$('proState').textContent=pro?'✅ النسخة الكام�
 $('activate').onclick=async()=>{const raw=$('proCode').value.toUpperCase().replace(/[^A-Z0-9]/g,'');if(!raw){toast('اكتب الكود أولًا');return}try{const h=await sha('mikat-v1|'+raw);if(PRO_HASHES.includes(h)){pro=true;store.set('pro',true);renderPro();toast('فُعّلت النسخة الكاملة');$('proCode').value=''}else toast('الكود غير صحيح، تأكد من كتابته')}catch(e){toast('تعذّر التحقق في هذا المتصفح')}};
 renderPro();
 const DIRECTIVES=[
- {title:'المصدر الرسمي لتعليمات الوزارة',body:'تؤكد الوزارة أن تصريحات الوزير وأخبارها وبياناتها تؤخذ حصرًا من موقعها الرسمي الإلكتروني وصفحاتها الموثقة ووسائل الإعلام الوطنية المعتمدة، فتحقّق من أي تعليمة من هناك.',link:'https://marw.gov.dz',linkText:'الموقع الرسمي للوزارة'},
- {title:'النشرة الرسمية للوزارة',body:'تُنشر النصوص التنظيمية والقرارات في النشرة الرسمية للوزارة، وهي ملفات PDF على موقعها. هذا مثال على شكلها.',link:'https://marw.gov.dz/sites/default/files/publications/nachra_rasmia42_semestre2_2021.pdf',linkText:'النشرة الرسمية رقم 42 (السداسي الثاني 2021)'}
+ {title:'المصدر الرسمي للتعليمات',body:'تؤخذ التعليمات والبيانات الرسمية حصرًا من الموقع الرسمي للجهات الدينية وصفحاتها الموثقة، فتحقّق من أي تعليمة من هناك قبل اعتمادها.',link:'https://marw.gov.dz',linkText:'الموقع الرسمي (marw.gov.dz)'},
+ {title:'النشرة الرسمية',body:'تُنشر النصوص التنظيمية والقرارات في نشرات رسمية على الموقع الرسمي، وهي ملفات PDF. هذا مثال على شكلها.',link:'https://marw.gov.dz/sites/default/files/publications/nachra_rasmia42_semestre2_2021.pdf',linkText:'النشرة الرسمية رقم 42 (السداسي الثاني 2021)'}
 ];
 function renderDirectives(){const root=$('directiveList');root.textContent='';DIRECTIVES.forEach(d=>{const a=document.createElement('article');a.className='listitem';const t=document.createElement('strong');t.textContent=d.title;a.append(t);if(d.date){const m=document.createElement('p');m.className='small';m.textContent=d.date;a.append(m)}const b=document.createElement('p');b.textContent=d.body;a.append(b);if(d.link&&/^https:\/\//.test(d.link)){const l=document.createElement('a');l.href=d.link;l.target='_blank';l.rel='noopener noreferrer';l.textContent=d.linkText||'المصدر';a.append(l)}root.append(a)});$('directiveEmpty').classList.toggle('hidden',DIRECTIVES.length>2)}
 renderDirectives();
