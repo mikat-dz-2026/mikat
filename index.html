@@ -99,7 +99,7 @@ input[type=date]{width:100%;border:1px solid var(--line);border-radius:12px;padd
   </section>
   <section class="panel hidden" id="directives">
     <div class="section-title"><h2>📜 تعليمات الوزارة</h2><p>تُنقل من مصدرها الرسمي مع رابطها، وتصل الجميع مع تحديث التطبيق</p></div>
-    <p class="notice">تحقّق من أي تعليمة من الموقع الرسمي للوزارة قبل اعتمادها، ولا تعتمد على ما يصلك في الرسائل أو صفحات التواصل غير الموثقة.</p>
+    <p class="notice">تحقّق من أي تعليمة من الموقع الرسمي للوزارة قبل اعتمادها، ولا تعتمد على ما يصلك في الرسائل أو صفحات التواصل غير الموثقة. ما يُعرض هنا منقول من المصادر الرسمية مع رابطه، والتطبيق مستقل وغير تابع للوزارة ما لم يُعلَن خلاف ذلك.</p>
     <div id="directiveList"></div>
     <p class="small" id="directiveEmpty">ستُضاف هنا قرارات الوزارة وتعليماتها الخاصة بالخطب حال التحقق منها من مصدرها الرسمي.</p>
   </section>
@@ -195,8 +195,9 @@ const DIRECTIVES=[
  {title:'المصدر الرسمي لتعليمات الوزارة',body:'تؤكد الوزارة أن تصريحات الوزير وأخبارها وبياناتها تؤخذ حصرًا من موقعها الرسمي الإلكتروني وصفحاتها الموثقة ووسائل الإعلام الوطنية المعتمدة، فتحقّق من أي تعليمة من هناك.',link:'https://marw.gov.dz',linkText:'الموقع الرسمي للوزارة'},
  {title:'النشرة الرسمية للوزارة',body:'تُنشر النصوص التنظيمية والقرارات في النشرة الرسمية للوزارة، وهي ملفات PDF على موقعها. هذا مثال على شكلها.',link:'https://marw.gov.dz/sites/default/files/publications/nachra_rasmia42_semestre2_2021.pdf',linkText:'النشرة الرسمية رقم 42 (السداسي الثاني 2021)'}
 ];
-function renderDirectives(){const root=$('directiveList');root.textContent='';DIRECTIVES.forEach(d=>{const a=document.createElement('article');a.className='listitem';const t=document.createElement('strong');t.textContent=d.title;a.append(t);if(d.date){const m=document.createElement('p');m.className='small';m.textContent=d.date;a.append(m)}const b=document.createElement('p');b.textContent=d.body;a.append(b);if(d.link){const l=document.createElement('a');l.href=d.link;l.target='_blank';l.rel='noopener noreferrer';l.textContent=d.linkText||'المصدر';a.append(l)}root.append(a)});$('directiveEmpty').classList.toggle('hidden',DIRECTIVES.length>2)}
+function renderDirectives(){const root=$('directiveList');root.textContent='';DIRECTIVES.forEach(d=>{const a=document.createElement('article');a.className='listitem';const t=document.createElement('strong');t.textContent=d.title;a.append(t);if(d.date){const m=document.createElement('p');m.className='small';m.textContent=d.date;a.append(m)}const b=document.createElement('p');b.textContent=d.body;a.append(b);if(d.link&&/^https:\/\//.test(d.link)){const l=document.createElement('a');l.href=d.link;l.target='_blank';l.rel='noopener noreferrer';l.textContent=d.linkText||'المصدر';a.append(l)}root.append(a)});$('directiveEmpty').classList.toggle('hidden',DIRECTIVES.length>2)}
 renderDirectives();
+fetch('directives.json',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject()).then(list=>{if(Array.isArray(list)&&list.length){DIRECTIVES.length=0;list.forEach(x=>{if(x&&typeof x.title==='string'&&typeof x.body==='string')DIRECTIVES.push(x)});renderDirectives()}}).catch(()=>{});
 $('newSermon').onclick=()=>{if(($('draft').value.trim()||$('topic').value.trim())&&!confirm('سيُفرَّغ المحرر لتبدأ خطبة جديدة. إن لم تحفظ الخطبة الحالية في المكتبة فستضيع. هل تريد المتابعة؟'))return;['topic','draft'].forEach(id=>{$(id).value='';$(id).dispatchEvent(new Event('input'))});$('draft').focus();toast('المحرر فارغ، ابدأ خطبتك الجديدة')};
 updateStats();
 })();
