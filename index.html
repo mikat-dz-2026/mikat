@@ -48,6 +48,7 @@ h1,h2,h3{font-family:"Reem Kufi","IBM Plex Sans Arabic",system-ui,serif}
   <div class="section-title"><h2>خدمات ميقات الخطيب</h2></div>
   <div class="grid">
     <button class="service" id="installApp" type="button" style="display:none"><span class="ico">📲</span><strong>ثبّت التطبيق على هاتفك</strong><span>أيقونة على الشاشة وفتح بشاشة كاملة.</span></button>
+    <button class="service" data-open="log"><span class="ico">⏱️</span><strong>سجل الإلقاء</strong><span id="logHint">مدة إلقائك الفعلية لكل خطبة.</span></button>
     <button class="service" data-open="weekly"><span class="ico">📅</span><strong>موضوع الجمعة القادمة</strong><span id="weeklyHint">لم يُنشر موضوع هذا الأسبوع بعد.</span></button>
     <button class="service" data-open="sermon"><span class="ico">📖</span><strong>إعداد الخطبة والإلقاء</strong><span>محرر الخطبة، مؤقت، وخط كبير للإلقاء.</span></button>
     <button class="service" data-open="library"><span class="ico">📚</span><strong>مكتبة الخطب</strong><span>حفظ مسوداتك على هذا الجهاز والبحث فيها.</span></button>
@@ -122,6 +123,13 @@ h1,h2,h3{font-family:"Reem Kufi","IBM Plex Sans Arabic",system-ui,serif}
     <label for="notesInput">أفكار وموضوعات قادمة</label><textarea id="notesInput" placeholder="اكتب أفكارك هنا…"></textarea>
     <p class="small" id="notesSaved">تحفظ تلقائيًا على هذا الجهاز.</p>
   </section>
+  <section class="panel hidden" id="log">
+    <div class="section-title"><h2>⏱️ سجل الإلقاء</h2><p>يسجّل التطبيق مدة إلقائك الفعلية ليضبط تقديراته على سرعتك</p></div>
+    <p class="small" id="logSummary"></p>
+    <div id="logList"></div>
+    <div class="row" style="margin-top:10px"><button id="clearLog" type="button">مسح السجل</button></div>
+    <p class="notice">يُسجَّل الإلقاء حين تصل إلى نهاية النص (90% فأكثر) وتغادر وضع الإلقاء بعد أكثر من دقيقة. وبعد تسجيل إلقاءين على الأقل يستعمل التطبيق متوسط سرعتك بدل التقدير العام.</p>
+  </section>
   <section class="panel hidden" id="weekly">
     <div class="section-title"><h2>📅 موضوع الجمعة القادمة</h2><p id="weeklyCount"></p></div>
     <div id="weeklyBody"></div>
@@ -182,13 +190,13 @@ const $=id=>document.getElementById(id), store={
 };
 try{[['topic','khutba-topic',0],['draft','khutba-draft',0],['minutes','khutba-mins',1],['points','khutba-pts',0]].forEach(function(m){var o=localStorage.getItem(m[1]);if(localStorage.getItem('mikat-'+m[0])===null&&o!==null)localStorage.setItem('mikat-'+m[0],JSON.stringify(m[2]?(Number(o)||15):o))})}catch(e){}
 function toast(msg){$('toast').textContent=msg;$('toast').classList.remove('hidden');setTimeout(()=>$('toast').classList.add('hidden'),2400)}
-function showPanel(id){document.querySelectorAll('main, .panel[id]').forEach(el=>{});['sermon','library','adhkar','prayer','checklist','notes','pro','directives','guide','eid','sources','weekly'].forEach(k=>$(k).classList.toggle('hidden',k!==id));$(id).scrollIntoView({behavior:'smooth',block:'start'})}
+function showPanel(id){document.querySelectorAll('main, .panel[id]').forEach(el=>{});['sermon','library','adhkar','prayer','checklist','notes','pro','directives','guide','eid','sources','weekly','log'].forEach(k=>$(k).classList.toggle('hidden',k!==id));$(id).scrollIntoView({behavior:'smooth',block:'start'})}
 document.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>showPanel(b.dataset.open)));
 $('themeBtn').onclick=()=>{let dark=document.documentElement.dataset.theme!=='dark';document.documentElement.dataset.theme=dark?'dark':'light';store.set('theme',dark?'dark':'light');$('themeBtn').textContent=dark?'☀':'☾'};
 document.documentElement.dataset.theme=store.get('theme','light');$('themeBtn').textContent=document.documentElement.dataset.theme==='dark'?'☀':'☾';
 $('topic').value=store.get('topic','');$('draft').value=store.get('draft','');$('minutes').value=store.get('minutes',15);$('points').value=store.get('points','');$('notesInput').value=store.get('notes','');$('duaInput').value='';
 ['topic','draft','minutes','points','notesInput'].forEach(id=>$(id).addEventListener('input',()=>{let k={topic:'topic',draft:'draft',minutes:'minutes',points:'points',notesInput:'notes'}[id];store.set(k,$(id).value);if(id==='draft'||id==='minutes')updateStats();if(id==='points')renderChecks()}));
-function updateStats(){let txt=$('draft').value.replace(/\[(وقفة|دعاء|آية|نبرة قوية|نبرة هادئة|نبرة عادية)\]/g,' ').trim(),n=txt?txt.split(/\s+/).length:0,mins=Number($('minutes').value)||15,over=n-mins*130;$('stats').textContent=n+' كلمة، والمدة التقريبية للإلقاء نحو '+Math.round(n/130*10)/10+' دقيقة'+(over>0?'. الوقت المسموح '+mins+' دقيقة، فاختصر نحو '+over+' كلمة':'');$('stats').classList.toggle('stats-over',over>0)}
+function updateStats(){let txt=$('draft').value.replace(/\[(وقفة|دعاء|آية|نبرة قوية|نبرة هادئة|نبرة عادية)\]/g,' ').trim(),n=txt?txt.split(/\s+/).length:0,mins=Number($('minutes').value)||15,over=n-mins*WPM();$('stats').textContent=n+' كلمة، والمدة التقريبية للإلقاء نحو '+Math.round(n/WPM()*10)/10+' دقيقة'+(over>0?'. الوقت المسموح '+mins+' دقيقة، فاختصر نحو '+over+' كلمة':'');$('stats').classList.toggle('stats-over',over>0)}
 updateStats();
 document.querySelectorAll('[data-marker]').forEach(b=>b.onclick=()=>{let t=$('draft'),s=t.selectionStart,e=t.selectionEnd,m=' '+b.dataset.marker+' ';t.setRangeText(m,s,e,'end');t.dispatchEvent(new Event('input'));t.focus()});
 let pointsDone=store.get('pointsDone',{});function renderChecks(){let root=$('pointChecks');root.textContent='';$('points').value.split('\n').map(s=>s.trim()).filter(Boolean).forEach(p=>{let lab=document.createElement('label'),c=document.createElement('input');c.type='checkbox';c.checked=!!pointsDone[p];c.onchange=()=>{pointsDone[p]=c.checked;store.set('pointsDone',pointsDone)};lab.append(c,document.createTextNode(p));root.append(lab)})}renderChecks();
@@ -222,7 +230,7 @@ let wl=null;
 async function awake(on){try{if(on){if('wakeLock' in navigator&&!wl){wl=await navigator.wakeLock.request('screen');wl.addEventListener('release',()=>{wl=null})}}else if(wl){await wl.release();wl=null}}catch(e){wl=null}}
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&!$('stage').classList.contains('hidden'))awake(true)});
 $('fitBtn').onclick=fitSpeed;
-$('pauseStage').onclick=()=>{paused=!paused;$('pauseStage').textContent=paused?'متابعة':'إيقاف مؤقت';last=0;if(!paused)raf=requestAnimationFrame(tick)};$('stageText').addEventListener('touchstart',()=>{if(!paused){paused=true;$('pauseStage').textContent='متابعة';last=0}},{passive:true});$('fontSize').oninput=()=>{$('stageText').style.fontSize=$('fontSize').value+'px';if(paused)fitSpeed()};$('exitStage').onclick=()=>{cancelAnimationFrame(raf);$('stage').classList.add('hidden');paused=true;awake(false)};$('stage').addEventListener('transitionend',()=>{}); 
+$('pauseStage').onclick=()=>{paused=!paused;$('pauseStage').textContent=paused?'متابعة':'إيقاف مؤقت';last=0;if(!paused)raf=requestAnimationFrame(tick)};$('stageText').addEventListener('touchstart',()=>{if(!paused){paused=true;$('pauseStage').textContent='متابعة';last=0}},{passive:true});$('fontSize').oninput=()=>{$('stageText').style.fontSize=$('fontSize').value+'px';if(paused)fitSpeed()};$('exitStage').onclick=()=>{logDelivery();cancelAnimationFrame(raf);$('stage').classList.add('hidden');paused=true;awake(false)};$('stage').addEventListener('transitionend',()=>{}); 
 const D2R=Math.PI/180;
 const dsin=d=>Math.sin(d*D2R),dcos=d=>Math.cos(d*D2R),dtan=d=>Math.tan(d*D2R);
 const dasin=x=>Math.asin(x)/D2R,dacos=x=>Math.acos(x)/D2R,datan2=(y,x)=>Math.atan2(y,x)/D2R,dacot=x=>Math.atan(1/x)/D2R;
@@ -307,6 +315,18 @@ window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();dp=e;$('ins
 $('installApp').onclick=async()=>{if(!dp)return;try{dp.prompt();await dp.userChoice}catch(e){}dp=null;$('installApp').style.display='none'};
 window.addEventListener('appinstalled',()=>{$('installApp').style.display='none';toast('تم تثبيت التطبيق')});
 if('serviceWorker' in navigator){const had=!!navigator.serviceWorker.controller;navigator.serviceWorker.addEventListener('controllerchange',()=>{if(had)toast('تم تحديث التطبيق، أعد فتحه للحصول على آخر نسخة')})}
+function getLog(){const l=store.get('log',[]);return Array.isArray(l)?l.filter(x=>x&&typeof x.a==='number'&&typeof x.w==='number'):[]}
+function WPM(){const ok=getLog().filter(x=>x.w>0&&x.a>0).slice(-10);if(ok.length<2)return 130;const w=ok.reduce((t,x)=>t+x.w,0),a=ok.reduce((t,x)=>t+x.a,0);return Math.min(200,Math.max(80,Math.round(w/a)))}
+function logDelivery(){try{const el=$('stageText'),elapsed=total-remain,prog=el.scrollTop/textH();if(elapsed<60||prog<0.9)return;
+ const txt=$('draft').value.replace(/\[(وقفة|دعاء|آية|نبرة قوية|نبرة هادئة|نبرة عادية)\]/g,' ').trim(),w=txt?txt.split(/\s+/).length:0;if(!w)return;
+ const l=getLog();l.push({t:($('topic').value.trim()||txt.slice(0,40)).slice(0,80),d:new Date().toISOString().slice(0,10),p:Math.round(total/60),a:Math.round(elapsed/6)/10,w:w});
+ store.set('log',l.slice(-30));renderLog();toast('سُجّلت مدة الإلقاء: '+(Math.round(elapsed/6)/10)+' دقيقة')}catch(e){}}
+function renderLog(){const l=getLog(),root=$('logList');root.textContent='';
+ $('logSummary').textContent=l.length?('عدد الإلقاءات المسجّلة: '+l.length+'. متوسط سرعتك: نحو '+WPM()+' كلمة في الدقيقة'+(l.filter(x=>x.w>0).length<2?' (تقدير عام حتى تسجّل إلقاءين).':'.')):'لا إلقاءات مسجّلة بعد.';
+ $('logHint').textContent=l.length?('آخر إلقاء: '+l[l.length-1].a+' دقيقة'):'مدة إلقائك الفعلية لكل خطبة.';
+ l.slice(-10).reverse().forEach(x=>{const b=document.createElement('div');b.className='listitem';const t=document.createElement('strong');t.textContent=x.t||'خطبة';const m=document.createElement('p');m.className='small';m.textContent=x.d+' | المخطط: '+x.p+' د | الفعلي: '+x.a+' د | '+x.w+' كلمة';b.append(t,m);root.append(b)})}
+$('clearLog').onclick=()=>{if(!getLog().length)return;if(confirm('سيُمسح سجل الإلقاء كله. هل تريد المتابعة؟')){store.set('log',[]);renderLog();updateStats()}};
+renderLog();
 $('newSermon').onclick=()=>{if(($('draft').value.trim()||$('topic').value.trim())&&!confirm('سيُفرَّغ المحرر لتبدأ خطبة جديدة. إن لم تحفظ الخطبة الحالية في المكتبة فستضيع. هل تريد المتابعة؟'))return;['topic','draft'].forEach(id=>{$(id).value='';$(id).dispatchEvent(new Event('input'))});$('draft').focus();toast('المحرر فارغ، ابدأ خطبتك الجديدة')};
 updateStats();
 })();
