@@ -35,7 +35,7 @@ input[type=date]{width:100%;border:1px solid var(--line);border-radius:12px;padd
     <button class="primary" data-open="sermon">✍️ ابدأ إعداد الخطبة</button>
   </section>
   <div class="section-title"><h2>خدمات ميقات الخطيب</h2></div>
-  <section class="grid">
+  <div class="grid">
     <button class="service" data-open="sermon"><span class="ico">📖</span><strong>إعداد الخطبة والإلقاء</strong><span>محرر الخطبة، مؤقت، وخط كبير للإلقاء.</span></button>
     <button class="service" data-open="library"><span class="ico">📚</span><strong>مكتبة الخطب</strong><span>حفظ مسوداتك على هذا الجهاز والبحث فيها.</span></button>
     <button class="service" data-open="adhkar"><span class="ico">🤲</span><strong>الأذكار والأدعية</strong><span>مساحة أولية لتنظيم الأدعية التي تضيفها.</span></button>
@@ -46,7 +46,7 @@ input[type=date]{width:100%;border:1px solid var(--line);border-radius:12px;padd
     <button class="service" data-open="guide"><span class="ico">❓</span><strong>كيف أستعمل التطبيق؟</strong><span>ست خطوات سريعة من الكتابة إلى المنبر.</span></button>
     <button class="service" data-open="directives"><span class="ico">📜</span><strong>تعليمات المديرية</strong><span>القرارات والتعليمات الرسمية المتعلقة بالخطب.</span></button>
     <button class="service" data-open="pro"><span class="ico">⭐</span><strong>النسخة الكاملة</strong><span>حفظ عدد غير محدود من الخطب بكود تفعيل.</span></button>
-  </section>
+  </div>
   <section class="panel" id="sermon">
     <div class="section-title"><h2>✍️ إعداد الخطبة</h2><p>يحفظ تلقائيًا على هذا الجهاز</p></div>
     <label for="topic">موضوع الجمعة</label><input id="topic" type="text" placeholder="مثال: حفظ اللسان">
@@ -68,12 +68,12 @@ input[type=date]{width:100%;border:1px solid var(--line);border-radius:12px;padd
     </select>
     <h3>نماذج خطب جاهزة للتطوير</h3>
     <div id="starterList">
-      <article class="listitem"><strong>المحافظة على الصلاة</strong><p>محاور: مكانة الصلاة، أثرها في السلوك، وأسباب المحافظة عليها في وقتها.</p><p class="small">مراجع للاستدلال: البقرة: 238؛ العنكبوت: 45</p><button class="primary" type="button" onclick="document.getElementById('topic').value='المحافظة على الصلاة';document.getElementById('draft').value='مقدمة: الحمد لله الذي فرض الصلاة وجعلها صلة بين العبد وربه.\n\nالمحور الأول: عظمة شأن الصلاة ووجوب المحافظة عليها في أوقاتها.\n\nالمحور الثاني: أثر الصلاة الصحيحة في تهذيب السلوك والابتعاد عن الفحشاء والمنكر.\n\nالمحور الثالث: وسائل الثبات: الاستعداد قبل الوقت، الصحبة الصالحة، تذكير الأهل، ومعالجة أسباب التهاون.\n\nخاتمة: دعوة عملية للمحافظة على الصلاة القادمة في وقتها، مع الدعاء بالهداية والثبات.\n\nتنبيه: راجع الآيات كاملة من المصحف، وأضف حديثًا موثقًا قبل الإلقاء.';document.getElementById('topic').dispatchEvent(new Event('input'));document.getElementById('draft').dispatchEvent(new Event('input'));document.getElementById('sermon').scrollIntoView({behavior:'smooth'});">استخدام النموذج في محرر الخطبة</button></article>
-      <article class="listitem"><strong>بر الوالدين</strong><p>محاور: حق الوالدين، لين القول، والإحسان إليهما في حياتهما وبعد وفاتهما.</p></article>
-      <article class="listitem"><strong>حفظ اللسان</strong><p>محاور: اجتناب الغيبة، وزن الكلمة، والكلام الطيب.</p></article>
-      <article class="listitem"><strong>الأمانة في حياة المسلم</strong><p>محاور: الأمانة في العبادة والعمل والمال، وأثرها في الثقة بين الناس.</p></article>
-      <article class="listitem"><strong>صلة الرحم</strong><p>محاور: صور الصلة العملية، وإصلاح القطيعة بحكمة.</p></article>
-      <article class="listitem"><strong>الاستعداد لرمضان</strong><p>محاور: التوبة، تنظيم الوقت، والتهيؤ للعبادة.</p></article>
+      <div class="listitem"><strong>المحافظة على الصلاة</strong><p>محاور: مكانة الصلاة، أثرها في السلوك، وأسباب المحافظة عليها في وقتها.</p><p class="small">مراجع للاستدلال: البقرة: 238؛ العنكبوت: 45</p><button class="primary" type="button" onclick="document.getElementById('topic').value='المحافظة على الصلاة';document.getElementById('draft').value='مقدمة: الحمد لله الذي فرض الصلاة وجعلها صلة بين العبد وربه.\n\nالمحور الأول: عظمة شأن الصلاة ووجوب المحافظة عليها في أوقاتها.\n\nالمحور الثاني: أثر الصلاة الصحيحة في تهذيب السلوك والابتعاد عن الفحشاء والمنكر.\n\nالمحور الثالث: وسائل الثبات: الاستعداد قبل الوقت، الصحبة الصالحة، تذكير الأهل، ومعالجة أسباب التهاون.\n\nخاتمة: دعوة عملية للمحافظة على الصلاة القادمة في وقتها، مع الدعاء بالهداية والثبات.\n\nتنبيه: راجع الآيات كاملة من المصحف، وأضف حديثًا موثقًا قبل الإلقاء.';document.getElementById('topic').dispatchEvent(new Event('input'));document.getElementById('draft').dispatchEvent(new Event('input'));document.getElementById('sermon').scrollIntoView({behavior:'smooth'});">استخدام النموذج في محرر الخطبة</button></div>
+      <div class="listitem"><strong>بر الوالدين</strong><p>محاور: حق الوالدين، لين القول، والإحسان إليهما في حياتهما وبعد وفاتهما.</p></div>
+      <div class="listitem"><strong>حفظ اللسان</strong><p>محاور: اجتناب الغيبة، وزن الكلمة، والكلام الطيب.</p></div>
+      <div class="listitem"><strong>الأمانة في حياة المسلم</strong><p>محاور: الأمانة في العبادة والعمل والمال، وأثرها في الثقة بين الناس.</p></div>
+      <div class="listitem"><strong>صلة الرحم</strong><p>محاور: صور الصلة العملية، وإصلاح القطيعة بحكمة.</p></div>
+      <div class="listitem"><strong>الاستعداد لرمضان</strong><p>محاور: التوبة، تنظيم الوقت، والتهيؤ للعبادة.</p></div>
     </div>
     <h3>ميقاتي: خطبك المحفوظة بعناوينها على هذا الجهاز</h3>
     <div id="sermonList"></div>
@@ -235,7 +235,7 @@ const DIRECTIVES=[
  {title:'المصدر الرسمي للتعليمات',body:'تؤخذ التعليمات والبيانات الرسمية حصرًا من الموقع الرسمي للجهات الدينية وصفحاتها الموثقة، فتحقّق من أي تعليمة من هناك قبل اعتمادها.',link:'https://marw.gov.dz',linkText:'الموقع الرسمي (marw.gov.dz)'},
  {title:'النشرة الرسمية',body:'تُنشر النصوص التنظيمية والقرارات في نشرات رسمية على الموقع الرسمي، وهي ملفات PDF. هذا مثال على شكلها.',link:'https://marw.gov.dz/sites/default/files/publications/nachra_rasmia42_semestre2_2021.pdf',linkText:'النشرة الرسمية رقم 42 (السداسي الثاني 2021)'}
 ];
-function renderDirectives(){const root=$('directiveList');root.textContent='';DIRECTIVES.forEach(d=>{const a=document.createElement('article');a.className='listitem';const t=document.createElement('strong');t.textContent=d.title;a.append(t);if(d.date){const m=document.createElement('p');m.className='small';m.textContent=d.date;a.append(m)}const b=document.createElement('p');b.textContent=d.body;a.append(b);if(d.link&&/^https:\/\//.test(d.link)){const l=document.createElement('a');l.href=d.link;l.target='_blank';l.rel='noopener noreferrer';l.textContent=d.linkText||'المصدر';a.append(l)}root.append(a)});$('directiveEmpty').classList.toggle('hidden',DIRECTIVES.length>2)}
+function renderDirectives(){const root=$('directiveList');root.textContent='';DIRECTIVES.forEach(d=>{const a=document.createElement('div');a.className='listitem';const t=document.createElement('strong');t.textContent=d.title;a.append(t);if(d.date){const m=document.createElement('p');m.className='small';m.textContent=d.date;a.append(m)}const b=document.createElement('p');b.textContent=d.body;a.append(b);if(d.link&&/^https:\/\//.test(d.link)){const l=document.createElement('a');l.href=d.link;l.target='_blank';l.rel='noopener noreferrer';l.textContent=d.linkText||'المصدر';a.append(l)}root.append(a)});$('directiveEmpty').classList.toggle('hidden',DIRECTIVES.length>2)}
 renderDirectives();
 fetch('directives.json',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject()).then(list=>{if(Array.isArray(list)&&list.length){DIRECTIVES.length=0;list.forEach(x=>{if(x&&typeof x.title==='string'&&typeof x.body==='string')DIRECTIVES.push(x)});renderDirectives()}}).catch(()=>{});
 $('shareApp').onclick=async()=>{const url=location.href.split('#')[0].split('?')[0],text='ميقات الخطيب: تطبيق مجاني يساعد الإمام على المنبر: تمرير تلقائي ومؤقت ذكي ومواقيت الصلاة.';
