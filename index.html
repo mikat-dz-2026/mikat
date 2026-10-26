@@ -47,6 +47,7 @@ h1,h2,h3{font-family:"Reem Kufi","IBM Plex Sans Arabic",system-ui,serif}
   </section>
   <div class="section-title"><h2>خدمات ميقات الخطيب</h2></div>
   <div class="grid">
+    <button class="service" id="installApp" type="button" style="display:none"><span class="ico">📲</span><strong>ثبّت التطبيق على هاتفك</strong><span>أيقونة على الشاشة وفتح بشاشة كاملة.</span></button>
     <button class="service" data-open="weekly"><span class="ico">📅</span><strong>موضوع الجمعة القادمة</strong><span id="weeklyHint">لم يُنشر موضوع هذا الأسبوع بعد.</span></button>
     <button class="service" data-open="sermon"><span class="ico">📖</span><strong>إعداد الخطبة والإلقاء</strong><span>محرر الخطبة، مؤقت، وخط كبير للإلقاء.</span></button>
     <button class="service" data-open="library"><span class="ico">📚</span><strong>مكتبة الخطب</strong><span>حفظ مسوداتك على هذا الجهاز والبحث فيها.</span></button>
@@ -301,6 +302,11 @@ fetch('weekly.json',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject()).
  if(!o||typeof o!=='object'||typeof o.topic!=='string')return;
  W={topic:o.topic.slice(0,200),date:typeof o.date==='string'?o.date.slice(0,40):'',note:typeof o.note==='string'?o.note.slice(0,600):'',points:Array.isArray(o.points)?o.points.filter(x=>typeof x==='string').map(x=>x.slice(0,200)).slice(0,20):[]};
  renderWeekly()}).catch(()=>{});
+let dp=null;
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();dp=e;$('installApp').style.display=''});
+$('installApp').onclick=async()=>{if(!dp)return;try{dp.prompt();await dp.userChoice}catch(e){}dp=null;$('installApp').style.display='none'};
+window.addEventListener('appinstalled',()=>{$('installApp').style.display='none';toast('تم تثبيت التطبيق')});
+if('serviceWorker' in navigator){const had=!!navigator.serviceWorker.controller;navigator.serviceWorker.addEventListener('controllerchange',()=>{if(had)toast('تم تحديث التطبيق، أعد فتحه للحصول على آخر نسخة')})}
 $('newSermon').onclick=()=>{if(($('draft').value.trim()||$('topic').value.trim())&&!confirm('سيُفرَّغ المحرر لتبدأ خطبة جديدة. إن لم تحفظ الخطبة الحالية في المكتبة فستضيع. هل تريد المتابعة؟'))return;['topic','draft'].forEach(id=>{$(id).value='';$(id).dispatchEvent(new Event('input'))});$('draft').focus();toast('المحرر فارغ، ابدأ خطبتك الجديدة')};
 updateStats();
 })();
