@@ -66,6 +66,7 @@ h1,h2,h3{font-family:"Reem Kufi","IBM Plex Sans Arabic",system-ui,serif}
     <button class="service" data-open="prayer"><span class="ico">🕌</span><strong>مواقيت الصلاة</strong><span>حسب مدينتك أو موقعك، مع الصلاة القادمة.</span></button>
     <button class="service" data-open="directives"><span class="ico">📜</span><strong>تعليمات المديرية</strong><span>القرارات والتعليمات الرسمية المتعلقة بالخطب.</span></button>
     <button class="service" data-open="community"><span class="ico">💬</span><strong>فضاء الأئمة</strong><span>مجموعات للتواصل وتبادل الخبرة.</span></button>
+    <a class="service" id="minbariCard" href="#" target="_blank" rel="noopener noreferrer" style="display:none;text-decoration:none;color:inherit"><span class="ico">🏛️</span><strong>منبري: حسابي ورسائل المديرية</strong><span>سجّل دخولك لتصلك رسائل المديرية وإعلاناتها.</span></a>
     <button class="service" data-open="log"><span class="ico">⏱️</span><strong>سجل الإلقاء</strong><span id="logHint">مدة إلقائك الفعلية لكل خطبة.</span></button>
     <button class="service" data-open="checklist"><span class="ico">📋</span><strong>نقاط المديرية</strong><span>قائمة متابعة قبل الخطبة.</span></button>
     <button class="service" data-open="eid"><span class="ico">🌙</span><strong>خطب الأعياد</strong><span>نماذج لعيد الفطر وعيد الأضحى، في قسم مستقل.</span></button>
@@ -378,6 +379,10 @@ function renderCommunity(list){const root=$('communityList');root.textContent=''
  $('communityEmpty').classList.toggle('hidden',n>0)}
 renderCommunity([]);
 fetch('community.json',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject()).then(l=>{if(Array.isArray(l))renderCommunity(l.slice(0,20))}).catch(()=>{});
+fetch('links.json',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject()).then(o=>{
+ const u=o&&typeof o.minbari==='string'?o.minbari.trim():'';
+ let ok=false;try{const x=new URL(u);ok=x.protocol==='https:'&&!x.username&&!x.password&&x.hostname.indexOf('.')>0}catch(e){}
+ if(ok){const a=$('minbariCard');a.href=u;a.style.display=''}}).catch(()=>{});
 $('newSermon').onclick=()=>{if(($('draft').value.trim()||$('topic').value.trim())&&!confirm('سيُفرَّغ المحرر لتبدأ خطبة جديدة. إن لم تحفظ الخطبة الحالية في المكتبة فستضيع. هل تريد المتابعة؟'))return;['topic','draft'].forEach(id=>{$(id).value='';$(id).dispatchEvent(new Event('input'))});$('draft').focus();toast('المحرر فارغ، ابدأ خطبتك الجديدة')};
 updateStats();
 })();
