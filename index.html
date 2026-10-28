@@ -42,6 +42,9 @@ h1,h2,h3{font-family:"Reem Kufi","IBM Plex Sans Arabic",system-ui,serif}
 @keyframes mkIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .panel{animation:mkIn .18s ease}
 @media (prefers-reduced-motion:reduce){.panel{animation:none}}
+#home > .grid .service > span:not(.ico){display:none}
+#home > .grid .service #weeklyHint{display:block}
+#moreGrid .service > span:not(.ico){display:block}
 </style>
 </head>
 <body>
@@ -54,7 +57,7 @@ h1,h2,h3{font-family:"Reem Kufi","IBM Plex Sans Arabic",system-ui,serif}
   <section class="hero">
     <div class="eyebrow">منصة خدمات الخطيب</div>
     <h2>خطبتك في وقتها، وخدماتك في مكان واحد</h2>
-    <p>محرر وملقّن ومؤقت ذكي ومواقيت الصلاة وتعليمات المديرية في تطبيق واحد، ويعمل بعد أول فتح دون إنترنت.</p>
+    <p>محرر وملقّن ومؤقت ذكي ومواقيت الصلاة، ويعمل بعد أول فتح دون إنترنت.</p>
     <button class="primary" data-open="sermon">✍️ ابدأ إعداد الخطبة</button>
   </section>
   <div class="section-title"><h2>خدمات ميقات الخطيب</h2></div>
@@ -137,6 +140,10 @@ h1,h2,h3{font-family:"Reem Kufi","IBM Plex Sans Arabic",system-ui,serif}
     <label for="notesInput">أفكار وموضوعات قادمة</label><textarea id="notesInput" placeholder="اكتب أفكارك هنا…"></textarea>
     <p class="small" id="notesSaved">تحفظ تلقائيًا على هذا الجهاز.</p>
   </section>
+  <section class="panel hidden" id="more">
+    <div class="section-title"><h2>☰ المزيد</h2><p>باقي أدوات التطبيق</p></div>
+    <div class="grid" id="moreGrid"></div>
+  </section>
   <section class="panel hidden" id="community">
     <div class="section-title"><h2>💬 فضاء الأئمة</h2><p>مجموعات للتواصل وتبادل الخبرة بين الأئمة</p></div>
     <p class="notice">التواصل يجري في مجموعات واتساب وتيليغرام التي يديرها أصحابها، والتطبيق يفتح لك رابط الانضمام فقط ولا يحفظ رسائلك. التزم بآداب الحوار، ولا تنشر بياناتك الشخصية ولا نصوصًا لم تتحقق منها.</p>
@@ -200,7 +207,7 @@ h1,h2,h3{font-family:"Reem Kufi","IBM Plex Sans Arabic",system-ui,serif}
   <button type="button" data-nav="sermon"><span>✍️</span>الخطبة</button>
   <button type="button" data-nav="library"><span>📚</span>ميقاتي</button>
   <button type="button" data-nav="prayer"><span>🕌</span>المواقيت</button>
-  <button type="button" data-nav="weekly"><span>📅</span>الجمعة</button>
+  <button type="button" data-nav="more"><span>☰</span>المزيد</button>
 </nav>
 
 </div>
@@ -218,8 +225,8 @@ const $=id=>document.getElementById(id), store={
 };
 try{[['topic','khutba-topic',0],['draft','khutba-draft',0],['minutes','khutba-mins',1],['points','khutba-pts',0]].forEach(function(m){var o=localStorage.getItem(m[1]);if(localStorage.getItem('mikat-'+m[0])===null&&o!==null)localStorage.setItem('mikat-'+m[0],JSON.stringify(m[2]?(Number(o)||15):o))})}catch(e){}
 function toast(msg){$('toast').textContent=msg;$('toast').classList.remove('hidden');setTimeout(()=>$('toast').classList.add('hidden'),2400)}
-const VIEWS=['sermon','library','adhkar','prayer','checklist','notes','pro','directives','guide','eid','sources','weekly','log','community'];
-const TITLES={community:'فضاء الأئمة',sermon:'إعداد الخطبة والإلقاء',library:'مكتبة الخطب',adhkar:'الأذكار والأدعية',prayer:'مواقيت الصلاة',checklist:'نقاط المديرية',notes:'ملاحظات الخطيب',pro:'النسخة الكاملة',directives:'تعليمات المديرية',guide:'كيف أستعمل التطبيق؟',eid:'خطب الأعياد',sources:'المراجع والتحقق',weekly:'موضوع الجمعة القادمة',log:'سجل الإلقاء'};
+const VIEWS=['sermon','library','adhkar','prayer','checklist','notes','pro','directives','guide','eid','sources','weekly','log','community','more'];
+const TITLES={more:'المزيد',community:'فضاء الأئمة',sermon:'إعداد الخطبة والإلقاء',library:'مكتبة الخطب',adhkar:'الأذكار والأدعية',prayer:'مواقيت الصلاة',checklist:'نقاط المديرية',notes:'ملاحظات الخطيب',pro:'النسخة الكاملة',directives:'تعليمات المديرية',guide:'كيف أستعمل التطبيق؟',eid:'خطب الأعياد',sources:'المراجع والتحقق',weekly:'موضوع الجمعة القادمة',log:'سجل الإلقاء'};
 let curView='home';
 function setView(id,push){
  const home=!id||VIEWS.indexOf(id)<0;if(home)id=null;
@@ -234,6 +241,7 @@ function showPanel(id){setView(id,true)}
 window.addEventListener('popstate',e=>{const v=(e.state&&e.state.v)||'home';setView(v==='home'?null:v,false)});
 $('backBtn').onclick=()=>{if(history.length>1&&curView!=='home'){history.back()}else{setView(null,false)}};
 document.querySelectorAll('[data-nav]').forEach(b=>b.addEventListener('click',()=>{const v=b.dataset.nav;v==='home'?setView(null,true):setView(v,true)}));
+(function(){const g=$('moreGrid');['[data-open="log"]','[data-open="checklist"]','[data-open="eid"]','[data-open="notes"]','[data-open="adhkar"]','[data-open="sources"]','[data-open="guide"]','[data-open="pro"]','#shareApp'].forEach(sel=>{const e=document.querySelector('#home > .grid '+sel);if(e)g.append(e)})})();
 {const h=location.hash.slice(1);try{history.replaceState({v:VIEWS.indexOf(h)>=0?h:'home'},'',location.href)}catch(e){}setView(VIEWS.indexOf(h)>=0?h:null,false)}
 document.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>showPanel(b.dataset.open)));
 $('themeBtn').onclick=()=>{let dark=document.documentElement.dataset.theme!=='dark';document.documentElement.dataset.theme=dark?'dark':'light';store.set('theme',dark?'dark':'light');$('themeBtn').textContent=dark?'☀':'☾'};
