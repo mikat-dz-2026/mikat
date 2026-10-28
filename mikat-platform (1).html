@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>منصة ميقات الخطيب السحابية</title>
+<meta name="description" content="منصة جزائرية لإعداد خطب الجمعة وتسيير المساجد: بوابة الإمام والمديرية والمصلين.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Reem+Kufi:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --radius:0.9rem;
+  --background:#f7f6f2; --foreground:#1e2b28; --card:#fdfdfb; --card-foreground:#1e2b28;
+  --primary:#2f6b5e; --primary-foreground:#f7f6f2; --secondary:#e6ece8; --secondary-foreground:#2b4741;
+  --muted:#e9eae5; --muted-foreground:#6d7d78; --accent:#c9a227; --accent-foreground:#1e2b28;
+  --destructive:#b3352b; --border:#d6dcd6; --input:#d6dcd6; --ring:#2f6b5e;
+  --gold:#c9a227; --strong:#c0392b; --soft:#2f6bd8;
+  --prompter:#131c1a; --prompter-foreground:#f2efe6;
+  --gradient-hero:linear-gradient(160deg,#245950,#183a3d);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{background:var(--background);color:var(--foreground);font-family:"IBM Plex Sans Arabic",system-ui,sans-serif;
+  background-image:radial-gradient(circle at 1px 1px,rgba(47,107,94,.07) 1px,transparent 0);background-size:18px 18px}
+h1,h2,h3{font-family:"Reem Kufi","IBM Plex Sans Arabic",serif;margin:0}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:32rem;margin:0 auto;min-height:100vh;padding-bottom:2rem}
+.hero{background:var(--gradient-hero);border-bottom-left-radius:2.5rem;border-bottom-right-radius:2.5rem;padding:3.5rem 1.5rem 3rem;text-align:center;color:var(--primary-foreground)}
+.hero h1{font-size:1.85rem;line-height:1.35}
+.hero p{margin:.6rem 0 0;font-size:.85rem;opacity:.8}
+.gold{color:var(--gold)}
+.dim{color:var(--muted-foreground)}
+.portals{margin-top:-1.5rem;padding:0 1rem;display:flex;flex-direction:column;gap:1rem}
+.card{background:var(--card);border:1px solid var(--border);border-radius:1rem;padding:1.15rem;box-shadow:0 2px 8px rgba(0,0,0,.06);margin:0 1rem 1rem}
+.portals .card{margin:0}
+.row{display:flex;gap:.75rem;align-items:flex-start}
+.icon{font-size:1.8rem;line-height:1}
+.card h2{font-size:1.1rem;color:var(--primary)}
+.paid{display:inline-block;background:var(--gold);color:var(--accent-foreground);font-size:.7rem;font-weight:700;padding:.1rem .5rem;border-radius:99px;vertical-align:middle}
+.ct{font-size:1.02rem;color:var(--primary);margin-bottom:.7rem}
+.btn{display:block;width:100%;border:0;border-radius:.8rem;padding:.8rem;font:inherit;font-weight:700;text-align:center;cursor:pointer}
+.btn.big{padding:.9rem;font-size:1rem}
+.btn.primary{background:var(--primary);color:var(--primary-foreground)}
+.btn.gold{background:var(--gold);color:var(--accent-foreground)}
+.btn:active{transform:scale(.98)}
+.field{width:100%;border:1px solid var(--border);background:#fff;border-radius:.8rem;padding:.75rem;font:inherit}
+.field.bold{font-weight:700}
+.mini{flex:1;background:var(--muted);border:0;border-radius:.8rem;padding:.5rem;font:inherit;font-size:.85rem;font-weight:700;cursor:pointer}
+.row2{display:flex;gap:.5rem;margin:.6rem 0}
+.row3{display:flex;gap:.5rem;margin-bottom:.6rem}
+.outline-strong{flex:1;background:#fff;border:2px solid var(--strong);color:var(--strong);border-radius:.8rem;padding:.5rem;font:inherit;font-size:.85rem;font-weight:700;cursor:pointer}
+.outline-soft{flex:1;background:#fff;border:2px solid var(--soft);color:var(--soft);border-radius:.8rem;padding:.5rem;font:inherit;font-size:.85rem;font-weight:700;cursor:pointer}
+.outline-primary{width:100%;background:#fff;border:2px solid var(--primary);color:var(--primary);border-radius:.8rem;padding:.55rem;font:inherit;font-weight:700;cursor:pointer}
+.editor{min-height:14rem;border:1px solid var(--border);background:#fff;border-radius:.8rem;padding:.75rem;font-size:1.1rem;line-height:2;outline:none}
+.editor:focus{box-shadow:0 0 0 2px var(--ring)}
+.between{display:flex;justify-content:space-between;align-items:center;gap:.5rem;margin-top:.5rem;font-size:.85rem;color:var(--muted-foreground)}
+.num{width:3.2rem;border:1px solid var(--border);border-radius:.5rem;padding:.15rem;text-align:center;font:inherit;background:#fff}
+.link{width:100%;background:none;border:0;color:var(--muted-foreground);font:inherit;font-size:.85rem;padding:.5rem 0;cursor:pointer}
+.tone-strong{color:var(--strong);font-weight:800}
+.tone-soft{color:var(--soft);font-style:italic;font-weight:600}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:.5rem;padding:.8rem 1rem;position:sticky;top:0;background:var(--background);z-index:5;border-bottom:1px solid var(--border)}
+.bar b{color:var(--primary)}
+.bar a{font-size:.85rem;background:var(--muted);border-radius:99px;padding:.35rem .8rem}
+.scrollbox{max-height:16rem;overflow-y:auto;display:flex;flex-direction:column;gap:.5rem}
+.dbox{border:1px solid var(--gold);background:var(--secondary);border-radius:.8rem;padding:.7rem;font-size:.85rem}
+.qbox{border:1px solid var(--border);border-radius:.8rem;padding:.7rem}
+.qbox.done{opacity:.5}
+.qbox .meta{font-size:.72rem;color:var(--muted-foreground)}
+.qbox p{margin:.35rem 0}
+.qbox button{background:none;border:0;color:var(--primary);font:inherit;font-size:.85rem;font-weight:700;cursor:pointer;padding:0}
+.tabs{display:flex;gap:.5rem;overflow-x:auto;padding-bottom:.4rem;margin:0 -0.25rem .8rem}
+.tab{flex:0 0 auto;border:0;border-radius:99px;padding:.4rem .8rem;font:inherit;font-size:.85rem;background:var(--muted);cursor:pointer}
+.tab.on{background:var(--primary);color:var(--primary-foreground)}
+.stat{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;text-align:center;margin:0 1rem 1rem}
+.stat div{background:var(--card);border:1px solid var(--border);border-radius:1rem;padding:.7rem}
+.stat b{display:block;font-size:1.4rem;color:var(--primary)}
+.stat span{font-size:.72rem;color:var(--muted-foreground)}
+.paidbar{display:flex;justify-content:space-between;align-items:center;margin:0 1rem 1rem;background:var(--gold);color:var(--accent-foreground);border-radius:1rem;padding:.7rem;font-size:.85rem;font-weight:700}
+.bar-track{height:.7rem;background:var(--muted);border-radius:99px;overflow:hidden}
+.bar-fill{height:100%;border-radius:99px}
+.blabel{display:flex;justify-content:space-between;font-size:.72rem;margin-bottom:.15rem}
+/* prompter */
+.prompter{position:fixed;inset:0;z-index:50;background:var(--prompter);color:var(--prompter-foreground);display:flex;flex-direction:column}
+.prompter .tone-strong{color:#e8776a}
+.prompter .tone-soft{color:#7fa8f0}
+.pbar{display:flex;align-items:center;justify-content:space-between;gap:.5rem;padding:.7rem}
+.pbtn{background:rgba(242,239,230,.15);color:inherit;border:0;border-radius:.6rem;padding:.5rem .8rem;font:inherit;font-size:.85rem;cursor:pointer}
+.pbtn.gold{background:var(--gold);color:var(--accent-foreground);font-weight:700}
+.pc{text-align:center}
+.pc b{font-family:monospace;font-size:1.4rem;color:var(--gold)}
+.pc b.warn{color:#e8776a}
+.pc small{display:block;font-size:.7rem;opacity:.8}
+.psliders{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:.3rem .6rem;padding:0 1rem;font-size:.85rem}
+.psliders input[type=range]{width:100%}
+.pfit{margin:.5rem 1rem 0;width:calc(100% - 2rem)}
+.pscroll{flex:1;overflow-y:auto;padding:40vh 1.5rem;line-height:2.2;font-size:2rem}
+.note{margin:1rem;font-size:.75rem;color:var(--muted-foreground);text-align:center}
+ol.steps{margin:0;padding-right:1.2rem;font-size:.85rem;display:flex;flex-direction:column;gap:.5rem}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+const HUB="miqat_hub_v1", TK="miqat_tools_v1", EVT="miqat-hub-change";
+const enc=o=>btoa(unescape(encodeURIComponent(JSON.stringify(o))));
+const dec=s=>JSON.parse(decodeURIComponent(escape(atob(s))));
+function seed(){const now=new Date().toISOString();return{
+  questions:[{id:"s1",text:"هل تجوز صلاة تحية المسجد أثناء الخطبة؟",topic:"أحكام الصلاة",date:now,answered:false}],
+  directives:[{id:"s1",title:"خطبة موحدة: فضل صلة الرحم",body:"يرجى من السادة الأئمة تخصيص خطبة هذه الجمعة لموضوع صلة الرحم مع عدم تجاوز 20 دقيقة.",date:now}],
+  speech:null};}
+function load(){try{const raw=localStorage.getItem(HUB);if(raw)return dec(raw)}catch(e){}const h=seed();try{localStorage.setItem(HUB,enc(h))}catch(e){}return h}
+function write(p){const h={...load(),...p};try{localStorage.setItem(HUB,enc(h))}catch(e){}window.dispatchEvent(new Event(EVT))}
+const getQuestions=()=>load().questions;
+const saveQuestions=q=>write({questions:q});
+const addQuestion=(t,tp)=>write({questions:[...load().questions,{id:Date.now().toString(),text:t,topic:tp,date:new Date().toISOString(),answered:false}]});
+const getDirectives=()=>load().directives;
+const addDirective=(t,b)=>write({directives:[{id:Date.now().toString(),title:t,body:b,date:new Date().toISOString()},...load().directives]});
+const getSpeech=()=>load().speech;
+const saveSpeech=s=>write({speech:s});
+const defTools={library:[],duas:[],notes:"",points:"",checked:[],topic:"",minutes:15};
+function getTools(){try{const r=localStorage.getItem(TK);if(r)return{...defTools,...dec(r)}}catch(e){}return{...defTools}}
+function saveTools(p){try{localStorage.setItem(TK,enc({...getTools(),...p}))}catch(e){}}
+function exportAll(){return JSON.stringify({hub:load(),tools:getTools()},null,2)}
+function importAll(json){const d=JSON.parse(json);if(d.hub){localStorage.setItem(HUB,enc(d.hub));window.dispatchEvent(new Event(EVT))}if(d.tools)localStorage.setItem(TK,enc(d.tools))}
+function subscribe(cb){const onS=e=>{if(e.key===HUB)cb()};window.addEventListener(EVT,cb);window.addEventListener("storage",onS);return()=>{window.removeEventListener(EVT,cb);window.removeEventListener("storage",onS)}}
+const fmtTime=iso=>{try{return new Date(iso).toLocaleString("ar-DZ",{weekday:"long",hour:"2-digit",minute:"2-digit",day:"numeric",month:"short"})}catch(e){return iso}};
+function summarize(text){const s=text.replace(/\s+/g," ").split(/(?<=[.!؟?،:])\s+/).map(x=>x.trim()).filter(x=>x.length>15);const p=s.slice(0,3).join(" ");return `🕌 ملخص خطبة الجمعة\n\n${p||text.slice(0,280)}\n\n📿 نسأل الله أن ينفعنا بما سمعنا.\n#خطبة_الجمعة #المسجد #الجزائر`}
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+const PORTALS=[
+ {to:"/imam",icon:"🎙️",title:"بوابة الإمام",desc:"محرر خطبة، ملقّن آلي، نبرات صوتية، ملخص فيسبوك وصندوق الأسئلة."},
+ {to:"/directorate",icon:"🏛️",title:"بوابة المديرية والشؤون الدينية",desc:"إرسال التعليمات والخطب الموحدة ومتابعة التزام المساجد.",paid:true},
+ {to:"/worshippers",icon:"🤲",title:"بوابة المصلين",desc:"أرسل سؤالك الفقهي للإمام بسرية تامة."}
+];
+const TEMPLATES=[
+ {cat:"العبادات",title:"المحافظة على الصلاة",axes:"مكانة الصلاة، أثرها في السلوك، وأسباب المحافظة عليها في وقتها.",refs:"البقرة: 238؛ العنكبوت: 45"},
+ {cat:"الأسرة وصلة الرحم",title:"بر الوالدين",axes:"حق الوالدين، لين القول، والإحسان إليهما في حياتهما وبعد وفاتهما.",refs:"الإسراء: 23-24"},
+ {cat:"الأخلاق",title:"حفظ اللسان",axes:"اجتناب الغيبة، وزن الكلمة، والكلام الطيب.",refs:"ق: 18؛ الحجرات: 12"},
+ {cat:"الأخلاق",title:"الأمانة في حياة المسلم",axes:"الأمانة في العبادة والعمل والمال، وأثرها في الثقة بين الناس.",refs:"الأحزاب: 72؛ النساء: 58"},
+ {cat:"الأسرة وصلة الرحم",title:"صلة الرحم",axes:"صور الصلة العملية، وإصلاح القطيعة بحكمة.",refs:"محمد: 22؛ النساء: 1"},
+ {cat:"المواسم والمناسبات",title:"الاستعداد لرمضان",axes:"التوبة، تنظيم الوقت، والتهيؤ للعبادة.",refs:"البقرة: 183-185"}
+];
+const EID=[
+ {title:"خطبة عيد الفطر",axes:"شكر الله على إتمام الصيام، زكاة الفطر، صلة الأرحام والتسامح، الثبات على الطاعة بعد رمضان."},
+ {title:"خطبة عيد الأضحى",axes:"قصة إبراهيم عليه السلام والتضحية، أحكام الأضحية، التكافل مع الفقراء، أيام التشريق."}
+];
+const STEPS=[
+ "اكتب خطبتك أو الصقها في المحرر، أو اختر نموذجًا من «المكتبة»، وحدّد المدة بالدقائق.",
+ "أضف بأزرار «وقفة» و«دعاء» و«آية» علامات في مواضعها، ولوّن الكلمات بالنبرة القوية أو العاطفية.",
+ "في «نقاط المديرية» اكتب النقاط المطلوبة، وضع علامة عند كل نقطة غطيتها.",
+ "اضغط «تشغيل الملقّن»، ثم «اضبط السرعة على الوقت»، ثم «تشغيل».",
+ "راقب «متقدم» أو «متأخر» في الأعلى، ويحمرّ المؤقت في آخر دقيقتين، ولمس النص يوقف التمرير.",
+ "احفظ الخطبة في «ميقاتي» بعنوانها، وخذ نسخة احتياطية من حين لآخر."
+];
+const TABS=["📚 المكتبة","📋 نقاط المديرية","🤲 الأدعية","🗓️ ملاحظات","🌙 الأعياد","📖 المراجع","💾 نسخة احتياطية","❓ الاستعمال"];
+const MOSQUES=[{name:"مسجد الأمير عبد القادر",min:18},{name:"مسجد كتشاوة",min:21},{name:"المسجد الأعظم",min:19},{name:"مسجد الفتح",min:27},{name:"مسجد النور",min:16},{name:"مسجد الرحمة",min:24}];
+const LIMIT=20;
+const SAMPLE="الحمد لله رب العالمين، والصلاة والسلام على أشرف المرسلين. أيها المؤمنون، إن صلة الرحم من أعظم القربات إلى الله تعالى، وقد قرنها الله بتقواه في كتابه العزيز. فمن وصل رحمه وصله الله، ومن قطعها قطعه الله. فلنبادر يا عباد الله إلى زيارة أقاربنا والسؤال عنهم، ولنصفح عمن أساء إلينا ابتغاء وجه الله.";
+
+const app=document.getElementById("app");
+let unsub=null;
+function render(){
+  if(unsub){unsub();unsub=null}
+  document.querySelectorAll(".prompter").forEach(n=>n.remove());
+  const r=(location.hash.replace(/^#/,"")||"/").split("?")[0];
+  app.innerHTML="";
+  if(r==="/imam")renderImam();
+  else if(r==="/directorate")renderDirectorate();
+  else if(r==="/worshippers")renderWorshippers();
+  else renderHome();
+  window.scrollTo(0,0);
+}
+window.addEventListener("hashchange",render);
+
+function renderHome(){
+  app.innerHTML=`<div class="wrap">
+    <div class="hero"><div style="font-size:3rem">🕌</div>
+      <h1>منصة ميقات الخطيب<br><span class="gold">السحابية</span></h1>
+      <p>إعداد خطب الجمعة وتسيير المساجد في الجزائر</p></div>
+    <div class="portals">${PORTALS.map(p=>`
+      <div class="card"><div class="row"><span class="icon">${p.icon}</span>
+        <div><h2>${p.title} ${p.paid?'<span class="paid">مدفوع</span>':""}</h2>
+        <p class="dim" style="margin:.25rem 0 0;font-size:.85rem">${p.desc}</p></div></div>
+        <a class="btn primary big" style="margin-top:1rem" href="#${p.to}">دخول البوابة</a></div>`).join("")}</div>
+    <p class="note">نسخة محلية: كل ما تكتبه يُحفظ على هذا الهاتف وحده، ولا يخرج إلى الإنترنت.</p>
+  </div>`;
+}
+
+/* ---------------- IMAM ---------------- */
+function renderImam(){
+  const t=getTools();
+  app.innerHTML=`<div class="wrap">
+    <div class="bar"><a href="#/">🏠 الرئيسية</a><b>🎙️ بوابة الإمام</b></div>
+    <div class="card"><h3 class="ct">📢 تعليمات المديرية المستلمة (<span id="dcount">0</span>)</h3><div id="dirs" class="scrollbox"></div></div>
+    <div class="card"><h3 class="ct">✍️ محرر خطبة احترافي</h3>
+      <input id="topic" class="field bold" placeholder="موضوع الجمعة" style="margin-bottom:.5rem">
+      <div class="row3">
+        <button class="mini" data-mark="⏸ وقفة|tone-soft">＋ وقفة</button>
+        <button class="mini" data-mark="🤲 دعاء|tone-soft">＋ دعاء</button>
+        <button class="mini" data-mark="﴿ آية ﴾|tone-strong">＋ آية</button></div>
+      <div class="row2">
+        <button id="toneS" class="outline-strong">نبرة قوية 🔴</button>
+        <button id="toneB" class="outline-soft">نبرة عاطفية 🔵</button></div>
+      <div id="editor" class="editor" contenteditable="true" spellcheck="false"></div>
+      <div class="between"><span id="wc"></span>
+        <label>المدة المستهدفة <input id="minutes" class="num" type="number" min="1" max="60" value="${t.minutes||15}"> د</label></div>
+      <button id="newsp" class="link">＋ خطبة جديدة (تفريغ المحرر)</button>
+      <button id="save" class="outline-primary" style="margin-top:.6rem">💾 حفظ الخطبة</button>
+      <button id="run" class="btn primary big" style="margin-top:.6rem">⏱️ تشغيل الملقّن الآلي والمؤقت</button>
+    </div>
+    <div id="tools"></div>
+    <div class="card"><h3 class="ct">🪄 تلخيص ونشر لفيسبوك</h3>
+      <button id="sum" class="btn gold big">🪄 تلخيص ونشر لفيسبوك بالذكاء الاصطناعي</button>
+      <div id="sumbox"></div></div>
+    <div class="card"><h3 class="ct">📥 صندوق أسئلة المصلين (<span id="qnew">0</span> جديد)</h3><div id="qs"></div></div>
+  </div>`;
+
+  const editor=document.getElementById("editor");
+  editor.innerHTML=getSpeech()??SAMPLE;
+  document.getElementById("topic").value=t.topic||"";
+
+  const doSave=()=>{saveSpeech(editor.innerHTML)};
+  const count=()=>{const w=(editor.innerText||"").split(/\s+/).filter(Boolean).length;
+    document.getElementById("wc").textContent=`${w} كلمة · ≈ ${Math.max(1,Math.round(w/110))} د إلقاء`};
+  count();
+  editor.addEventListener("input",count);
+  editor.addEventListener("blur",doSave);
+
+  const insertMark=(label,cls)=>{
+    const sel=window.getSelection();
+    const span=document.createElement("span");span.className=cls;span.textContent=` ${label} `;
+    if(sel&&sel.rangeCount&&editor.contains(sel.getRangeAt(0).commonAncestorContainer)){
+      const r=sel.getRangeAt(0);r.collapse(false);r.insertNode(span);
+    }else editor.appendChild(span);
+    doSave();count();
+  };
+  document.querySelectorAll("[data-mark]").forEach(b=>{
+    b.addEventListener("mousedown",e=>e.preventDefault());
+    b.addEventListener("click",()=>{const[l,c]=b.dataset.mark.split("|");insertMark(l,c)});
+  });
+  const tone=cls=>{
+    const sel=window.getSelection();
+    if(!sel||sel.rangeCount===0||sel.isCollapsed){alert("حدد كلمات من النص أولاً");return}
+    const range=sel.getRangeAt(0);
+    if(!editor.contains(range.commonAncestorContainer))return;
+    const span=document.createElement("span");span.className=cls;
+    span.appendChild(range.extractContents());range.insertNode(span);
+    sel.removeAllRanges();doSave();count();
+  };
+  ["toneS","toneB"].forEach((id,i)=>{
+    const b=document.getElementById(id);
+    b.addEventListener("mousedown",e=>e.preventDefault());
+    b.addEventListener("click",()=>tone(i===0?"tone-strong":"tone-soft"));
+  });
+  document.getElementById("topic").addEventListener("input",e=>saveTools({topic:e.target.value}));
+  document.getElementById("minutes").addEventListener("input",e=>{
+    const v=Math.max(1,+e.target.value||1);saveTools({minutes:v});
+  });
+  document.getElementById("newsp").addEventListener("click",()=>{
+    if(confirm("تفريغ المحرر لخطبة جديدة؟")){editor.innerHTML="";document.getElementById("topic").value="";saveTools({topic:""});doSave();count()}
+  });
+  document.getElementById("save").addEventListener("click",()=>{
+    doSave();const b=document.getElementById("save");b.textContent="💾 حفظ الخطبة · ✅ "+fmtTime(new Date().toISOString());
+  });
+  document.getElementById("run").addEventListener("click",()=>{doSave();openPrompter(editor.innerHTML,+document.getElementById("minutes").value||15)});
+  document.getElementById("sum").addEventListener("click",()=>{
+    const box=document.getElementById("sumbox");
+    const txt=summarize(editor.innerText||"");
+    box.innerHTML=`<textarea id="sumtxt" class="field" rows="7" style="margin-top:.7rem">${esc(txt)}</textarea>
+      <button id="copy" class="btn primary" style="margin-top:.5rem">📋 نسخ بنقرة واحدة</button>`;
+    document.getElementById("copy").addEventListener("click",ev=>{
+      const ta=document.getElementById("sumtxt");
+      navigator.clipboard.writeText(ta.value).then(()=>{ev.target.textContent="✅ تم النسخ"}).catch(()=>{ta.select();document.execCommand("copy");ev.target.textContent="✅ تم النسخ"});
+    });
+  });
+
+  const useContent=(title,body)=>{
+    if(title){editor.innerHTML=body;document.getElementById("topic").value=title;saveTools({topic:title})}
+    else editor.innerHTML+=body;
+    doSave();count();window.scrollTo({top:0,behavior:"smooth"});
+  };
+  const saveCurrent=()=>({title:document.getElementById("topic").value||"خطبة بدون عنوان",html:editor.innerHTML,minutes:+document.getElementById("minutes").value||15});
+  renderTools(useContent,saveCurrent);
+
+  const sync=()=>{
+    const dirs=getDirectives(), qs=getQuestions();
+    document.getElementById("dcount").textContent=dirs.length;
+    document.getElementById("dirs").innerHTML=dirs.map(d=>`<div class="dbox"><b>${esc(d.title)}</b><p style="margin:.3rem 0">${esc(d.body)}</p><div class="meta" style="font-size:.72rem;color:var(--muted-foreground)">🕒 ${fmtTime(d.date)}</div></div>`).join("")||`<p class="dim" style="font-size:.85rem">لا توجد تعليمات بعد.</p>`;
+    document.getElementById("qnew").textContent=qs.filter(q=>!q.answered).length;
+    document.getElementById("qs").innerHTML=qs.length? [...qs].reverse().map(q=>`
+      <div class="qbox ${q.answered?"done":""}" style="margin-bottom:.5rem">
+        <div class="meta">${esc(q.topic)} · مجهول الهوية · 🕒 ${fmtTime(q.date)}</div>
+        <p>${esc(q.text)}</p>
+        <button data-q="${q.id}">${q.answered?"↩️ إعادة فتح":"✔️ تمت الإجابة في الدرس"}</button>
+      </div>`).join("") : `<p class="dim" style="font-size:.85rem">لا توجد أسئلة بعد.</p>`;
+    document.querySelectorAll("[data-q]").forEach(b=>b.addEventListener("click",()=>{
+      const n=getQuestions().map(q=>q.id===b.dataset.q?{...q,answered:!q.answered}:q);
+      saveQuestions(n);sync();
+    }));
+  };
+  sync();
+  unsub=subscribe(sync);
+}
+
+function renderTools(onUse,onSaveCurrent){
+  const host=document.getElementById("tools");
+  let tab=TABS[0],q="",cat="كل الموضوعات",msg="";
+  const paint=()=>{
+    const t=getTools();
+    const points=t.points.split("\n").filter(l=>l.trim());
+    const tpl=TEMPLATES.filter(x=>(cat==="كل الموضوعات"||x.cat===cat)&&(x.title+x.axes).includes(q));
+    const mine=t.library.filter(x=>x.title.includes(q)||x.html.includes(q));
+    let body="";
+    if(tab==="📚 المكتبة"){
+      body=`<button id="st" class="btn primary" style="width:100%">💾 حفظ الخطبة الحالية في المكتبة</button>
+        ${msg?`<p style="text-align:center;font-size:.85rem;font-weight:700;color:var(--primary)">${msg}</p>`:""}
+        <input id="sq" class="field" placeholder="🔍 ابحث في النماذج والخطب المحفوظة" style="margin-top:.6rem">
+        <h3 class="ct" style="margin-top:.8rem;font-size:.9rem">ميقاتي: خطبي المحفوظة (${t.library.length})</h3>
+        ${mine.length?mine.map(s=>`<div class="row" style="border:1px solid var(--border);border-radius:.8rem;padding:.7rem;margin-bottom:.5rem">
+          <div style="flex:1"><b style="font-size:.85rem">${esc(s.title)}</b>
+          <div class="meta" style="font-size:.72rem;color:var(--muted-foreground)">${s.minutes} د · ${fmtTime(s.date)}</div></div>
+          <button data-open="${s.id}" style="background:none;border:0;color:var(--primary);font:inherit;font-size:.85rem;font-weight:700;cursor:pointer">فتح</button>
+          <button data-del="${s.id}" style="background:none;border:0;color:var(--destructive);font:inherit;cursor:pointer">حذف</button></div>`).join("")
+          :`<p class="dim" style="font-size:.85rem">لا توجد خطب محفوظة بعد.</p>`}
+        <h3 class="ct" style="margin-top:.8rem;font-size:.9rem">نماذج خطب جاهزة للتطوير</h3>
+        <select id="scat" class="field">${["كل الموضوعات","العبادات","الأخلاق","الأسرة وصلة الرحم","المواسم والمناسبات"].map(c=>`<option ${c===cat?"selected":""}>${c}</option>`).join("")}</select>
+        ${tpl.map(x=>`<div style="border:1px solid var(--border);border-radius:.8rem;padding:.7rem;margin-top:.5rem;font-size:.85rem">
+          <b>${x.title}</b><p class="dim" style="margin:.3rem 0">محاور: ${x.axes}</p>
+          <p style="font-size:.72rem;margin:0">مراجع للاستدلال: ${x.refs}</p>
+          <button data-tpl="${x.title}" style="background:none;border:0;color:var(--primary);font:inherit;font-weight:700;cursor:pointer;padding:0;margin-top:.4rem">استخدام النموذج في المحرر ←</button></div>`).join("")}`;
+    } else if(tab==="📋 نقاط المديرية"){
+      body=`<textarea id="sp" class="field" rows="4" placeholder="اكتب كل نقطة في سطر">${esc(t.points)}</textarea>
+        ${points.map((p,i)=>`<label class="row" style="border:1px solid var(--border);border-radius:.8rem;padding:.5rem;margin-top:.5rem;font-size:.85rem">
+          <input type="checkbox" data-pt="${i}" ${t.checked.includes(i)?"checked":""} style="width:1.2rem;height:1.2rem">
+          <span class="${t.checked.includes(i)?"dim":""}" style="${t.checked.includes(i)?"text-decoration:line-through":""}">${esc(p)}</span></label>`).join("")}
+        ${points.length?`<p class="dim" style="font-size:.72rem">غطيت ${t.checked.length} من ${points.length}</p>`:""}`;
+    } else if(tab==="🤲 الأدعية"){
+      body=`<p class="dim" style="font-size:.72rem">مساحة شخصية لأدعيتك، أضف المرجع إن وجد.</p>
+        <textarea id="sd" class="field" rows="3" placeholder="دعاء أو ذكر مع مرجعه"></textarea>
+        <button id="addd" class="btn primary" style="width:100%;margin-top:.5rem">حفظ في قائمتي</button>
+        ${t.duas.map(d=>`<div class="row" style="border:1px solid var(--border);border-radius:.8rem;padding:.7rem;margin-top:.5rem;font-size:.85rem">
+          <p style="flex:1;margin:0">${esc(d.text)}</p>
+          <button data-ud="${d.id}" style="background:none;border:0;color:var(--primary);font:inherit;font-weight:700;cursor:pointer">＋ للخطبة</button>
+          <button data-dd="${d.id}" style="background:none;border:0;color:var(--destructive);font:inherit;cursor:pointer">✕</button></div>`).join("")}`;
+    } else if(tab==="🗓️ ملاحظات"){
+      body=`<textarea id="sn" class="field" rows="8" placeholder="أفكار وموضوعات قادمة… تحفظ تلقائيًا">${esc(t.notes)}</textarea>`;
+    } else if(tab==="🌙 الأعياد"){
+      body=`<p class="dim" style="font-size:.72rem">محاور مقترحة للتطوير، وليست نصوصًا جاهزة. راجع الآيات والأحاديث من مصادرها.</p>
+        ${EID.map(x=>`<div style="border:1px solid var(--border);border-radius:.8rem;padding:.7rem;margin-top:.5rem;font-size:.85rem">
+          <b>${x.title}</b><p class="dim" style="margin:.3rem 0">${x.axes}</p>
+          <button data-eid="${x.title}" style="background:none;border:0;color:var(--primary);font:inherit;font-weight:700;cursor:pointer;padding:0">استخدام في المحرر ←</button></div>`).join("")}`;
+    } else if(tab==="📖 المراجع"){
+      body=`<p style="font-size:.85rem">المكتبة الشاملة: مكتبة رقمية عربية للتحقق من نص أو نسبة قول إلى كتابه قبل ذكره على المنبر.</p>
+        <a class="btn primary" style="width:100%" href="https://shamela.ws" target="_blank" rel="noreferrer">فتح المكتبة الشاملة ↗</a>
+        <p class="dim" style="font-size:.72rem">تحقق من درجة الحديث من أهل العلم، وراجع طالب علم عند أي شك.</p>
+        <button id="shr" class="outline-primary">📤 شارك التطبيق مع إمام</button>
+        ${msg?`<p style="text-align:center;font-weight:700;color:var(--primary)">${msg}</p>`:""}`;
+    } else if(tab==="💾 نسخة احتياطية"){
+      body=`<p class="dim" style="font-size:.85rem">تحفظ خطبك وملاحظاتك وأدعيتك ونقاطك والأسئلة والتعليمات. احتفظ بها في مكان آمن ولا ترسلها لأحد.</p>
+        <button id="dl" class="btn primary" style="width:100%;margin-top:.5rem">💾 تنزيل نسخة احتياطية شاملة</button>
+        <label class="outline-primary" style="display:block;margin-top:.5rem;cursor:pointer">♻️ استرجاع نسخة
+          <input id="up" type="file" accept="application/json" style="display:none"></label>
+        ${msg?`<p style="text-align:center;font-weight:700;color:var(--primary)">${msg}</p>`:""}`;
+    } else {
+      body=`<ol class="steps">${STEPS.map(s=>`<li>${s}</li>`).join("")}</ol>`;
+    }
+    host.innerHTML=`<div class="card"><h3 class="ct">🧰 أدوات الخطيب</h3>
+      <div class="tabs">${TABS.map(x=>`<button class="tab ${x===tab?"on":""}" data-tb="${x}">${x}</button>`).join("")}</div>${body}</div>`;
+
+    host.querySelectorAll("[data-tb]").forEach(b=>b.addEventListener("click",()=>{tab=b.dataset.tb;msg="";paint()}));
+    const up=p=>{saveTools(p);paint()};
+    const qEl=host.querySelector("#sq"); if(qEl){qEl.value=q;qEl.addEventListener("input",e=>{q=e.target.value;paint()})}
+    const cEl=host.querySelector("#scat"); if(cEl)cEl.addEventListener("change",e=>{cat=e.target.value;paint()});
+    host.querySelectorAll("[data-open]").forEach(b=>b.addEventListener("click",()=>{const s=getTools().library.find(x=>x.id===b.dataset.open);if(s)onUse(s.title,s.html)}));
+    host.querySelectorAll("[data-del]").forEach(b=>b.addEventListener("click",()=>up({library:getTools().library.filter(x=>x.id!==b.dataset.del)})));
+    host.querySelectorAll("[data-tpl]").forEach(b=>b.addEventListener("click",()=>{const x=TEMPLATES.find(y=>y.title===b.dataset.tpl);onUse(x.title,`<b>${x.title}</b><br>محاور الخطبة: ${x.axes}<br>المراجع: ${x.refs}<br><br>`)}));
+    host.querySelectorAll("[data-eid]").forEach(b=>b.addEventListener("click",()=>{const x=EID.find(y=>y.title===b.dataset.eid);onUse(x.title,`<b>${x.title}</b><br>المحاور: ${x.axes}<br><br>`)}));
+    host.querySelectorAll("[data-ud]").forEach(b=>b.addEventListener("click",()=>{const d=getTools().duas.find(x=>x.id===b.dataset.ud);if(d)onUse("",`<br><span class="tone-soft">${d.text}</span>`)}));
+    host.querySelectorAll("[data-dd]").forEach(b=>b.addEventListener("click",()=>up({duas:getTools().duas.filter(x=>x.id!==b.dataset.dd)})));
+    host.querySelectorAll("[data-pt]").forEach(b=>b.addEventListener("change",()=>{const i=+b.dataset.pt;const c=getTools().checked;up({checked:c.includes(i)?c.filter(x=>x!==i):[...c,i]})}));
+    const sp=host.querySelector("#sp"); if(sp)sp.addEventListener("input",e=>{saveTools({points:e.target.value,checked:[]});});
+    const sn=host.querySelector("#sn"); if(sn)sn.addEventListener("input",e=>{saveTools({notes:e.target.value})});
+    const st=host.querySelector("#st"); if(st)st.addEventListener("click",()=>{const c=onSaveCurrent();saveTools({library:[{id:Date.now().toString(),...c,date:new Date().toISOString()},...getTools().library]});msg="✅ حُفظت الخطبة في ميقاتي";paint()});
+    const addd=host.querySelector("#addd"); if(addd)addd.addEventListener("click",()=>{const v=host.querySelector("#sd").value.trim();if(v){saveTools({duas:[{id:Date.now().toString(),text:v},...getTools().duas]});paint()}});
+    const dl=host.querySelector("#dl"); if(dl)dl.addEventListener("click",()=>{
+      const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([exportAll()],{type:"application/json"}));
+      a.download=`miqat-backup-${new Date().toISOString().slice(0,10)}.json`;a.click()});
+    const upf=host.querySelector("#up"); if(upf)upf.addEventListener("change",async e=>{
+      const f=e.target.files[0];if(!f)return;
+      try{importAll(await f.text());msg="✅ تم الاسترجاع"}catch(err){msg="❌ الملف غير صالح"}paint()});
+    const shr=host.querySelector("#shr"); if(shr)shr.addEventListener("click",async()=>{
+      const url=location.href;
+      if(navigator.share){try{await navigator.share({title:"منصة ميقات الخطيب",url})}catch(e){}}
+      else{try{await navigator.clipboard.writeText(url);msg="✅ نُسخ الرابط"}catch(e){msg="انسخ العنوان من شريط المتصفح"}}paint()});
+  };
+  paint();
+}
+
+/* ---------------- PROMPTER ---------------- */
+function openPrompter(html,minutes){
+  const total=Math.max(60,minutes*60);
+  let secs=0,playing=false,speed=2,font=32,acc=0;
+  const ov=document.createElement("div");ov.className="prompter";
+  ov.innerHTML=`<div class="pbar">
+      <button id="pclose" class="pbtn">إغلاق ✕</button>
+      <div class="pc"><b id="ptime">00:00</b><small id="ppace"></small></div>
+      <button id="ptoggle" class="pbtn gold">تشغيل ▶</button></div>
+    <div class="psliders"><span>السرعة</span><input id="pspeed" type="range" min="0.2" max="8" step="0.1" value="${speed}">
+      <span>الخط</span><input id="pfont" type="range" min="20" max="56" value="${font}"></div>
+    <button id="pfit" class="pbtn pfit">⏱️ اضبط السرعة على وقت الخطبة (${minutes} د)</button>
+    <div id="pscroll" class="pscroll">${html||"<p>لا يوجد نص</p>"}</div>`;
+  document.body.appendChild(ov);
+  const sc=ov.querySelector("#pscroll"), tm=ov.querySelector("#ptime"), pc=ov.querySelector("#ppace");
+  const mm=()=>`${String(Math.floor(secs/60)).padStart(2,"0")}:${String(secs%60).padStart(2,"0")}`;
+  const upd=()=>{
+    tm.textContent=mm();
+    tm.className=total-secs<=120?"warn":"";
+    const prog=sc.scrollHeight>sc.clientHeight?sc.scrollTop/(sc.scrollHeight-sc.clientHeight):0;
+    const left=Math.max(0,total-secs);
+    pc.textContent=(secs<5?"":prog-secs/total>0.03?"متقدم ⏩":secs/total-prog>0.03?"متأخر ⏪":"في الوقت ✓")+" · المتبقي "+Math.max(0,Math.ceil(left/60))+" د";
+  };
+  const t1=setInterval(()=>{if(!playing)return;secs++;upd()},1000);
+  const t2=setInterval(()=>{if(!playing)return;acc+=speed;const n=Math.floor(acc);if(n){sc.scrollBy(0,n);acc-=n}upd()},50);
+  ov.querySelector("#ptoggle").addEventListener("click",e=>{playing=!playing;e.target.textContent=playing?"إيقاف ⏸":"تشغيل ▶"});
+  ov.querySelector("#pclose").addEventListener("click",()=>{clearInterval(t1);clearInterval(t2);ov.remove()});
+  ov.querySelector("#pspeed").addEventListener("input",e=>speed=+e.target.value);
+  ov.querySelector("#pfont").addEventListener("input",e=>{font=+e.target.value;sc.style.fontSize=font+"px"});
+  ov.querySelector("#pfit").addEventListener("click",()=>{
+    const left=sc.scrollHeight-sc.clientHeight-sc.scrollTop;
+    speed=Math.max(0.2,left/(Math.max(total-secs,30)*20));
+    ov.querySelector("#pspeed").value=speed;
+  });
+  sc.addEventListener("click",()=>{playing=false;ov.querySelector("#ptoggle").textContent="تشغيل ▶"});
+  upd();
+}
+
+/* ---------------- DIRECTORATE ---------------- */
+function renderDirectorate(){
+  let ok2=false;
+  const paint=()=>{
+    const list=getDirectives();
+    const ok=MOSQUES.filter(m=>m.min<=LIMIT).length;
+    const pct=Math.round(ok/MOSQUES.length*100);
+    app.innerHTML=`<div class="wrap">
+      <div class="bar"><a href="#/">🏠 الرئيسية</a><b>🏛️ بوابة المديرية</b></div>
+      <div class="paidbar"><span>⭐ اشتراك مدفوع مُفعّل</span><span>ولاية الجزائر</span></div>
+      <div class="stat">
+        <div><b>${MOSQUES.length}</b><span>مسجد</span></div>
+        <div><b>${pct}%</b><span>التزام</span></div>
+        <div><b>${list.length}</b><span>تعليمة</span></div></div>
+      <div class="card"><h3 class="ct">📊 مدة الخطب (الحد: ${LIMIT} دقيقة)</h3>
+        ${MOSQUES.map(m=>`<div style="margin-bottom:.5rem"><div class="blabel"><span>${m.name}</span><span>${m.min} د</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:${m.min/30*100}%;background:${m.min<=LIMIT?"var(--primary)":"var(--strong)"}"></div></div></div>`).join("")}</div>
+      <div class="card"><h3 class="ct">📤 إرسال تعليمة / خطبة موحدة</h3>
+        <input id="dt" class="field" placeholder="عنوان التعليمة" style="margin-bottom:.5rem">
+        <textarea id="db" class="field" rows="4" placeholder="نص الخطبة أو التعليمة..."></textarea>
+        <button id="ds" class="btn primary big" style="margin-top:.5rem">📨 إرسال التعليمة الرسمية</button>
+        ${ok2?'<p style="margin-top:.5rem;text-align:center;font-size:.85rem;font-weight:700;color:var(--primary)">✅ نُشرت التعليمة وظهرت في حساب الإمام</p>':""}</div>
+      <div class="card"><h3 class="ct">🗂️ التعليمات المرسلة</h3>
+        ${list.length?list.map(d=>`<div style="border:1px solid var(--border);border-radius:.8rem;padding:.7rem;margin-bottom:.5rem"><b>${esc(d.title)}</b>
+          <p class="dim" style="font-size:.85rem;margin:.3rem 0">${esc(d.body)}</p>
+          <div class="meta" style="font-size:.72rem;color:var(--muted-foreground)">🕒 ${fmtTime(d.date)}</div></div>`).join("")
+          :'<p class="dim" style="font-size:.85rem">لم تُرسل أي تعليمة بعد.</p>'}</div>
+    </div>`;
+    document.getElementById("ds").addEventListener("click",()=>{
+      const t=document.getElementById("dt").value.trim(), b=document.getElementById("db").value.trim();
+      if(!t||!b)return;
+      addDirective(t,b);ok2=true;paint();
+    });
+  };
+  paint();
+  unsub=subscribe(paint);
+}
+
+/* ---------------- WORSHIPPERS ---------------- */
+function renderWorshippers(){
+  let sent=false;
+  const paint=()=>{
+    app.innerHTML=`<div class="wrap">
+      <div class="bar"><a href="#/">🏠 الرئيسية</a><b>🤲 بوابة المصلين</b></div>
+      <div class="card"><h3 class="ct">اسأل الإمام</h3>
+        <p class="dim" style="font-size:.85rem;margin-top:0">🔒 سؤالك يصل للإمام دون اسمك أو أي معلومة عنك.</p>
+        <select id="wt" class="field" style="margin-bottom:.5rem">${["خطبة اليوم","أحكام الصلاة","المعاملات","الأسرة","أخرى"].map(t=>`<option>${t}</option>`).join("")}</select>
+        <textarea id="wx" class="field" rows="6" placeholder="اكتب سؤالك الفقهي هنا..." style="font-size:1.1rem"></textarea>
+        <button id="ws" class="btn primary big" style="margin-top:.5rem">إرسال للإمام بسرية</button>
+        ${sent?'<p style="margin-top:.7rem;background:var(--secondary);border-radius:.8rem;padding:.7rem;text-align:center;font-weight:700;color:var(--primary)">✅ وصل سؤالك للإمام، جزاك الله خيرا</p>':""}</div>
+    </div>`;
+    document.getElementById("ws").addEventListener("click",()=>{
+      const x=document.getElementById("wx");
+      if(x.value.trim().length<5)return;
+      addQuestion(x.value.trim(),document.getElementById("wt").value);
+      x.value="";sent=true;paint();
+    });
+  };
+  paint();
+}
+
+render();
+</script>
+</body>
+</html>
