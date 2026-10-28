@@ -51,8 +51,8 @@ h1,h2,h3{font-family:"Reem Kufi","IBM Plex Sans Arabic",system-ui,serif}
     <button id="themeBtn" aria-label="تبديل المظهر">☾</button>
   </header>
   <div id="appbar" class="appbar hidden"><button id="backBtn" type="button" aria-label="رجوع">→</button><strong id="appbarTitle"></strong></div>
-    
-  
+  <section class="hero">
+    <div class="eyebrow">منصة خدمات الخطيب</div>
     <h2>خطبتك في وقتها، وخدماتك في مكان واحد</h2>
     <p>محرر وملقّن ومؤقت ذكي ومواقيت الصلاة في تطبيق واحد، ويعمل بعد أول فتح دون إنترنت.</p>
     <button class="primary" data-open="sermon">✍️ ابدأ إعداد الخطبة</button>
@@ -66,22 +66,8 @@ h1,h2,h3{font-family:"Reem Kufi","IBM Plex Sans Arabic",system-ui,serif}
     <button class="service" data-open="prayer"><span class="ico">🕌</span><strong>مواقيت الصلاة</strong><span>حسب مدينتك أو موقعك، مع الصلاة القادمة.</span></button>
     <button class="service" data-open="community"><span class="ico">💬</span><strong>فضاء الأئمة</strong><span>مجموعات للتواصل وتبادل الخبرة.</span></button>
     <a class="service" id="minbariCard" href="#" target="_blank" rel="noopener noreferrer" style="display:none;text-decoration:none;color:inherit"><span class="ico">🏛️</span><strong>منبري: حسابي ورسائل المديرية</strong><span>سجّل دخولك لتصلك رسائل المديرية وإعلاناتها.</span></a>
-
-    <div class="eyebrow">منصة خدمات الخطيب</div>
-    <h2>خطبتك في وقتها، وخدماتك في مكان واحد</h2>
-    <p>محرر وملقّن ومؤقت ذكي ومواقيت الصلاة وتعليمات المديرية في تطبيق واحد، ويعمل بعد أول فتح دون إنترنت.</p>
-  <div class="section-title"><h2>خدمات ميقات الخطيب</h2></div>
-  <div class="grid">
-    <button class="service" id="installApp" type="button" style="display:none"><span class="ico">📲</span><strong>ثبّت التطبيق على هاتفك</strong><span>أيقونة على الشاشة وفتح بشاشة كاملة.</span></button>
-    <button class="service" data-open="sermon"><span class="ico">📖</span><strong>إعداد الخطبة والإلقاء</strong><span>محرر الخطبة، مؤقت، وخط كبير للإلقاء.</span></button>
-    <button class="service" data-open="weekly"><span class="ico">📅</span><strong>موضوع الجمعة القادمة</strong><span id="weeklyHint">لم يُنشر موضوع هذا الأسبوع بعد.</span></button>
-    <button class="service" data-open="library"><span class="ico">📚</span><strong>مكتبة الخطب</strong><span>حفظ مسوداتك على هذا الجهاز والبحث فيها.</span></button>
-    <button class="service" data-open="prayer"><span class="ico">🕌</span><strong>مواقيت الصلاة</strong><span>حسب مدينتك أو موقعك، مع الصلاة القادمة.</span></button>
-    <button class="service" data-open="directives"><span class="ico">📜</span><strong>تعليمات المديرية</strong><span>القرارات والتعليمات الرسمية المتعلقة بالخطب.</span></button>
-    <button class="service" data-open="community"><span class="ico">💬</span><strong>فضاء الأئمة</strong><span>مجموعات للتواصل وتبادل الخبرة.</span></button>
-    <a class="service" id="minbariCard" href="#" target="_blank" rel="noopener noreferrer" style="display:none;text-decoration:none;color:inherit"><span class="ico">🏛️</span><strong>منبري: حسابي ورسائل المديرية</strong><span>سجّل دخولك لتصلك رسائل المديرية وإعلاناتها.</span></a>
     <button class="service" data-open="log"><span class="ico">⏱️</span><strong>سجل الإلقاء</strong><span id="logHint">مدة إلقائك الفعلية لكل خطبة.</span></button>
-    <button class="service" data-open="checklist"><span class="ico">📋</span><strong>نقاط المديرية</strong><span>قائمة متابعة قبل الخطبة.</span></button>
+    <button class="service" data-open="checklist"><span class="ico">📋</span><strong>نقاط المتابعة</strong><span>قائمة متابعة قبل الخطبة.</span></button>
     <button class="service" data-open="eid"><span class="ico">🌙</span><strong>خطب الأعياد</strong><span>نماذج لعيد الفطر وعيد الأضحى، في قسم مستقل.</span></button>
     <button class="service" data-open="notes"><span class="ico">🗓️</span><strong>ملاحظات الخطيب</strong><span>أفكار وموضوعات مستقبلية تحفظ محليًا.</span></button>
     <button class="service" data-open="adhkar"><span class="ico">🤲</span><strong>الأذكار والأدعية</strong><span>أدعية تضيفها بنفسك وتحفظها في جهازك.</span></button>
@@ -118,288 +104,295 @@ h1,h2,h3{font-family:"Reem Kufi","IBM Plex Sans Arabic",system-ui,serif}
       <div class="listitem"><strong>صلة الرحم</strong><p>محاور: صور الصلة العملية، وإصلاح القطيعة بحكمة.</p></div>
       <div class="listitem"><strong>الاستعداد لرمضان</strong><p>محاور: التوبة، تنظيم الوقت، والتهيؤ للعبادة.</p></div>
     </div>
-    <h3>ميقاتي: خطبك المحفوظة بعناوينها على هذا الجهاز</h3>
-    <div id="sermonList"></div>
-    <button id="exportSermons">تصدير نسخة احتياطية (JSON)</button>
-    <div class="row" style="margin-top:10px"><button id="backupAll" type="button">💾 نسخة احتياطية شاملة</button><button id="restoreAll" type="button">♻️ استرجاع نسخة</button><input id="restoreFile" type="file" accept="application/json,.json" class="hidden"></div>
-    <p class="small">النسخة الشاملة تحفظ خطبك وملاحظاتك وأدعيتك ونقاطك وإعداداتك، ولا تشمل كود التفعيل ولا موقعك. احتفظ بها في مكان آمن، ولا ترسلها لأحد.</p>
-  </section>
-  <section class="panel hidden" id="adhkar">
-    <div class="section-title"><h2>🤲 الأذكار والأدعية</h2></div>
-    <p class="notice">هذه مساحة شخصية لإضافة الأدعية التي تريد الرجوع إليها. لم نضع نصوصًا منسوبة لمصادر دون توثيق.</p>
-    <label for="duaInput">دعاء أو ذكر مع مرجعه إن وجد</label><textarea id="duaInput" style="min-height:100px" placeholder="اكتب النص ومصدره…"></textarea>
-    <button class="primary" id="addDua">حفظ في قائمتي</button><div id="duaList"></div>
+    <div class="section-title"><h2>خطبي المحفوظة</h2><p id="sermonCount">0 خطبة</p></div>
+    <div id="savedList"></div>
   </section>
   <section class="panel hidden" id="prayer">
-    <div class="section-title"><h2>🕌 مواقيت الصلاة</h2><p>تُحسب في جهازك دون إنترنت</p></div>
-    <label for="city">المدينة</label><select id="city"></select>
-    <label for="pdate">التاريخ</label><input id="pdate" type="date">
-    <div class="row" style="margin-top:10px"><button id="useLoc" class="primary" type="button">📍 استخدم موقعي</button><button id="useCity" class="hidden" type="button">العودة لاختيار المدينة</button></div>
-    <p class="small" id="locStatus"></p>
-    <p class="notice hidden" id="nextPrayer"></p>
-    <div id="prayerTimes" style="margin-top:10px"></div>
-    <p class="notice">حساب فلكي بالزاويتين المعتمدتين في الجزائر (الفجر 18° والعشاء 17°) والعصر بالظل المثل، بتوقيت الجزائر. قد يختلف عن تقويم مسجدك بدقيقة أو دقيقتين، فاعتمد تقويم مسجدك أو مديريتك في الصلاة، وإن لم تجد مدينتك فاختر أقرب مدينة إليك.</p>
-  </section>
-  <section class="panel hidden" id="checklist">
-    <div class="section-title"><h2>📋 نقاط المديرية</h2></div>
-    <label for="points">اكتب كل نقطة في سطر</label><textarea id="points" style="min-height:130px" placeholder="النقطة الأولى&#10;النقطة الثانية"></textarea>
-    <div id="pointChecks" class="checklist"></div>
-  </section>
-  <section class="panel hidden" id="notes">
-    <div class="section-title"><h2>🗓️ ملاحظات الخطيب</h2></div>
-    <label for="notesInput">أفكار وموضوعات قادمة</label><textarea id="notesInput" placeholder="اكتب أفكارك هنا…"></textarea>
-    <p class="small" id="notesSaved">تحفظ تلقائيًا على هذا الجهاز.</p>
+    <div class="section-title"><h2>🕌 مواقيت الصلاة</h2><p id="prayerDate">الجمعة</p></div>
+    <label for="citySelect">اختر ولايتك أو مدينتك في الجزائر</label>
+    <select id="citySelect">
+      <option value="الجزائر">الجزائر العاصمة</option><option value="وهران">وهران</option><option value="قسنطينة">قسنطينة</option><option value="عنابة">عنابة</option><option value="سطيف">سطيف</option><option value="باتنة">باتنة</option><option value="الجلفة">الجلفة</option><option value="بسكرة">بسكرة</option><option value="تلمسان">تلمسان</option><option value="ورقلة">ورقلة</option><option value="بشار">بشار</option><option value="تمنراست">تمنراست</option>
+    </select>
+    <div class="row" style="margin-top:10px"><button id="useGps" type="button">📍 استخدام موقعي الحالي</button><button id="refreshPrayers" type="button" class="primary">تحديث المواقيت</button></div>
+    <div id="nextPrayerNotice" class="hero" style="margin:14px 0 0;padding:16px"><div class="eyebrow">الصلاة القادمة</div><h2 id="nextPrayerTitle" style="font-size:1.25rem;margin:.2rem 0">جاري الحساب…</h2><p id="nextPrayerTime" style="margin:0"></p></div>
+    <div id="prayerCards" class="grid" style="margin-top:12px"></div>
+    <p class="small" style="margin-top:10px">يتم جلب المواقيت تلقائيًا وتخزينها لتعمل دون إنترنت لبقية اليوم.</p>
   </section>
   <section class="panel hidden" id="community">
-    <div class="section-title"><h2>💬 فضاء الأئمة</h2><p>مجموعات للتواصل وتبادل الخبرة بين الأئمة</p></div>
-    <p class="notice">التواصل يجري في مجموعات واتساب وتيليغرام التي يديرها أصحابها، والتطبيق يفتح لك رابط الانضمام فقط ولا يحفظ رسائلك. التزم بآداب الحوار، ولا تنشر بياناتك الشخصية ولا نصوصًا لم تتحقق منها.</p>
-    <div id="communityList"></div>
-    <p class="small" id="communityEmpty">لم تُفتح مجموعات بعد. ستظهر هنا روابط الانضمام حين تُضاف.</p>
+    <div class="section-title"><h2>💬 فضاء الأئمة والخطباء</h2><p>تواصل وتبادل الخبرات</p></div>
+    <p>مجموعات وروابط موجهة للأئمة لتبادل الأفكار والتعاون الدعوي:</p>
+    <div class="listitem"><strong>قناة ومجموعة تيليغرام للأئمة</strong><p>نشر النماذج والملفات الصوتية والنقاش العلمي.</p><a id="commTelegram" href="#" target="_blank" rel="noopener noreferrer">الانضمام إلى المجموعة ↗</a></div>
+    <div class="listitem"><strong>مجموعة واتساب لتبادل المحاور</strong><p>تنسيق أفكار خطبة الجمعة والتجارب الميدانية.</p><a id="commWhatsapp" href="#" target="_blank" rel="noopener noreferrer">الانضمام إلى المجموعة ↗</a></div>
+    <div class="listitem"><strong>مجتمع المنصة السحابية</strong><p>النقاش المباشر والأسئلة مع بقية الأئمة عبر المنصة.</p><a id="commLovable" href="#" target="_blank" rel="noopener noreferrer">فتح المنصة السحابية ↗</a></div>
   </section>
   <section class="panel hidden" id="log">
-    <div class="section-title"><h2>⏱️ سجل الإلقاء</h2><p>يسجّل التطبيق مدة إلقائك الفعلية ليضبط تقديراته على سرعتك</p></div>
-    <p class="small" id="logSummary"></p>
+    <div class="section-title"><h2>⏱️ سجل مدة الإلقاء</h2><p>متابعة الوقت الفعلي في كل جمعة</p></div>
     <div id="logList"></div>
-    <div class="row" style="margin-top:10px"><button id="clearLog" type="button">مسح السجل</button></div>
-    <p class="notice">يُسجَّل الإلقاء حين تصل إلى نهاية النص (90% فأكثر) وتغادر وضع الإلقاء بعد أكثر من دقيقة. وبعد تسجيل إلقاءين على الأقل يستعمل التطبيق متوسط سرعتك بدل التقدير العام.</p>
   </section>
-  <section class="panel hidden" id="weekly">
-    <div class="section-title"><h2>📅 موضوع الجمعة القادمة</h2><p id="weeklyCount"></p></div>
-    <div id="weeklyBody"></div>
-    <p class="notice">هذا ما تنشره الجهة المسؤولة عبر التطبيق. كتابة الخطبة وأسلوبها ودليلها عليك أنت، ولا يُغني هذا العرض عن مراجعة التعليمات من مصدرها الرسمي.</p>
+  <section class="panel hidden" id="checklist">
+    <div class="section-title"><h2>📋 نقاط المتابعة قبل الجمعة</h2><p>قائمة تذكيرية سريعة</p></div>
+    <div class="checklist">
+      <label><input type="checkbox"> مراجعة الآيات والأحاديث والتأكد من صحتها</label>
+      <label><input type="checkbox"> ضبط مدة الخطبة بما يتناسب مع المصلين والطقس</label>
+      <label><input type="checkbox"> استحضار الدعاء للمسلمين وبلاد المسلمين</label>
+      <label><input type="checkbox"> التأكد من وضوح الصوت وميكروفون المنبر</label>
+      <label><input type="checkbox"> تفعيل وضع عدم الإزعاج في الهاتف قبل الصعود</label>
+    </div>
   </section>
   <section class="panel hidden" id="eid">
-    <div class="section-title"><h2>🌙 خطب الأعياد</h2><p>نماذج للتطوير في قسم مستقل عن المكتبة</p></div>
-    <p class="notice">هذه محاور مقترحة وليست نصوصًا جاهزة للقراءة. راجع الآيات من المصحف، وأضف الأحاديث من مصادرها، وتحقق من الأحكام قبل الإلقاء.</p>
-    <div id="eidList"></div>
+    <div class="section-title"><h2>🌙 خطب الأعياد والمناسبات</h2><p>نماذج خاصة جاهزة</p></div>
+    <div class="listitem"><strong>خطبة عيد الفطر المبارك</strong><p>المحاور: فرحة الصائم، التكبير، زكاة الفطر، وصلة الأرحام والتسامح.</p></div>
+    <div class="listitem"><strong>خطبة عيد الأضحى المبارك</strong><p>المحاور: التضحية، أحكام الأضحية، يوم النحر، ووحدة الأمة الإسلامية.</p></div>
+  </section>
+  <section class="panel hidden" id="notes">
+    <div class="section-title"><h2>🗓️ ملاحظات وأفكار الخطيب</h2><p>سجل أفكارك للجمع القادمة</p></div>
+    <textarea id="quickNotes" placeholder="سجل فكرة، قصة، أو ملاحظة سمعتها من المصلين…"></textarea>
+    <div class="row" style="margin-top:10px"><button id="saveNotes" class="primary">حفظ الملاحظات</button></div>
+  </section>
+  <section class="panel hidden" id="adhkar">
+    <div class="section-title"><h2>🤲 الأذكار والأدعية المختارة</h2><p>أدعية الجمعة وجوامع الكلم</p></div>
+    <div class="listitem"><strong>اللهم اهدنا فيمن هديت، وعافنا فيمن عافيت، وتولنا فيمن توليت…</strong></div>
+    <div class="listitem"><strong>اللهم احفظ بلادنا وبلاد المسلمين، وألّف بين قلوبنا، واجمع كلمتنا على الحق والهدى.</strong></div>
+    <div class="listitem"><strong>اللهم اغفر للمسلمين والمسلمات، والمؤمنين والمؤمنات، الأحياء منهم والأموات.</strong></div>
   </section>
   <section class="panel hidden" id="sources">
-    <div class="section-title"><h2>📖 المراجع والتحقق</h2><p>للتأكد من النص قبل ذكره على المنبر</p></div>
-    <div class="listitem"><strong>المكتبة الشاملة</strong><p>مكتبة رقمية عربية فيها كتب كثيرة، ويمكن البحث في كامل المكتبة. استعملها للتحقق من نص أو نسبة قول إلى كتابه.</p><a href="https://shamela.ws" target="_blank" rel="noopener noreferrer">فتح المكتبة الشاملة (shamela.ws)</a></div>
-    <p class="notice">ما في الكتب يحتاج تمييزًا: تحقق من درجة الحديث من أهل العلم، وراجع إمامًا أو طالب علم عند أي شك، ولا تعتمد على نقل غير موثق.</p>
-    <p class="small">التطبيق لا يتضمن محتوى المكتبة، وإنما يفتح موقعها الرسمي، وهي جهة مستقلة عنه.</p>
+    <div class="section-title"><h2>📖 المراجع والتحقق</h2><p>مصادر موثوقة للبحث والتخريج</p></div>
+    <div class="listitem"><strong>المكتبة الشاملة الحديثة</strong><p>محرك بحث موثوق في كتب التفسير والحديث والفقه.</p><a href="https://shamela.ws" target="_blank" rel="noopener noreferrer">فتح المكتبة الشاملة ↗</a></div>
+    <div class="listitem"><strong>الدرر السنية (الموسوعة الحديثية)</strong><p>تخريج الأحاديث وبيان درجتها وصحتها.</p><a href="https://dorar.net/hadith" target="_blank" rel="noopener noreferrer">فتح موسوعة الأحاديث ↗</a></div>
   </section>
   <section class="panel hidden" id="guide">
-    <div class="section-title"><h2>❓ كيف أستعمل التطبيق؟</h2><p>من الكتابة إلى المنبر في ست خطوات</p></div>
-    <ol class="small">
-      <li>من «إعداد الخطبة» اكتب خطبتك أو الصقها، أو اختر نموذجًا من «مكتبة الخطب»، وحدّد المدة بالدقائق.</li>
-      <li>أضف بالأزرار علامات «وقفة» و«دعاء» و«آية». وعلامة «نبرة قوية» تُظهر ما بعدها بالأحمر، و«نبرة هادئة» بالأزرق، حتى «نبرة عادية».</li>
-      <li>في «نقاط المديرية» اكتب النقاط المطلوبة، وضع علامة عند كل نقطة غطيتها.</li>
-      <li>اضغط «ابدأ وضع الإلقاء»، ثم «اضبط السرعة على وقت الخطبة»، ثم «ابدأ».</li>
-      <li>راقب كلمة «متقدم» أو «متأخر» في الأعلى. ويحمرّ المؤقت في آخر دقيقتين. ولمس النص يوقف التمرير، وتبقى الشاشة مضاءة أثناء الإلقاء.</li>
-      <li>اضغط «حفظ الخطبة في المكتبة» لتبقى في «ميقاتي» بعنوانها، وخذ نسخة احتياطية من حين لآخر.</li>
-    </ol>
-    <p class="notice">بياناتك في جهازك فقط. وبعد أول فتح يعمل التطبيق دون إنترنت. لتثبيته على الشاشة الرئيسية: قائمة المتصفح ثم «تثبيت التطبيق».</p>
-  </section>
-  <section class="panel hidden" id="directives">
-    <div class="section-title"><h2>📜 تعليمات المديرية</h2><p>تُنقل من مصدرها الرسمي مع رابطها، وتصل الجميع مع تحديث التطبيق</p></div>
-    <p class="notice">تحقّق من أي تعليمة من الموقع الرسمي قبل اعتمادها، ولا تعتمد على ما يصلك في الرسائل أو صفحات التواصل غير الموثقة. ما يُعرض هنا منقول من المصادر الرسمية مع رابطه، والتطبيق مستقل وغير تابع لأي جهة رسمية ما لم يُعلَن خلاف ذلك.</p>
-    <div id="directiveList"></div>
-    <p class="small" id="directiveEmpty">ستُضاف هنا قرارات المديرية وتعليماتها الخاصة بالخطب حال التحقق منها من مصدرها الرسمي.</p>
+    <div class="section-title"><h2>❓ كيف أستعمل التطبيق؟</h2><p>دليل الخطوات الست</p></div>
+    <div class="listitem"><strong>1. اختر الموضوع:</strong> اكتب موضوعك أو استعن بالنماذج في مكتبة الخطب.</div>
+    <div class="listitem"><strong>2. اكتب النص:</strong> استخدم أزرار النبرات والوقفات لتنظيم إلقائك.</div>
+    <div class="listitem"><strong>3. حدد الوقت:</strong> اضبط المؤقت ليساعدك على عدم الإطالة.</div>
+    <div class="listitem"><strong>4. ابدأ وضع الإلقاء:</strong> خط كبير وواضح مع مؤقت ذكي يُلائم المنبر.</div>
+    <div class="listitem"><strong>5. احفظ محلياً:</strong> خطبتك تبقى محفوظة على هاتفك وتعمل دون إنترنت.</div>
   </section>
   <section class="panel hidden" id="pro">
-    <div class="section-title"><h2>⭐ النسخة الكاملة</h2></div>
-    <p id="proState"></p>
-    <ul class="small"><li>حفظ عدد غير محدود من الخطب في المكتبة (المجانية: 5 خطب).</li><li>أي ميزات جديدة تُضاف لاحقًا تكون ضمن النسخة الكاملة.</li></ul>
-    <div id="proForm"><label for="proCode">كود التفعيل</label><input id="proCode" type="text" placeholder="MKT-XXXX-XXXX-XXXX" dir="ltr" autocomplete="off" autocapitalize="characters"><button class="primary" id="activate" type="button" style="margin-top:10px">تفعيل</button></div>
-    <p class="notice hidden" id="proContact"></p>
-    <p class="small">التفعيل يتم داخل جهازك دون إنترنت، والكود الواحد لشخص واحد.</p>
+    <div class="section-title"><h2>⭐ تفعيل النسخة الكاملة</h2><p>ميزات متقدمة ودعم للمشروع</p></div>
+    <label for="proCode">أدخل كود التفعيل</label>
+    <input id="proCode" type="text" placeholder="مثال: MIKAT-2026">
+    <div class="row" style="margin-top:10px"><button id="activatePro" class="primary">تفعيل</button></div>
   </section>
-  <footer class="footer">بياناتك تُحفظ في جهازك فقط ولا تُرسل إلى أي خادم.
-    <p class="small">© 2026 ميقات الخطيب. جميع الحقوق محفوظة.</p>
+  <section class="panel hidden" id="weekly">
+    <div class="section-title"><h2>📅 موضوع الجمعة القادمة</h2><p id="weeklyStatus">متابعة الموضوع الموحد</p></div>
+    <div id="weeklyContent"><p>لم يتم تحديد موضوع موحد لهذا الأسبوع حتى الآن.</p></div>
+  </section>
+  <footer class="footer">
+    <p>© 2026 ميقات الخطيب — رفيق الإمام والخطيب في الجزائر</p>
   </footer>
-<nav id="bottomNav" class="bnav" aria-label="التنقل الرئيسي">
-  <button type="button" data-nav="home" class="on"><span>🏠</span>الرئيسية</button>
-  <button type="button" data-nav="sermon"><span>✍️</span>الخطبة</button>
-  <button type="button" data-nav="library"><span>📚</span>ميقاتي</button>
-  <button type="button" data-nav="prayer"><span>🕌</span>المواقيت</button>
-  <button type="button" data-nav="weekly"><span>📅</span>الجمعة</button>
+</div>
+
+<div id="stageView" class="stage hidden">
+  <div class="stagebar">
+    <button id="exitStage" type="button">✕ إنهاء الإلقاء</button>
+    <button id="toggleTimer" type="button" class="primary">⏸ إيقاف المؤقت</button>
+    <span id="pace">الوتيرة: مناسبة</span>
+    <span id="clock">00:00</span>
+  </div>
+  <div id="stageText" class="stagebody"></div>
+  <div class="stagecontrols">
+    <label>حجم الخط <input id="fontSizeRange" type="range" min="24" max="64" value="38"></label>
+  </div>
+</div>
+
+<nav class="bnav">
+  <button data-nav="home" class="on"><span>🏠</span>الرئيسية</button>
+  <button data-nav="sermon"><span>✍️</span>الخطبة</button>
+  <button data-nav="library"><span>📚</span>المكتبة</button>
+  <button data-nav="prayer"><span>🕌</span>المواقيت</button>
 </nav>
 
-</div>
-<div id="stage" class="stage hidden">
-  <div class="stagebar"><button id="exitStage">رجوع</button><button id="pauseStage" class="primary">إيقاف مؤقت</button><span id="pace"></span><span id="clock">15:00</span></div>
-  <div id="stageText" class="stagebody"></div>
-  <div class="stagecontrols"><label>سرعة التمرير <input id="scrollSpeed" type="range" min="5" max="100" value="30"></label><label>حجم الخط <input id="fontSize" type="range" min="24" max="72" value="38"></label><button id="fitBtn" type="button">اضبط السرعة على الوقت</button></div>
-</div>
-<div id="toast" class="toast hidden" role="status"></div>
+<div id="toast" class="toast hidden"></div>
+
 <script>
-(function(){
-const $=id=>document.getElementById(id), store={
- get(k,fallback){try{const v=localStorage.getItem('mikat-'+k);return v===null?fallback:JSON.parse(v)}catch(e){return fallback}},
- set(k,v){try{localStorage.setItem('mikat-'+k,JSON.stringify(v));return true}catch(e){return false}}
-};
-try{[['topic','khutba-topic',0],['draft','khutba-draft',0],['minutes','khutba-mins',1],['points','khutba-pts',0]].forEach(function(m){var o=localStorage.getItem(m[1]);if(localStorage.getItem('mikat-'+m[0])===null&&o!==null)localStorage.setItem('mikat-'+m[0],JSON.stringify(m[2]?(Number(o)||15):o))})}catch(e){}
-function toast(msg){$('toast').textContent=msg;$('toast').classList.remove('hidden');setTimeout(()=>$('toast').classList.add('hidden'),2400)}
-const VIEWS=['sermon','library','adhkar','prayer','checklist','notes','pro','directives','guide','eid','sources','weekly','log','community'];
-const TITLES={community:'فضاء الأئمة',sermon:'إعداد الخطبة والإلقاء',library:'مكتبة الخطب',adhkar:'الأذكار والأدعية',prayer:'مواقيت الصلاة',checklist:'نقاط المديرية',notes:'ملاحظات الخطيب',pro:'النسخة الكاملة',directives:'تعليمات المديرية',guide:'كيف أستعمل التطبيق؟',eid:'خطب الأعياد',sources:'المراجع والتحقق',weekly:'موضوع الجمعة القادمة',log:'سجل الإلقاء'};
-let curView='home';
-function setView(id,push){
- const home=!id||VIEWS.indexOf(id)<0;if(home)id=null;
- document.querySelectorAll('#home > .hero, #home > .section-title, #home > .grid').forEach(e=>e.classList.toggle('hidden',!home));
- VIEWS.forEach(k=>$(k).classList.toggle('hidden',k!==id));
- $('appbar').classList.toggle('hidden',home);$('appbarTitle').textContent=home?'':TITLES[id];
- document.querySelectorAll('[data-nav]').forEach(b=>b.classList.toggle('on',b.dataset.nav===(id||'home')));
- const name=id||'home';
- if(push!==false&&name!==curView){try{history.pushState({v:name},'',home?location.pathname+location.search:'#'+id)}catch(e){}}
- curView=name;window.scrollTo(0,0)}
-function showPanel(id){setView(id,true)}
-window.addEventListener('popstate',e=>{const v=(e.state&&e.state.v)||'home';setView(v==='home'?null:v,false)});
-$('backBtn').onclick=()=>{if(history.length>1&&curView!=='home'){history.back()}else{setView(null,false)}};
-document.querySelectorAll('[data-nav]').forEach(b=>b.addEventListener('click',()=>{const v=b.dataset.nav;v==='home'?setView(null,true):setView(v,true)}));
-{const h=location.hash.slice(1);try{history.replaceState({v:VIEWS.indexOf(h)>=0?h:'home'},'',location.href)}catch(e){}setView(VIEWS.indexOf(h)>=0?h:null,false)}
-document.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>showPanel(b.dataset.open)));
-$('themeBtn').onclick=()=>{let dark=document.documentElement.dataset.theme!=='dark';document.documentElement.dataset.theme=dark?'dark':'light';store.set('theme',dark?'dark':'light');$('themeBtn').textContent=dark?'☀':'☾'};
-document.documentElement.dataset.theme=store.get('theme','light');$('themeBtn').textContent=document.documentElement.dataset.theme==='dark'?'☀':'☾';
-$('topic').value=store.get('topic','');$('draft').value=store.get('draft','');$('minutes').value=store.get('minutes',15);$('points').value=store.get('points','');$('notesInput').value=store.get('notes','');$('duaInput').value='';
-['topic','draft','minutes','points','notesInput'].forEach(id=>$(id).addEventListener('input',()=>{let k={topic:'topic',draft:'draft',minutes:'minutes',points:'points',notesInput:'notes'}[id];store.set(k,$(id).value);if(id==='draft'||id==='minutes')updateStats();if(id==='points')renderChecks()}));
-function updateStats(){let txt=$('draft').value.replace(/\[(وقفة|دعاء|آية|نبرة قوية|نبرة هادئة|نبرة عادية)\]/g,' ').trim(),n=txt?txt.split(/\s+/).length:0,mins=Number($('minutes').value)||15,over=n-mins*WPM();$('stats').textContent=n+' كلمة، والمدة التقريبية للإلقاء نحو '+Math.round(n/WPM()*10)/10+' دقيقة'+(over>0?'. الوقت المسموح '+mins+' دقيقة، فاختصر نحو '+over+' كلمة':'');$('stats').classList.toggle('stats-over',over>0)}
-updateStats();
-document.querySelectorAll('[data-marker]').forEach(b=>b.onclick=()=>{let t=$('draft'),s=t.selectionStart,e=t.selectionEnd,m=' '+b.dataset.marker+' ';t.setRangeText(m,s,e,'end');t.dispatchEvent(new Event('input'));t.focus()});
-let pointsDone=store.get('pointsDone',{});function renderChecks(){let root=$('pointChecks');root.textContent='';$('points').value.split('\n').map(s=>s.trim()).filter(Boolean).forEach(p=>{let lab=document.createElement('label'),c=document.createElement('input');c.type='checkbox';c.checked=!!pointsDone[p];c.onchange=()=>{pointsDone[p]=c.checked;store.set('pointsDone',pointsDone)};lab.append(c,document.createTextNode(p));root.append(lab)})}renderChecks();
-const starters=[
-{topic:'حفظ اللسان',cat:'ethics',ref:'الحجرات: 12؛ ق: 18',summary:'محاور: خطر الغيبة والنميمة، وزن الكلمة، تعويد اللسان على الذكر والكلام الطيب.',body:'مقدمة: الحمد لله، نحمده ونستعينه ونستغفره، ونعوذ بالله من شرور أنفسنا وسيئات أعمالنا.\n\nالمحور الأول: مراقبة الله في الكلام، واستحضار قوله تعالى: «ما يلفظ من قول إلا لديه رقيب عتيد» (ق: 18).\n\nالمحور الثاني: اجتناب الغيبة وسوء الظن، مع بيان أثرهما في تفريق القلوب وإفساد العلاقات.\n\nالمحور الثالث: تدريب النفس على الكلمة الطيبة، والإصلاح بين الناس، والصمت عما لا ينفع.\n\nخاتمة: محاسبة النفس قبل الكلام، وطلب المغفرة ممن وقعنا في حقه، والدعاء بصلاح اللسان والقلب.\n\nتنبيه: راجع الآيات كاملة من المصحف، وأضف حديثًا موثقًا قبل الإلقاء.'},
-{topic:'بر الوالدين',cat:'family',ref:'الإسراء: 23–24؛ لقمان: 14',summary:'محاور: حق الوالدين، لين القول، البر بعد الكبر، وصلتهما بالدعاء والإحسان.',body:'مقدمة: الحمد لله الذي أمر بالإحسان، وجعل للوالدين حقًا عظيمًا.\n\nالمحور الأول: اقتران الأمر بالإحسان إلى الوالدين بتوحيد الله في آيات سورة الإسراء.\n\nالمحور الثاني: صور البر اليومية: خفض الصوت، قضاء الحوائج، الصبر على الكبر، وتجنب التأفف.\n\nالمحور الثالث: بر الوالدين بعد وفاتهما بالدعاء وصلة رحمهما والوفاء بعهدهما المشروع.\n\nخاتمة: مراجعة كل واحد منا لعلاقته بوالديه، والمسارعة إلى الاعتذار والإحسان.\n\nتنبيه: راجع الآيات كاملة من المصحف، وأضف حديثًا موثقًا قبل الإلقاء.'},
-{topic:'المحافظة على الصلاة',cat:'worship',ref:'البقرة: 238؛ العنكبوت: 45',summary:'محاور: مكانة الصلاة، أثرها في السلوك، أسباب الثبات عليها والمحافظة على وقتها.',body:'مقدمة: الحمد لله الذي فرض الصلاة وجعلها صلة بين العبد وربه.\n\nالمحور الأول: عظمة شأن الصلاة ووجوب المحافظة عليها في أوقاتها.\n\nالمحور الثاني: أثر الصلاة الصحيحة في تهذيب السلوك والابتعاد عن الفحشاء والمنكر.\n\nالمحور الثالث: وسائل الثبات: الاستعداد قبل الوقت، الصحبة الصالحة، تذكير الأهل، ومعالجة أسباب التهاون.\n\nخاتمة: دعوة عملية للمحافظة على الصلاة القادمة في وقتها، مع الدعاء بالهداية والثبات.\n\nتنبيه: راجع الآيات كاملة من المصحف، وأضف حديثًا موثقًا قبل الإلقاء.'},
-{topic:'الأمانة في حياة المسلم',cat:'ethics',ref:'النساء: 58؛ الأنفال: 27',summary:'محاور: الأمانة في العبادة والعمل والمال، خطورة الخيانة، وأثرها في الثقة بين الناس.',body:'مقدمة: الحمد لله الذي أمر بأداء الأمانات إلى أهلها.\n\nالمحور الأول: الأمانة ليست في المال وحده؛ بل تشمل المسؤوليات والعهود وأسرار الناس.\n\nالمحور الثاني: صور من الواقع: إتقان العمل، حفظ الحقوق، الصدق في البيع، وأداء المسؤولية.\n\nالمحور الثالث: أثر الأمانة في بناء الثقة واستقامة المجتمع، وخطر التفريط فيها.\n\nخاتمة: اختيار أمانة واحدة قصّرنا فيها والعمل على أدائها اليوم.\n\nتنبيه: راجع الآيات كاملة من المصحف، وأضف حديثًا موثقًا قبل الإلقاء.'},
-{topic:'صلة الرحم',cat:'family',ref:'النساء: 1؛ محمد: 22–23',summary:'محاور: فضل صلة الرحم، صورها العملية، إصلاح القطيعة مع مراعاة رفع الضرر.',body:'مقدمة: الحمد لله الذي أمر بصلة الأرحام ونهى عن الفساد والقطيعة.\n\nالمحور الأول: مكانة الرحم في بناء الأسرة والتراحم بين الأقارب.\n\nالمحور الثاني: صور الصلة: السؤال والزيارة والمساعدة والكلمة الطيبة والتواصل الممكن.\n\nالمحور الثالث: المبادرة بالإصلاح، والحكمة في التعامل مع الخلاف، وحفظ الحقوق ودفع الضرر.\n\nخاتمة: البدء اليوم بالاتصال بقريب أو إصلاح خلاف يمكن إصلاحه.\n\nتنبيه: راجع الآيات كاملة من المصحف، وأضف حديثًا موثقًا قبل الإلقاء.'},
-{topic:'استقبال رمضان والاستعداد له',cat:'seasons',ref:'البقرة: 183؛ يونس: 58',summary:'محاور: مقصد الصيام، التوبة، تنظيم الوقت، صلة القرآن والصدقة، وعدم إضاعة الموسم.',body:'مقدمة: الحمد لله الذي بلغنا مواسم الخير، وشرع الصيام لتحقيق التقوى.\n\nالمحور الأول: استحضار مقصد الصيام كما في قوله تعالى: «لعلكم تتقون» (البقرة: 183).\n\nالمحور الثاني: التهيؤ بالتوبة ورد الحقوق وإصلاح العلاقات قبل دخول الشهر.\n\nالمحور الثالث: خطة واقعية للعبادة: ورد قرآن، صدقة بحسب الاستطاعة، صلة رحم، وتقليل ما يضيع الوقت.\n\nخاتمة: وضع برنامج يسير قابل للاستمرار، وسؤال الله الإعانة والقبول.\n\nتنبيه: يُستخدم هذا النموذج عند قرب رمضان، وتراجع النصوص الشرعية من مصادرها.'},
-{topic:'التوبة والرجوع إلى الله',cat:'worship',ref:'الزمر: 53؛ التحريم: 8',summary:'محاور: سعة رحمة الله، شروط التوبة، ورد الحقوق إلى أصحابها.',body:'مقدمة: الحمد لله الرحيم الغفور، الذي فتح لعباده باب التوبة والإنابة.\n\nالمحور الأول: عدم اليأس من رحمة الله، مع الجمع بين الرجاء الصادق والعمل الصالح.\n\nالمحور الثاني: معاني التوبة العملية: الإقلاع عن الذنب، والندم عليه، والعزم على عدم العودة، ورد الحقوق إلى أهلها إذا تعلقت بحقوق الناس.\n\nالمحور الثالث: الثبات بعد التوبة باختيار الصحبة الصالحة، والابتعاد عن أسباب المعصية، والإكثار من العمل الصالح.\n\nخاتمة: دعوة إلى توبة صادقة تبدأ اليوم، مع الاستغفار وإصلاح ما يمكن إصلاحه.\n\nتنبيه: راجع الآيات كاملة من المصحف، وتحقق من أي نص شرعي تضيفه قبل الإلقاء.'},
-{topic:'حسن الخلق',cat:'ethics',ref:'القلم: 4؛ فصلت: 34',summary:'محاور: قيمة الخلق الحسن، مقابلة الإساءة بالحكمة، وأثر الأخلاق في الأسرة والمجتمع.',body:'مقدمة: الحمد لله الذي دعا إلى مكارم الأخلاق وجعل الإحسان سببًا للألفة.\n\nالمحور الأول: الخلق الحسن يظهر في الصدق، والتواضع، والرفق، والوفاء، واحترام الناس.\n\nالمحور الثاني: التعامل مع الإساءة بالحكمة ودفع السيئة بالتي هي أحسن حيث ينفع ذلك، مع حفظ الحقوق ومنع الظلم.\n\nالمحور الثالث: تطبيقات يومية: حسن الكلام في البيت، والرفق بالضعيف، والأمانة في العمل، والاعتذار عند الخطأ.\n\nخاتمة: اختيار خلق واحد لتحسينه هذا الأسبوع، ومحاسبة النفس عليه.\n\nتنبيه: راجع الآيات كاملة من المصحف، وتحقق من أي نص شرعي تضيفه قبل الإلقاء.'},
-{topic:'شكر النعم',cat:'worship',ref:'إبراهيم: 7؛ النحل: 18',summary:'محاور: تذكر النعم، شكر القلب واللسان والعمل، واستعمال النعمة في الخير.',body:'مقدمة: الحمد لله على نعمه الظاهرة والباطنة، ما علمنا منها وما لم نعلم.\n\nالمحور الأول: التفكر في النعم اليومية، ومنها الإيمان والصحة والأمن والأهل والرزق.\n\nالمحور الثاني: شكر القلب بالاعتراف بالفضل، واللسان بالحمد، والعمل باستعمال النعمة في الطاعة والنفع.\n\nالمحور الثالث: تجنب الإسراف والتبذير، ومساعدة المحتاج بحسب الاستطاعة، وعدم احتقار النعم الصغيرة.\n\nخاتمة: كتابة ثلاث نعم نحمد الله عليها، ثم تحويل الشكر إلى عمل نافع.\n\nتنبيه: راجع الآيات كاملة من المصحف، وتحقق من أي نص شرعي تضيفه قبل الإلقاء.'},
-{topic:'حقوق الجار',cat:'family',ref:'النساء: 36',summary:'محاور: الإحسان إلى الجار، كف الأذى، والتعاون على الخير واحترام الخصوصية.',body:'مقدمة: الحمد لله الذي أمر بالإحسان، وجعل حسن المعاملة سببًا للمودة بين الناس.\n\nالمحور الأول: الإحسان إلى الجار بالكلمة الطيبة، والسؤال عنه عند الحاجة، ومساعدته بما نستطيع.\n\nالمحور الثاني: كف الأذى: تجنب الضجيج المؤذي، واحترام الخصوصية، والمحافظة على النظافة والمرافق المشتركة.\n\nالمحور الثالث: إصلاح الخلاف بين الجيران بالحكمة، وحفظ الحقوق، والاستعانة بالجهات المناسبة عند وجود ضرر لا يمكن حله بالحوار.\n\nخاتمة: مبادرة عملية واحدة تجاه جار، مع ترك ما يسبب الأذى أو الخصومة.\n\nتنبيه: راجع الآيات كاملة من المصحف، وتحقق من أي نص شرعي تضيفه قبل الإلقاء.'},
-{topic:"خطبة عيد الفطر: شكر النعمة وتمام الصيام",cat:'eid',ref:"البقرة: 185؛ البقرة: 183؛ الأعلى: 14–15",summary:"محاور: التكبير والشكر على إتمام العدة، ثمرة الصيام التقوى، الثبات على الطاعة بعد رمضان، وصلة الأرحام والتسامح.",body:"التكبير بالصيغة المعتمدة عندكم، ثم الحمد والثناء على الله.\n\nمقدمة: الحمد لله الذي هدانا للإسلام، وأتمّ علينا نعمة الصيام والقيام، ونصلي ونسلم على نبينا محمد وعلى آله وصحبه.\n\nالمحور الأول: شكر النعمة. بيّن أن إتمام الشهر نعمة تستوجب الشكر، واستحضر قوله تعالى: «ولتكملوا العدة ولتكبروا الله على ما هداكم ولعلكم تشكرون» (البقرة: 185).\n\nالمحور الثاني: ثمرة الصيام التقوى. ذكّر بقوله تعالى: «يا أيها الذين آمنوا كتب عليكم الصيام كما كتب على الذين من قبلكم لعلكم تتقون» (البقرة: 183)، وبأن العبرة بما يبقى أثره بعد رمضان.\n\nالمحور الثالث: الثبات بعد رمضان. دعوة إلى المحافظة على الصلاة والذكر وقراءة القرآن والصدقة، فمن علامات القبول الاستمرار على الطاعة.\n\nالمحور الرابع: العيد فرحة وتواصل. صلة الأرحام، وإصلاح ذات البين، والتسامح، وإدخال السرور على الأيتام والمحتاجين.\n\nخاتمة: الدعاء بقبول الصيام والقيام، وبأن يعيد الله العيد على الأمة بالخير والبركات.\n\nتنبيه: راجع الآيات كاملة من المصحف، وأضف حديثًا موثقًا من مصدره، وتحقق من أحكام زكاة الفطر المعتمدة في بلدكم قبل ذكرها."},
-{topic:"خطبة عيد الأضحى: التسليم والتضحية والتقوى",cat:'eid',ref:"الصافات: 102–107؛ الحج: 37؛ البقرة: 203",summary:"محاور: قصة إبراهيم وإسماعيل وكمال التسليم، حقيقة الأضحية التقوى، التضحية في حياتنا، وذكر الله في أيام التشريق.",body:"التكبير بالصيغة المعتمدة عندكم، ثم الحمد والثناء على الله.\n\nمقدمة: الحمد لله الذي جعل الأعياد مواسم للشكر والطاعة، ونصلي ونسلم على نبينا محمد وعلى آله وصحبه.\n\nالمحور الأول: قصة إبراهيم وإسماعيل عليهما السلام، وكمال التسليم لأمر الله (الصافات: 102–107). اذكر العبرة منها دون إطالة في تفاصيل غير ثابتة.\n\nالمحور الثاني: حقيقة الأضحية. استحضر قوله تعالى: «لن ينال الله لحومها ولا دماؤها ولكن يناله التقوى منكم» (الحج: 37)، فالمقصود الإخلاص والتقوى لا اللحم والدم.\n\nالمحور الثالث: التضحية في حياتنا. تضحية بالوقت والجهد والمال في سبيل الخير، وبر الوالدين، وخدمة المجتمع، وإعانة المحتاجين.\n\nالمحور الرابع: أيام التشريق. ذكّر بقوله تعالى: «واذكروا الله في أيام معدودات» (البقرة: 203)، وبالتكبير وإطعام المحتاجين وصلة الأرحام.\n\nخاتمة: الدعاء بقبول الطاعات، وبأن يتقبل الله من الحجاج والمضحين، وأن يعيد العيد على الأمة بالخير.\n\nتنبيه: راجع الآيات كاملة من المصحف، وأضف حديثًا موثقًا من مصدره، وتحقق من أحكام الأضحية وآدابها من مصدر معتمد قبل ذكرها."},
-{topic:"خطبة العيد: التسامح وصلة الأرحام",cat:'eid',ref:"النساء: 1؛ الشورى: 40",summary:"محاور: العيد فرصة للصفح، فضل صلة الرحم، إصلاح ذات البين، وإدخال الفرح على الأهل والجيران.",body:"التكبير بالصيغة المعتمدة عندكم، ثم الحمد والثناء على الله.\n\nمقدمة: الحمد لله الذي جمع القلوب على الإيمان، ونصلي ونسلم على نبينا محمد وعلى آله وصحبه.\n\nالمحور الأول: العيد فرصة للصفح. استحضر قوله تعالى: «فمن عفا وأصلح فأجره على الله» (الشورى: 40).\n\nالمحور الثاني: صلة الأرحام. ذكّر بقوله تعالى: «واتقوا الله الذي تساءلون به والأرحام» (النساء: 1)، وبأن الزيارة والكلمة الطيبة تصلان ما انقطع.\n\nالمحور الثالث: إصلاح ذات البين. دعوة إلى طي الخصومات وبدء صفحة جديدة بين الأهل والجيران.\n\nالمحور الرابع: إدخال الفرح. رعاية الأيتام والفقراء والمرضى وكبار السن، وتفقد من لا يجد من يزوره.\n\nخاتمة: الدعاء بصلاح ذات البين ووحدة الصف وصلاح الأحوال.\n\nتنبيه: راجع الآيات كاملة من المصحف، وأضف حديثًا موثقًا من مصدره قبل الإلقاء."}
-];
-function renderStarters(){let root=$('starterList'),q=$('searchSermons').value.trim().toLowerCase(),cat=$('sermonCategory').value;root.textContent='';let arr=starters.filter(s=>s.cat!=='eid'&&(cat==='all'||s.cat===cat)&&(s.topic+' '+s.summary+' '+s.ref).toLowerCase().includes(q));if(!arr.length){root.innerHTML='<p class="small">لا توجد نماذج مطابقة.</p>';return}arr.forEach(s=>starterCard(s,root))}
-function starterCard(s,root){let d=document.createElement('div');d.className='listitem';let title=document.createElement('strong');title.textContent=s.topic;let p=document.createElement('p');p.textContent=s.summary;let r=document.createElement('p');r.className='small';r.textContent='مراجع للاستدلال: '+s.ref;let b=document.createElement('button');b.className='primary';b.textContent='استخدام النموذج في محرر الخطبة';b.onclick=()=>{if($('draft').value.trim()&&!confirm('سيحل هذا النموذج محل النص الموجود في المحرر. إن لم تحفظ نصك الحالي في المكتبة فسيضيع. هل تريد المتابعة؟'))return;$('topic').value=s.topic;$('draft').value=s.body;['topic','draft'].forEach(id=>$(id).dispatchEvent(new Event('input')));showPanel('sermon');toast('نُقل النموذج إلى المحرر؛ راجعه قبل الإلقاء')};d.append(title,p,r,b);root.append(d)}
-let sermons=store.get('sermons',[]);function renderSermons(){let q=$('searchSermons').value.trim().toLowerCase(),root=$('sermonList');root.textContent='';let arr=sermons.filter(s=>(s.topic+' '+s.text).toLowerCase().includes(q));if(!arr.length){root.innerHTML='<p class="small">لا توجد خطب مطابقة بعد. احفظ خطبتك من قسم الإعداد.</p>';return}arr.forEach(s=>{let d=document.createElement('div');d.className='listitem';let title=document.createElement('strong');title.textContent=s.topic||'خطبة بلا عنوان';let p=document.createElement('p');p.className='small';p.textContent=new Date(s.updated).toLocaleDateString('ar');let row=document.createElement('div');row.className='row';let load=document.createElement('button');load.textContent='فتح';load.onclick=()=>{$('topic').value=s.topic;$('draft').value=s.text;$('minutes').value=s.minutes;['topic','draft','minutes'].forEach(id=>$(id).dispatchEvent(new Event('input')));showPanel('sermon');toast('فُتحت الخطبة')};let del=document.createElement('button');del.textContent='حذف';del.onclick=()=>{if(confirm('حذف هذه الخطبة من المكتبة؟')){sermons=sermons.filter(x=>x.id!==s.id);store.set('sermons',sermons);renderSermons()}};row.append(load,del);d.append(title,p,row);root.append(d)})}
-$('saveSermon').onclick=()=>{let text=$('draft').value.trim();if(!text){toast('اكتب نص الخطبة أولًا');return}if(!pro&&sermons.length>=FREE_LIMIT){toast('وصلت إلى حد النسخة المجانية ('+FREE_LIMIT+' خطب). فعّل النسخة الكاملة للمتابعة.');showPanel('pro');return}let topic=$('topic').value.trim()||'خطبة بلا عنوان',item={id:Date.now(),topic,text,minutes:Number($('minutes').value)||15,updated:new Date().toISOString()};sermons.unshift(item);store.set('sermons',sermons);renderSermons();toast('حُفظت الخطبة في المكتبة')};$('searchSermons').oninput=()=>{renderStarters();renderSermons()};$('sermonCategory').onchange=renderStarters;renderStarters();renderSermons();function renderEid(){let root=$('eidList');root.textContent='';starters.filter(s=>s.cat==='eid').forEach(s=>starterCard(s,root))}renderEid();
-$('exportSermons').onclick=()=>{let blob=new Blob([JSON.stringify(sermons,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='mikat-khutab-backup.json';a.click();URL.revokeObjectURL(url)};
-let duas=store.get('duas',[]);function renderDuas(){let root=$('duaList');root.textContent='';if(!duas.length){root.innerHTML='<p class="small">لم تضف أدعية بعد.</p>';return}duas.forEach((x,i)=>{let d=document.createElement('div');d.className='listitem';let p=document.createElement('p');p.textContent=x;let b=document.createElement('button');b.textContent='حذف';b.onclick=()=>{duas.splice(i,1);store.set('duas',duas);renderDuas()};d.append(p,b);root.append(d)})}$('addDua').onclick=()=>{let v=$('duaInput').value.trim();if(!v)return;duas.unshift(v);store.set('duas',duas);$('duaInput').value='';renderDuas();toast('أُضيف إلى قائمتك')};renderDuas();
-$('present').onclick=()=>{let raw=$('draft').value.trim();if(!raw){toast('اكتب نص الخطبة أولًا');return}let out=$('stageText');out.textContent='';let tone='';raw.split(/(\[(?:وقفة|دعاء|آية|نبرة قوية|نبرة هادئة|نبرة عادية)\])/).forEach(part=>{if(part.indexOf('[نبرة ')===0){tone=part==='[نبرة قوية]'?'t-strong':part==='[نبرة هادئة]'?'t-soft':'';let c=document.createElement('span');c.className='marker tc-'+(tone==='t-strong'?'strong':tone==='t-soft'?'soft':'none');c.textContent=part.slice(1,-1);out.append(c);return}let cls=part==='[وقفة]'?'':part==='[دعاء]'?' dua':part==='[آية]'?' aya':null;if(cls!==null){let s=document.createElement('span');s.className='marker'+cls;s.textContent=part.slice(1,-1);out.append(s)}else{let n=document.createElement('span');if(tone)n.className=tone;n.textContent=part;out.append(n)}});if($('topic').value.trim()){let h=document.createElement('div');h.style.cssText='font:700 .55em system-ui;color:var(--accent);margin-bottom:1em';h.textContent=$('topic').value.trim();out.prepend(h)}$('stage').classList.remove('hidden');awake(true);remain=(Number($('minutes').value)||15)*60;clockUpdate();paused=true;last=0;$('pauseStage').textContent='ابدأ';$('stageText').scrollTop=0;total=remain;fitSpeed();$('pace').textContent='';};
-let remain=900,paused=false,last=0,raf=0;function clockUpdate(){$('clock').classList.toggle('low',remain<=120);$('clock').textContent=remain<=0?'انتهى الوقت':String(Math.floor(remain/60)).padStart(2,'0')+':'+String(Math.floor(remain%60)).padStart(2,'0')}function tick(t){if($('stage').classList.contains('hidden')||paused){last=0;return}if(!last)last=t;let dt=Math.min((t-last)/1000,.2);last=t;let el=$('stageText');el.scrollTop+=Number($('scrollSpeed').value)*dt;remain=Math.max(0,remain-dt);clockUpdate();paceUpdate();if(remain>0&&el.scrollTop+el.clientHeight<el.scrollHeight)raf=requestAnimationFrame(tick);else{paused=true;$('pauseStage').textContent='متابعة';last=0}}let total=900;
-function textH(){let el=$('stageText');return Math.max(1,el.scrollHeight-innerHeight*0.5-28)}
-function fitSpeed(){let el=$('stageText'),sp=$('scrollSpeed'),v=Math.max(0,textH()-el.scrollTop)/Math.max(remain,1);sp.min=1;sp.max=Math.max(100,Math.ceil(v*2));sp.value=Math.max(1,Math.round(v))}
-function paceUpdate(){let el=$('stageText'),p=$('pace'),diff=(Math.min(1,el.scrollTop/textH())-(total-remain)/total)*total,m=Math.floor(Math.abs(diff)/60),sec=Math.round(Math.abs(diff)%60),t=(m?m+' د ':'')+sec+' ث';if(Math.abs(diff)<15){p.textContent='على الخطة';p.className=''}else if(diff>0){p.textContent='متقدم '+t;p.className='ahead'}else{p.textContent='متأخر '+t;p.className='behind'}}
-let wl=null;
-async function awake(on){try{if(on){if('wakeLock' in navigator&&!wl){wl=await navigator.wakeLock.request('screen');wl.addEventListener('release',()=>{wl=null})}}else if(wl){await wl.release();wl=null}}catch(e){wl=null}}
-document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&!$('stage').classList.contains('hidden'))awake(true)});
-$('fitBtn').onclick=fitSpeed;
-$('pauseStage').onclick=()=>{paused=!paused;$('pauseStage').textContent=paused?'متابعة':'إيقاف مؤقت';last=0;if(!paused)raf=requestAnimationFrame(tick)};$('stageText').addEventListener('touchstart',()=>{if(!paused){paused=true;$('pauseStage').textContent='متابعة';last=0}},{passive:true});$('fontSize').oninput=()=>{$('stageText').style.fontSize=$('fontSize').value+'px';if(paused)fitSpeed()};$('exitStage').onclick=()=>{logDelivery();cancelAnimationFrame(raf);$('stage').classList.add('hidden');paused=true;awake(false)};$('stage').addEventListener('transitionend',()=>{}); 
-const D2R=Math.PI/180;
-const dsin=d=>Math.sin(d*D2R),dcos=d=>Math.cos(d*D2R),dtan=d=>Math.tan(d*D2R);
-const dasin=x=>Math.asin(x)/D2R,dacos=x=>Math.acos(x)/D2R,datan2=(y,x)=>Math.atan2(y,x)/D2R,dacot=x=>Math.atan(1/x)/D2R;
-const fixA=a=>a-360*Math.floor(a/360),fixH=a=>a-24*Math.floor(a/24);
-function sunPos(jd){const D=jd-2451544.5,g=fixA(357.529+0.98560028*D),q=fixA(280.459+0.98564736*D),L=fixA(q+1.915*dsin(g)+0.020*dsin(2*g)),e=23.439-0.00000036*D,RA=datan2(dcos(e)*dsin(L),dcos(L))/15;return{decl:dasin(dsin(e)*dsin(L)),eqt:q/15-fixH(RA)}}
-function prayerTimes(y,m,d,lat,lng,tz){
- const jd=Date.UTC(y,m-1,d)/864e5+2440587.5-lng/360;
- const mid=t=>fixH(12-sunPos(jd+t).eqt);
- const ang=(a,t,ccw)=>{const s=sunPos(jd+t),v=dacos((-dsin(a)-dsin(s.decl)*dsin(lat))/(dcos(s.decl)*dcos(lat)))/15;return mid(t)+(ccw?-v:v)};
- const asr=(f,t)=>{const s=sunPos(jd+t);return ang(-dacot(f+dtan(Math.abs(lat-s.decl))),t,false)};
- let T={fajr:5,sunrise:6,dhuhr:12,asr:13,sunset:18,isha:18};
- for(let i=0;i<2;i++){const p=k=>T[k]/24;T={fajr:ang(18,p('fajr'),true),sunrise:ang(0.833,p('sunrise'),true),dhuhr:mid(p('dhuhr')),asr:asr(1,p('asr')),sunset:ang(0.833,p('sunset'),false),isha:ang(17,p('isha'),false)}}
- const adj=h=>h+tz-lng/15;
- return{fajr:adj(T.fajr),sunrise:adj(T.sunrise),dhuhr:adj(T.dhuhr),asr:adj(T.asr),maghrib:adj(T.sunset),isha:adj(T.isha)}
+const $=id=>document.getElementById(id);
+const toast=(msg)=>{const t=$('toast');if(!t)return;t.textContent=msg;t.classList.remove('hidden');setTimeout(()=>t.classList.add('hidden'),3000)};
+const TITLES={community:'فضاء الأئمة',sermon:'إعداد الخطبة والإلقاء',library:'مكتبة الخطب',adhkar:'الأذكار والأدعية',prayer:'مواقيت الصلاة',checklist:'نقاط المتابعة',notes:'ملاحظات الخطيب',pro:'النسخة الكاملة',guide:'كيف أستعمل التطبيق؟',eid:'خطب الأعياد',sources:'المراجع والتحقق',weekly:'موضوع الجمعة القادمة',log:'سجل الإلقاء'};
+
+function showPanel(id){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.add('hidden'));
+  const p=$(id);
+  if(p){
+    p.classList.remove('hidden');
+    $('appbar').classList.remove('hidden');
+    $('appbarTitle').textContent=TITLES[id]||'الخدمة';
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
 }
-function fmtT(h){let m=Math.round(fixH(h)*60)%1440;return String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0')}
-const CITIES=[['الجزائر العاصمة',36.75,3.06],['وهران',35.70,-0.63],['قسنطينة',36.37,6.61],['عنابة',36.90,7.77],['البليدة',36.47,2.83],['باتنة',35.56,6.17],['سطيف',36.19,5.41],['سيدي بلعباس',35.19,-0.63],['بسكرة',34.85,5.73],['تلمسان',34.88,-1.32],['بجاية',36.75,5.08],['تيزي وزو',36.71,4.05],['الجلفة',34.67,3.25],['مستغانم',35.93,0.09],['الشلف',36.17,1.33],['المدية',36.27,2.75],['غرداية',32.49,3.67],['ورقلة',31.95,5.32],['الأغواط',33.80,2.88],['تيارت',35.37,1.32],['سكيكدة',36.88,6.91],['جيجل',36.82,5.77],['بشار',31.62,-2.22],['أدرار',27.87,-0.29],['تمنراست',22.79,5.53],['تبسة',35.40,8.12],['سعيدة',34.84,0.15],['معسكر',35.40,0.14],['قالمة',36.46,7.43],['المسيلة',35.70,4.54],['البويرة',36.37,3.90],['سوق أهراس',36.29,7.95],['الوادي',33.37,6.86],['خنشلة',35.43,7.14],['غليزان',35.74,0.56],['تيبازة',36.59,2.45],['بومرداس',36.76,3.48],['عين الدفلى',36.26,1.97],['النعامة',33.27,-0.31],['تيسمسيلت',35.61,1.81],['ميلة',36.45,6.26],['أم البواقي',35.88,7.11],['برج بوعريريج',36.07,4.76],['الطارف',36.77,8.31],['عين تموشنت',35.30,-1.14],['تندوف',27.67,-8.15],['البيض',33.68,1.02],['إليزي',26.51,8.48],['تقرت',33.10,6.06]];
-const cityEl=$('city'),pd=$('pdate');
-CITIES.forEach((c,i)=>{const o=document.createElement('option');o.value=i;o.textContent=c[0];cityEl.append(o)});
-{const sc=Number(store.get('city',0));cityEl.value=Number.isFinite(sc)&&sc>=0&&sc<CITIES.length?sc:0}
-{const n=new Date();pd.value=n.getFullYear()+'-'+String(n.getMonth()+1).padStart(2,'0')+'-'+String(n.getDate()).padStart(2,'0')}
-let loc=store.get('loc',null);
-if(!(loc&&Number.isFinite(loc.lat)&&Number.isFinite(loc.lng)&&Math.abs(loc.lat)<=90&&Math.abs(loc.lng)<=180))loc=null;
-function updLoc(){$('useCity').classList.toggle('hidden',!loc);$('locStatus').textContent=loc?('الحساب لموقعك الحالي (خط العرض '+loc.lat.toFixed(2)+'، خط الطول '+loc.lng.toFixed(2)+'). الموقع يبقى في جهازك ولا يُرسل إلى أحد.'):'اضغط «استخدم موقعي» لتُحسب المواقيت لمكانك بدقة، أو اختر مدينتك.'}
-function showNext(t,y,m,d){const el=$('nextPrayer'),n=new Date();if(n.getFullYear()!==y||n.getMonth()+1!==m||n.getDate()!==d){el.classList.add('hidden');return}
- const nowH=n.getHours()+n.getMinutes()/60+n.getSeconds()/3600,list=[['الفجر','fajr'],['الظهر','dhuhr'],['العصر','asr'],['المغرب','maghrib'],['العشاء','isha']];
- let nx=list.find(x=>t[x[1]]>nowH),diff,name;
- if(nx){diff=(t[nx[1]]-nowH)*60;name=nx[0]}else{diff=(24-nowH+t.fajr)*60;name='الفجر (غدًا)'}
- const mins=Math.round(diff),h=Math.floor(mins/60),mm=mins%60;
- el.textContent='الصلاة القادمة: '+name+' بعد '+(h?h+' ساعة و':'')+mm+' دقيقة';el.classList.remove('hidden')}
-$('useLoc').onclick=()=>{if(!navigator.geolocation){toast('هذا المتصفح لا يدعم تحديد الموقع');return}toast('جارٍ تحديد موقعك…');
- navigator.geolocation.getCurrentPosition(p=>{loc={lat:p.coords.latitude,lng:p.coords.longitude};store.set('loc',loc);updLoc();renderPrayer()},
- e=>{toast(e&&e.code===1?'لم يُسمح بالموقع. فعّل إذن الموقع للمتصفح أو اختر مدينتك.':'تعذّر تحديد الموقع، اختر مدينتك.')},{enableHighAccuracy:false,timeout:15000,maximumAge:600000})};
-$('useCity').onclick=()=>{loc=null;store.set('loc',null);updLoc();renderPrayer()};
-function renderPrayer(){const c=CITIES[Number(cityEl.value)||0],[y,m,d]=pd.value.split('-').map(Number),root=$('prayerTimes');if(!y)return;const P=loc||{lat:c[1],lng:c[2]},t=prayerTimes(y,m,d,P.lat,P.lng,1);root.textContent='';[['الفجر','fajr'],['الشروق','sunrise'],['الظهر (وقت صلاة الجمعة)','dhuhr'],['العصر','asr'],['المغرب','maghrib'],['العشاء','isha']].forEach(([n,k])=>{const r=document.createElement('div');r.className='listitem row';const a=document.createElement('strong'),b=document.createElement('span');a.textContent=n;b.textContent=fmtT(t[k]);b.style.textAlign='left';r.append(a,b);root.append(r)});showNext(t,y,m,d)}
-cityEl.onchange=()=>{loc=null;store.set('loc',null);store.set('city',Number(cityEl.value));updLoc();renderPrayer()};pd.onchange=renderPrayer;updLoc();renderPrayer();setInterval(()=>{if(!$('prayer').classList.contains('hidden'))renderPrayer()},30000);
-const PRO_HASHES=['1a49deaee0a0b1554c9f01162a27d6153f1c6ade3e8d58c1b9d21dd289c89612','b9cc7bfa6be10f7e2b3006da387ac9734e1e88431e99e72f8fcb4615d9d364f0','7c0f84261b1193e76e59bf5a6a4e88edcf5839c57811a6941ba39a851422ddbc','ef89327824218dcd3d991182b965b886cb50e626c65156b8661f5e60b36180ce','7c690e47e2429741dab30460df7a36f5bd07ffd93a5149b3009c6f270bcc2874','b0ad59bf22624e0434abb4314174749ea169d59c5d34f8121bcda3aa82c59b62','c660b25e7cd8e5c52b21999c216e0999e599b6e64c8fa18799ff5865e4fe0f55','b1d66aa21d58bddd5397e46a480eb1ca6823506199343f6831c82cd74fe382c9','ac335c2bc73e59cb38b783f7c056a8cec8c8c5c2b4b72abc834ecfd4b0a9dac2','671c591597958302829e714a9eb87ec7e6603c774c68a60b74a2f2b28a99e7ca','b591a05e75e0fa34dad4a4bff9dc0e30653bfc7ed82138a9eee75e14915c35fd','c8e320005f8c7ea24018217e0bcbd2a2e1e41d8b2b9ca46f15b5a184fddd5b33','b53236848c14763c54137b3e746e311d451966ca2adf015299280260d246bf91','fee1311619060c0c03388cd4c0bb3b06816d7cb11ae54bdf1bb5b6913e67c429','90814af35ac0e138b67e32d47877f5b65fd3b2360c0f8dbb119e92b1cb89eab0','aced6793fc7756b131b8c54bf10ca326f25f3f4777137d406106eaa972a525ab','c765450c88bc7aa3ac6fb2ee96117769b46d4dbcbc96d3c7198fa0d7cd79a836','93e8a2e881f17beb6be284b6277ef2c447c8d19ee0b221a1c4c1cfda8e2f3dcc','bb78709808d242d6e5290d369d04546887e7a33f5710cd95e7155bc01417e512','12741f9efae5221ccfe843c8c6c64a8cbe4a882ca13e2d0360e6cbac87959375','f1cd573a7ff631dc441218f1a4ab7647ec2fb374d2157916c90d9e758b5f4727','f9a796134bc094b876dfee8a30045aaac3578f8b1dd452f336de6c31f9a3949a','5dc50fb20b1f8697d724e34dc09bf87d8c896daac6a4695ce419dd93cebcebf9','0117f1bf7b689b23fb23bfac968970ccaca98f6375da67a20d94d0d520e592b2','945414a61965067cdef7c04627ce816f72db98d69d4e3476e0fd9aca4c839011','2153c59cbe67c23ed1157a46c456382e0786b8cfe490b9697a40bca95d5d8c1e','41b50b958958ee7106e80f6b0bbb53c53293bb7fcca3e1e9dbadd802f808dab7','74f776a844239b394af0a639a20fe29b01d993b73e9ab672cd9d701f17166eb0','9b6d4863eb436161318c57bd7a515e04fdd289e1b45757e1653c68099e41e35f','b9d8abce5f5490487e410c9f4e6eb7bcb9072705f93452565538116134fdfc04','8c133a66ac8b30c928a8ae7fe905962c63d0568a515e900894bfbb14f085a729','f6cefd0d9df376d11671a6a1b368dcb21fbcc46a64c299334431f4c3d399d0f8','040ece958ee20980073489a2db3a335eb157c0f106296d5de1761d0633eb9716','07e56a7238c083e76b66c9a23954c06b1905b7d97e062553ce0f54f589f8cc93','fbeec0c56f35de377d821ac3bd9e6b449cf19c8f7c6db5336856ded3bd4d0d5d','de91cb4ebb714e120fc04a98398153520aba29d71bfbbf808b8fa629196ba353','fc67c41685023bc1ca66382f0449695d138121e1f6e6357c2bfdc3a6e19116f0','c0e396eef63f32c29283a87f2857473b2b8619e9fd0bc832c93345bd0453875f','7a6797428e02830f9ec82a471e3c9a6e1a0c751652ed905499c8bbf796b02d5d','10c5949b348ee4ffdbc5c8555ba5873271f10415dc90986968f8de09269bf44d','81250a3a3f9426f88c49868e33ec55dffb951826d06d94561ba871907d52215b','8877fe189d76d18af3ac700ee6959a64ababfbda374eb8613b4bc454472c5606','15352fa2f8f4ee5a69f69acf68a4e413ab9a144524835ff6e8b0ba67785c4466','48f90d31a2ca985e5e8f25f269d629d8b666a02aa03597e29c42f1b857230e31','8ac50e5696dae7a826fd41da1914751817931c84aef335fc713ddb9db40ff95c','aa48d9bb136ae1b4de4a28fb269bf66dba007da89246a82809d08fd19611b99d','5d090e90d40f45a05554bfb3575790160593d913b011a5a19d3b4e5015e7ac56','40a45164c0401bdfaae52f030bc40b1b95aa3c9c826ea1f42c0a351fc3e49a27','324a767eb1076e34662c323808e4f104a734fb5ebc6848527593441f7b1406ac','e3aac9d1937a35c94963dab54c7eafd293d0c31191d83c2b9048727ca951198e'];
-const FREE_LIMIT=5,CONTACT='mfy199006@gmail.com';
-let pro=store.get('pro',false)===true;
-async function sha(t){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t));return Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,'0')).join('')}
-function renderPro(){$('proState').textContent=pro?'✅ النسخة الكاملة مفعّلة على هذا الجهاز.':'النسخة المجانية: حتى '+FREE_LIMIT+' خطب محفوظة في المكتبة.';$('proForm').classList.toggle('hidden',pro);const c=$('proContact');if(CONTACT&&!pro){c.textContent='للحصول على كود التفعيل: '+CONTACT;c.classList.remove('hidden')}else c.classList.add('hidden')}
-$('activate').onclick=async()=>{const raw=$('proCode').value.toUpperCase().replace(/[^A-Z0-9]/g,'');if(!raw){toast('اكتب الكود أولًا');return}try{const h=await sha('mikat-v1|'+raw);if(PRO_HASHES.includes(h)){pro=true;store.set('pro',true);renderPro();toast('فُعّلت النسخة الكاملة');$('proCode').value=''}else toast('الكود غير صحيح، تأكد من كتابته')}catch(e){toast('تعذّر التحقق في هذا المتصفح')}};
-renderPro();
-const DIRECTIVES=[
- {title:'المصدر الرسمي للتعليمات',body:'تؤخذ التعليمات والبيانات الرسمية حصرًا من الموقع الرسمي للجهات الدينية وصفحاتها الموثقة، فتحقّق من أي تعليمة من هناك قبل اعتمادها.',link:'https://marw.gov.dz',linkText:'الموقع الرسمي (marw.gov.dz)'},
- {title:'النشرة الرسمية',body:'تُنشر النصوص التنظيمية والقرارات في نشرات رسمية على الموقع الرسمي، وهي ملفات PDF. هذا مثال على شكلها.',link:'https://marw.gov.dz/sites/default/files/publications/nachra_rasmia42_semestre2_2021.pdf',linkText:'النشرة الرسمية رقم 42 (السداسي الثاني 2021)'}
-];
-function renderDirectives(){const root=$('directiveList');root.textContent='';DIRECTIVES.forEach(d=>{const a=document.createElement('div');a.className='listitem';const t=document.createElement('strong');t.textContent=d.title;a.append(t);if(d.date){const m=document.createElement('p');m.className='small';m.textContent=d.date;a.append(m)}const b=document.createElement('p');b.textContent=d.body;a.append(b);if(d.link&&/^https:\/\//.test(d.link)){const l=document.createElement('a');l.href=d.link;l.target='_blank';l.rel='noopener noreferrer';l.textContent=d.linkText||'المصدر';a.append(l)}root.append(a)});$('directiveEmpty').classList.toggle('hidden',DIRECTIVES.length>2)}
-renderDirectives();
-fetch('directives.json',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject()).then(list=>{if(Array.isArray(list)&&list.length){DIRECTIVES.length=0;list.forEach(x=>{if(x&&typeof x.title==='string'&&typeof x.body==='string')DIRECTIVES.push(x)});renderDirectives()}}).catch(()=>{});
-$('shareApp').onclick=async()=>{const url=location.href.split('#')[0].split('?')[0],text='ميقات الخطيب: تطبيق مجاني يساعد الإمام على المنبر: تمرير تلقائي ومؤقت ذكي ومواقيت الصلاة.';
- try{if(navigator.share){await navigator.share({title:'ميقات الخطيب',text,url});return}}catch(e){if(e&&e.name==='AbortError')return}
- try{await navigator.clipboard.writeText(text+'\n'+url);toast('نُسخ الرابط، الصقه في أي محادثة')}catch(e){prompt('انسخ الرابط:',url)}};
-const BK_EXCLUDE=['pro','loc'];
-$('backupAll').onclick=()=>{const data={};try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.startsWith('mikat-')&&!BK_EXCLUDE.includes(k.slice(6)))data[k]=localStorage.getItem(k)}}catch(e){toast('تعذّر قراءة البيانات');return}
- const out={app:'mikat',version:1,date:new Date().toISOString(),data},blob=new Blob([JSON.stringify(out,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='mikat-backup-'+new Date().toISOString().slice(0,10)+'.json';a.click();URL.revokeObjectURL(url);toast('تم تجهيز النسخة الاحتياطية')};
-$('restoreAll').onclick=()=>$('restoreFile').click();
-$('restoreFile').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const o=JSON.parse(r.result);if(!o||o.app!=='mikat'||!o.data||typeof o.data!=='object')throw 0;const keys=Object.keys(o.data).filter(k=>k.startsWith('mikat-')&&!BK_EXCLUDE.includes(k.slice(6))&&typeof o.data[k]==='string');if(!keys.length)throw 0;if(!confirm('سيحل محتوى هذه النسخة ('+keys.length+' عنصرًا) محل بياناتك الحالية. هل تريد المتابعة؟'))return;keys.forEach(k=>localStorage.setItem(k,o.data[k]));toast('تم الاسترجاع، سيُعاد تحميل التطبيق');setTimeout(()=>location.reload(),900)}catch(err){toast('الملف غير صالح لنسخة ميقات')}};r.readAsText(f);e.target.value=''};
-let W={topic:'',date:'',note:'',points:[]};
-function daysToFriday(now){return (5-now.getDay()+7)%7}
-function renderWeekly(){
- const d=daysToFriday(new Date()),c=$('weeklyCount');
- c.textContent=d===0?'اليوم الجمعة':d===1?'غدًا الجمعة':'الجمعة بعد '+d+' أيام';
- const root=$('weeklyBody');root.textContent='';
- if(!W.topic){const e=document.createElement('p');e.className='small';e.textContent='لم يُنشر موضوع هذا الأسبوع بعد. عُد إلى هنا قبل الجمعة.';root.append(e);$('weeklyHint').textContent='لم يُنشر موضوع هذا الأسبوع بعد.';return}
- $('weeklyHint').textContent=W.topic;
- const box=document.createElement('div');box.className='listitem';
- const t=document.createElement('strong');t.textContent=W.topic;box.append(t);
- if(W.date){const m=document.createElement('p');m.className='small';m.textContent='لجمعة '+W.date;box.append(m)}
- if(W.note){const n=document.createElement('p');n.textContent=W.note;box.append(n)}
- if(W.points.length){const h=document.createElement('p');h.className='small';h.textContent='النقاط المطلوبة:';box.append(h);const ul=document.createElement('ul');W.points.forEach(x=>{const li=document.createElement('li');li.textContent=x;ul.append(li)});box.append(ul)}
- const b=document.createElement('button');b.type='button';b.className='primary';b.textContent='انقل الموضوع والنقاط إلى محرر الخطبة';
- b.onclick=()=>{if(($('topic').value.trim()||$('points').value.trim())&&!confirm('سيحل الموضوع والنقاط محل الموجود في المحرر وقائمة النقاط. هل تريد المتابعة؟'))return;$('topic').value=W.topic;$('topic').dispatchEvent(new Event('input'));$('points').value=W.points.join('\n');$('points').dispatchEvent(new Event('input'));toast('نُقل الموضوع والنقاط');showPanel('sermon')};
- box.append(b);root.append(box)}
-renderWeekly();
-fetch('weekly.json',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject()).then(o=>{
- if(!o||typeof o!=='object'||typeof o.topic!=='string')return;
- W={topic:o.topic.slice(0,200),date:typeof o.date==='string'?o.date.slice(0,40):'',note:typeof o.note==='string'?o.note.slice(0,600):'',points:Array.isArray(o.points)?o.points.filter(x=>typeof x==='string').map(x=>x.slice(0,200)).slice(0,20):[]};
- renderWeekly()}).catch(()=>{});
-let dp=null;
-window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();dp=e;$('installApp').style.display=''});
-$('installApp').onclick=async()=>{if(!dp)return;try{dp.prompt();await dp.userChoice}catch(e){}dp=null;$('installApp').style.display='none'};
-window.addEventListener('appinstalled',()=>{$('installApp').style.display='none';toast('تم تثبيت التطبيق')});
-if('serviceWorker' in navigator){const had=!!navigator.serviceWorker.controller;navigator.serviceWorker.addEventListener('controllerchange',()=>{if(had)toast('تم تحديث التطبيق، أعد فتحه للحصول على آخر نسخة')})}
-function getLog(){const l=store.get('log',[]);return Array.isArray(l)?l.filter(x=>x&&typeof x.a==='number'&&typeof x.w==='number'):[]}
-function WPM(){const ok=getLog().filter(x=>x.w>0&&x.a>0).slice(-10);if(ok.length<2)return 130;const w=ok.reduce((t,x)=>t+x.w,0),a=ok.reduce((t,x)=>t+x.a,0);return Math.min(200,Math.max(80,Math.round(w/a)))}
-function logDelivery(){try{const el=$('stageText'),elapsed=total-remain,prog=el.scrollTop/textH();if(elapsed<60||prog<0.9)return;
- const txt=$('draft').value.replace(/\[(وقفة|دعاء|آية|نبرة قوية|نبرة هادئة|نبرة عادية)\]/g,' ').trim(),w=txt?txt.split(/\s+/).length:0;if(!w)return;
- const l=getLog();l.push({t:($('topic').value.trim()||txt.slice(0,40)).slice(0,80),d:new Date().toISOString().slice(0,10),p:Math.round(total/60),a:Math.round(elapsed/6)/10,w:w});
- store.set('log',l.slice(-30));renderLog();toast('سُجّلت مدة الإلقاء: '+(Math.round(elapsed/6)/10)+' دقيقة')}catch(e){}}
-function renderLog(){const l=getLog(),root=$('logList');root.textContent='';
- $('logSummary').textContent=l.length?('عدد الإلقاءات المسجّلة: '+l.length+'. متوسط سرعتك: نحو '+WPM()+' كلمة في الدقيقة'+(l.filter(x=>x.w>0).length<2?' (تقدير عام حتى تسجّل إلقاءين).':'.')):'لا إلقاءات مسجّلة بعد.';
- $('logHint').textContent=l.length?('آخر إلقاء: '+l[l.length-1].a+' دقيقة'):'مدة إلقائك الفعلية لكل خطبة.';
- l.slice(-10).reverse().forEach(x=>{const b=document.createElement('div');b.className='listitem';const t=document.createElement('strong');t.textContent=x.t||'خطبة';const m=document.createElement('p');m.className='small';m.textContent=x.d+' | المخطط: '+x.p+' د | الفعلي: '+x.a+' د | '+x.w+' كلمة';b.append(t,m);root.append(b)})}
-$('clearLog').onclick=()=>{if(!getLog().length)return;if(confirm('سيُمسح سجل الإلقاء كله. هل تريد المتابعة؟')){store.set('log',[]);renderLog();updateStats()}};
-renderLog();
-function renderCommunity(list){const root=$('communityList');root.textContent='';let n=0;
- list.forEach(g=>{if(!g||typeof g.name!=='string'||typeof g.link!=='string')return;if(!/^https:\/\/(chat\.whatsapp\.com|wa\.me|t\.me)\//.test(g.link))return;
-  const b=document.createElement('div');b.className='listitem';const t=document.createElement('strong');t.textContent=g.name.slice(0,80);b.append(t);
-  if(typeof g.desc==='string'&&g.desc){const d=document.createElement('p');d.textContent=g.desc.slice(0,300);b.append(d)}
-  const a=document.createElement('a');a.href=g.link;a.target='_blank';a.rel='noopener noreferrer';a.textContent='انضم إلى المجموعة';b.append(a);root.append(b);n++});
- $('communityEmpty').classList.toggle('hidden',n>0)}
-renderCommunity([]);
-fetch('community.json',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject()).then(l=>{if(Array.isArray(l))renderCommunity(l.slice(0,20))}).catch(()=>{});
-fetch('links.json',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject()).then(o=>{
- const u=o&&typeof o.minbari==='string'?o.minbari.trim():'';
- let ok=false;try{const x=new URL(u);ok=x.protocol==='https:'&&!x.username&&!x.password&&x.hostname.indexOf('.')>0}catch(e){}
- if(ok){const a=$('minbariCard');a.href=u;a.style.display=''}}).catch(()=>{});
-$('newSermon').onclick=()=>{if(($('draft').value.trim()||$('topic').value.trim())&&!confirm('سيُفرَّغ المحرر لتبدأ خطبة جديدة. إن لم تحفظ الخطبة الحالية في المكتبة فستضيع. هل تريد المتابعة؟'))return;['topic','draft'].forEach(id=>{$(id).value='';$(id).dispatchEvent(new Event('input'))});$('draft').focus();toast('المحرر فارغ، ابدأ خطبتك الجديدة')};
-updateStats();
-})();
-if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){})})}
+
+function showHome(){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.add('hidden'));
+  $('sermon').classList.remove('hidden');
+  $('appbar').classList.add('hidden');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+document.querySelectorAll('[data-open]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const target=btn.getAttribute('data-open');
+    if(target)showPanel(target);
+  });
+});
+
+$('backBtn').addEventListener('click',showHome);
+
+document.querySelectorAll('.bnav button').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.bnav button').forEach(b=>b.classList.remove('on'));
+    btn.classList.add('on');
+    const nav=btn.getAttribute('data-nav');
+    if(nav==='home')showHome();
+    else if(nav)showPanel(nav);
+  });
+});
+
+$('themeBtn').addEventListener('click',()=>{
+  const cur=document.documentElement.getAttribute('data-theme')||'light';
+  const nxt=cur==='light'?'dark':'light';
+  document.documentElement.setAttribute('data-theme',nxt);
+  $('themeBtn').textContent=nxt==='light'?'☾':'☼';
+});
+
+// Draft text words counter
+$('draft').addEventListener('input',()=>{
+  const val=$('draft').value.trim();
+  const words=val?val.split(/\s+/).length:0;
+  $('stats').textContent=`${words} كلمة`;
+});
+
+// Markers
+document.querySelectorAll('.chips button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    const marker=b.getAttribute('data-marker');
+    const ta=$('draft');
+    const pos=ta.selectionStart||ta.value.length;
+    ta.value=ta.value.substring(0,pos)+'\n'+marker+'\n'+ta.value.substring(pos);
+    ta.dispatchEvent(new Event('input'));
+  });
+});
+
+// Save sermon locally
+$('saveSermon').addEventListener('click',()=>{
+  const topic=$('topic').value.trim()||'خطبة بدون عنوان';
+  const draft=$('draft').value.trim();
+  if(!draft){toast('يرجى كتابة نص الخطبة أولاً');return;}
+  const saved=JSON.parse(localStorage.getItem('mikat_sermons')||'[]');
+  saved.unshift({id:Date.now(),topic,draft,date:new Date().toLocaleDateString('ar-DZ')});
+  localStorage.setItem('mikat_sermons',JSON.stringify(saved));
+  toast('تم حفظ الخطبة في المكتبة بنجاح');
+  renderSavedList();
+});
+
+$('newSermon').addEventListener('click',()=>{
+  $('topic').value='';
+  $('draft').value='';
+  $('stats').textContent='0 كلمة';
+  toast('تم تفريغ المحرر لخطبة جديدة');
+});
+
+function renderSavedList(){
+  const saved=JSON.parse(localStorage.getItem('mikat_sermons')||'[]');
+  $('sermonCount').textContent=`${saved.length} خطبة`;
+  const container=$('savedList');
+  if(!container)return;
+  if(saved.length===0){
+    container.innerHTML='<p class="muted">لا توجد مسودات محفوظة حتى الآن.</p>';
+    return;
+  }
+  container.innerHTML=saved.map((s,idx)=>`
+    <div class="listitem">
+      <strong>${s.topic}</strong>
+      <p class="small">${s.date}</p>
+      <div class="row" style="margin-top:6px">
+        <button type="button" class="primary" onclick="loadSavedSermon(${idx})">فتح في المحرر</button>
+        <button type="button" onclick="deleteSavedSermon(${idx})">حذف</button>
+      </div>
+    </div>
+  `).join('');
+}
+window.loadSavedSermon=function(idx){
+  const saved=JSON.parse(localStorage.getItem('mikat_sermons')||'[]');
+  if(saved[idx]){
+    $('topic').value=saved[idx].topic;
+    $('draft').value=saved[idx].draft;
+    $('draft').dispatchEvent(new Event('input'));
+    showPanel('sermon');
+    toast('تم استرجاع الخطبة في المحرر');
+  }
+};
+window.deleteSavedSermon=function(idx){
+  const saved=JSON.parse(localStorage.getItem('mikat_sermons')||'[]');
+  saved.splice(idx,1);
+  localStorage.setItem('mikat_sermons',JSON.stringify(saved));
+  renderSavedList();
+  toast('تم حذف الخطبة');
+};
+
+// Stage View & Teleprompter
+let timerInterval=null;
+let elapsedSeconds=0;
+let isPaused=false;
+
+$('present').addEventListener('click',()=>{
+  const draft=$('draft').value.trim();
+  if(!draft){toast('يرجى كتابة نص الخطبة أولاً');return;}
+  $('stageText').textContent=draft;
+  $('stageView').classList.remove('hidden');
+  elapsedSeconds=0;
+  isPaused=false;
+  clearInterval(timerInterval);
+  timerInterval=setInterval(updateTimer,1000);
+});
+
+$('exitStage').addEventListener('click',()=>{
+  clearInterval(timerInterval);
+  $('stageView').classList.add('hidden');
+});
+
+$('toggleTimer').addEventListener('click',()=>{
+  isPaused=!isPaused;
+  $('toggleTimer').textContent=isPaused?'▶ استئناف':'⏸ إيقاف المؤقت';
+});
+
+$('fontSizeRange').addEventListener('input',e=>{
+  $('stageText').style.fontSize=`${e.target.value}px`;
+});
+
+function updateTimer(){
+  if(isPaused)return;
+  elapsedSeconds++;
+  const m=Math.floor(elapsedSeconds/60).toString().padStart(2,'0');
+  const s=(elapsedSeconds%60).toString().padStart(2,'0');
+  $('clock').textContent=`${m}:${s}`;
+}
+
+// Load Links & Minbari Card
+fetch('links.json').then(r=>r.json()).then(data=>{
+  if(data.minbari){
+    const mb=$('minbariCard');
+    if(mb){mb.href=data.minbari;mb.style.display='flex';}
+    const cL=$('commLovable');
+    if(cL)cL.href=data.minbari;
+  }
+  if(data.telegram&&$('commTelegram'))$('commTelegram').href=data.telegram;
+  if(data.whatsapp&&$('commWhatsapp'))$('commWhatsapp').href=data.whatsapp;
+}).catch(()=>{});
+
+// Share App
+if($('shareApp')){
+  $('shareApp').addEventListener('click',()=>{
+    if(navigator.share){
+      navigator.share({title:'ميقات الخطيب',url:window.location.href});
+    }else{
+      navigator.clipboard.writeText(window.location.href);
+      toast('تم نسخ رابط التطبيق');
+    }
+  });
+}
+
+// Init
+renderSavedList();
 </script>
 </body>
 </html>
