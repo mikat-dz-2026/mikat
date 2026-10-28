@@ -51,7 +51,22 @@ h1,h2,h3{font-family:"Reem Kufi","IBM Plex Sans Arabic",system-ui,serif}
     <button id="themeBtn" aria-label="تبديل المظهر">☾</button>
   </header>
   <div id="appbar" class="appbar hidden"><button id="backBtn" type="button" aria-label="رجوع">→</button><strong id="appbarTitle"></strong></div>
-  <section class="hero">
+    <section class="hero">
+    <div class="eyebrow">منصة خدمات الخطيب</div>
+    <h2>خطبتك في وقتها، وخدماتك في مكان واحد</h2>
+    <p>محرر وملقّن ومؤقت ذكي ومواقيت الصلاة في تطبيق واحد، ويعمل بعد أول فتح دون إنترنت.</p>
+    <button class="primary" data-open="sermon">✍️ ابدأ إعداد الخطبة</button>
+  </section>
+  <div class="section-title"><h2>خدمات ميقات الخطيب</h2></div>
+  <div class="grid">
+    <button class="service" id="installApp" type="button" style="display:none"><span class="ico">📲</span><strong>ثبّت التطبيق على هاتفك</strong><span>أيقونة على الشاشة وفتح بشاشة كاملة.</span></button>
+    <button class="service" data-open="sermon"><span class="ico">📖</span><strong>إعداد الخطبة والإلقاء</strong><span>محرر الخطبة، مؤقت، وخط كبير للإلقاء.</span></button>
+    <button class="service" data-open="weekly"><span class="ico">📅</span><strong>موضوع الجمعة القادمة</strong><span id="weeklyHint">لم يُنشر موضوع هذا الأسبوع بعد.</span></button>
+    <button class="service" data-open="library"><span class="ico">📚</span><strong>مكتبة الخطب</strong><span>حفظ مسوداتك على هذا الجهاز والبحث فيها.</span></button>
+    <button class="service" data-open="prayer"><span class="ico">🕌</span><strong>مواقيت الصلاة</strong><span>حسب مدينتك أو موقعك، مع الصلاة القادمة.</span></button>
+    <button class="service" data-open="community"><span class="ico">💬</span><strong>فضاء الأئمة</strong><span>مجموعات للتواصل وتبادل الخبرة.</span></button>
+    <a class="service" id="minbariCard" href="#" target="_blank" rel="noopener noreferrer" style="display:none;text-decoration:none;color:inherit"><span class="ico">🏛️</span><strong>منبري: حسابي ورسائل المديرية</strong><span>سجّل دخولك لتصلك رسائل المديرية وإعلاناتها.</span></a>
+
     <div class="eyebrow">منصة خدمات الخطيب</div>
     <h2>خطبتك في وقتها، وخدماتك في مكان واحد</h2>
     <p>محرر وملقّن ومؤقت ذكي ومواقيت الصلاة وتعليمات المديرية في تطبيق واحد، ويعمل بعد أول فتح دون إنترنت.</p>
