@@ -1,0 +1,72 @@
+/* ============================================
+   لوحة تحكم أزرار الخطبة - ميقات الخطيب
+   ============================================ */
+
+.toolbar-waqf {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+  padding: 10px;
+  background: #f7f7f9;
+  border: 1px solid #e0e0e6;
+  border-radius: 8px;
+}
+
+.toolbar-waqf button {
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.toolbar-waqf button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.toolbar-waqf button:active {
+  transform: translateY(0);
+}
+
+.btn-ayah {
+  background: #ffffff;
+  color: #333333;
+  border: 2px solid #999999;
+}
+
+.btn-dua {
+  background: #f8b4c8;
+  color: #6b0f2a;
+  border-color: #e88aa5;
+}
+
+.btn-hadith {
+  background: #4caf50;
+  color: #ffffff;
+  border-color: #3d8b40;
+}
+
+.btn-khutba1 {
+  background: #8d6e63;
+  color: #ffffff;
+  border-color: #6d4c41;
+}
+
+.btn-khutba2 {
+  background: #7e57c2;
+  color: #ffffff;
+  border-color: #5e35b1;
+}
+
+@media (max-width: 480px) {
+  .toolbar-waqf button {
+    flex: 1 1 calc(50% - 8px);
+    padding: 10px 8px;
+    font-size: 13px;
+  }
+}
