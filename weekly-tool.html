@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<title>أداة تشفير موضوع الجمعة</title>
+<style>body{font-family:system-ui,"Segoe UI",Tahoma,sans-serif;margin:0;background:#f7f6f2;color:#1e2b28;line-height:1.7}main{max-width:720px;margin:auto;padding:18px 16px 40px}
+h1{font-size:1.4rem}label{display:block;margin-top:12px;font-weight:600}input,textarea{width:100%;box-sizing:border-box;border:1px solid #cfd6d1;border-radius:10px;padding:10px;font:inherit;background:#fff;color:inherit}
+textarea{min-height:90px}button{margin-top:12px;min-height:44px;padding:8px 16px;border-radius:10px;border:1px solid #2f6b5e;background:#2f6b5e;color:#fff;font:inherit;font-weight:600}
+button.sec{background:#fff;color:#2f6b5e}.note{background:#fff7e6;border:1px solid #e8d3a0;border-radius:10px;padding:10px;margin:12px 0}#out,#plain{direction:ltr;text-align:left;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px}</style></head>
+<body><main>
+<h1>أداة تشفير موضوع الجمعة</h1>
+<div class="note">تعمل هذه الصفحة داخل جهازك، ولا يُرسل منها شيء إلى أي خادم. اكتب الموضوع واختر كودًا طويلًا يعرفه الأئمة (12 حرفًا فأكثر، ويُفضَّل كلمات متعددة). ثم انسخ الناتج وضعه في ملف <b>weekly.json</b>. ومن عرف الكود قرأ الموضوع، فلا تشاركه إلا مع الأئمة.</div>
+<label for="code">كود الأئمة</label><input id="code" type="password" autocomplete="off" dir="ltr">
+<label for="topic">موضوع الجمعة</label><input id="topic" type="text">
+<label for="date">التاريخ (اختياري)</label><input id="date" type="text" placeholder="مثال: 2026-11-06">
+<label for="note">ملاحظة (اختياري)</label><textarea id="note"></textarea>
+<label for="points">النقاط المطلوبة (كل نقطة في سطر)</label><textarea id="points"></textarea>
+<button id="enc" type="button">تشفير</button>
+<label for="out">الناتج: انسخه إلى weekly.json</label><textarea id="out" readonly></textarea>
+<button id="copy" class="sec" type="button">نسخ</button>
+<h2>تجربة فك التشفير</h2>
+<label for="test">ألصق محتوى weekly.json</label><textarea id="test"></textarea>
+<button id="dec" class="sec" type="button">فك التشفير بالكود أعلاه</button>
+<textarea id="plain" readonly></textarea>
+</main>
+<script>
+const $=id=>document.getElementById(id),enc=new TextEncoder(),dec=new TextDecoder();
+const b64=a=>btoa(String.fromCharCode(...new Uint8Array(a))),b64d=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+async function key(code,salt,iter,usage){const km=await crypto.subtle.importKey('raw',enc.encode(code),'PBKDF2',false,['deriveKey']);return crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:iter,hash:'SHA-256'},km,{name:'AES-GCM',length:256},false,[usage])}
+$('enc').onclick=async()=>{const code=$('code').value,topic=$('topic').value.trim();if(code.length<12){alert('اجعل الكود 12 حرفًا فأكثر');return}if(!topic){alert('اكتب الموضوع');return}
+ const payload={topic,date:$('date').value.trim(),note:$('note').value.trim(),points:$('points').value.split('\n').map(x=>x.trim()).filter(Boolean)};
+ const iter=200000,salt=crypto.getRandomValues(new Uint8Array(16)),iv=crypto.getRandomValues(new Uint8Array(12));
+ const k=await key(code,salt,iter,'encrypt'),ct=await crypto.subtle.encrypt({name:'AES-GCM',iv},k,enc.encode(JSON.stringify(payload)));
+ $('out').value=JSON.stringify({v:1,iter,salt:b64(salt),iv:b64(iv),ct:b64(ct)},null,2)+'\n'};
+$('copy').onclick=async()=>{try{await navigator.clipboard.writeText($('out').value);alert('تم النسخ')}catch(e){$('out').select()}};
+$('dec').onclick=async()=>{try{const o=JSON.parse($('test').value),k=await key($('code').value,b64d(o.salt),o.iter||200000,'decrypt'),pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:b64d(o.iv)},k,b64d(o.ct));$('plain').value=dec.decode(pt)}catch(e){$('plain').value='تعذّر فك التشفير: الكود أو المحتوى غير صحيح'}};
+</script></body></html>
